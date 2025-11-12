@@ -19,7 +19,7 @@ public class EnemyController : MonoBehaviour
     private Vector3 randomDir;
     private GameObject player;
     private float lastHit = 0f;
-    public float hitCooldown = 0.3f; 
+    public float hitCooldown = 0.3f;
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
@@ -77,6 +77,16 @@ public class EnemyController : MonoBehaviour
             StartCoroutine(ChooseDirection());
 
         transform.position += randomDir.normalized * currentSpeed * Time.deltaTime;
+
+        // Limites de l'écran
+        Vector3 pos = transform.position;
+        Vector3 min = Camera.main.ViewportToWorldPoint(new Vector3(0, 0, 0));
+        Vector3 max = Camera.main.ViewportToWorldPoint(new Vector3(1, 1, 0));
+
+        // Ajuste la position pour rester dans l'écran
+        pos.x = Mathf.Clamp(pos.x, min.x, max.x);
+        pos.y = Mathf.Clamp(pos.y, min.y, max.y);
+        transform.position = pos;
     }
 
     void Follow()
@@ -88,6 +98,16 @@ public class EnemyController : MonoBehaviour
             player.transform.position,
             currentSpeed * Time.deltaTime
         );
+
+        // Limites de l'écran
+        Vector3 pos = transform.position;
+        Vector3 min = Camera.main.ViewportToWorldPoint(new Vector3(0, 0, 0));
+        Vector3 max = Camera.main.ViewportToWorldPoint(new Vector3(1, 1, 0));
+
+        // Ajuste la position pour rester dans l'écran
+        pos.x = Mathf.Clamp(pos.x, min.x, max.x);
+        pos.y = Mathf.Clamp(pos.y, min.y, max.y);
+        transform.position = pos;
     }
 
     public void Die()
