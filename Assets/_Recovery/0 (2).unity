@@ -150,14 +150,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::MapGenerator
   cellPrefab: {fileID: 610471884479250919, guid: 9a91a92490699b5438f4a99a03d0ff10, type: 3}
   start: {fileID: 1047999966, guid: d9050d21c267c264d8b84d019263b0b5, type: 3}
-  item: {fileID: 1687693413, guid: d9050d21c267c264d8b84d019263b0b5, type: 3}
+  light: {fileID: 1687693413, guid: d9050d21c267c264d8b84d019263b0b5, type: 3}
   forge: {fileID: -1034525646, guid: d9050d21c267c264d8b84d019263b0b5, type: 3}
   heal: {fileID: -1636119398, guid: d9050d21c267c264d8b84d019263b0b5, type: 3}
   boss: {fileID: 156942218, guid: d9050d21c267c264d8b84d019263b0b5, type: 3}
-  largeRoom: {fileID: -1930646587, guid: c74f9542eb8096d4e88931b24e6f0e7d, type: 3}
-  LRoom: {fileID: -1072999033, guid: c74f9542eb8096d4e88931b24e6f0e7d, type: 3}
-  verticalRoom: {fileID: -5654900837252959266, guid: c74f9542eb8096d4e88931b24e6f0e7d, type: 3}
-  horizontalRoom: {fileID: -757181611, guid: c74f9542eb8096d4e88931b24e6f0e7d, type: 3}
 --- !u!4 &231805375
 Transform:
   m_ObjectHideFlags: 0

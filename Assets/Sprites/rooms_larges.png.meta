@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: d9050d21c267c264d8b84d019263b0b5
+guid: c74f9542eb8096d4e88931b24e6f0e7d
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 4881671108925363001
-    second: rooms_icon_0
+      213: -5654900837252959266
+    second: rooms_larges_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -113,124 +113,104 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: rooms_icon_0
+      name: rooms_larges_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
         width: 16
-        height: 16
+        height: 32
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
-      outline: []
-      physicsShape: []
+      outline:
+      - - {x: 0, y: -16}
+        - {x: 8, y: 0}
+        - {x: 0, y: 16}
+        - {x: -8, y: 0}
+      physicsShape:
+      - - {x: 0, y: -16}
+        - {x: 8, y: 0}
+        - {x: 0, y: 16}
+        - {x: -8, y: 0}
       tessellationDetail: -1
       bones: []
-      spriteID: 93398c5620e2fb340800000000000000
-      internalID: 4881671108925363001
+      spriteID: ed37a7346a1c581b0800000000000000
+      internalID: -5654900837252959266
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: rooms_icon_1
+      name: rooms_larges_2
       rect:
         serializedVersion: 2
         x: 16
         y: 0
-        width: 16
+        width: 32
         height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
-      outline: []
-      physicsShape: []
+      outline:
+      - - {x: 0, y: -16}
+        - {x: 8, y: 0}
+        - {x: 0, y: 16}
+        - {x: -8, y: 0}
+      physicsShape:
+      - - {x: 0, y: -16}
+        - {x: 8, y: 0}
+        - {x: 0, y: 16}
+        - {x: -8, y: 0}
       tessellationDetail: 0
       bones: []
-      spriteID: d98580d21769c3e40b9f548f2758dc67
-      internalID: 156942218
+      spriteID: 0a3e49aeacb464547b4ad3a4486fabd9
+      internalID: -757181611
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: rooms_icon_2
-      rect:
-        serializedVersion: 2
-        x: 32
-        y: 0
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: d20ad012f29398243a922fcf3b5b04e0
-      internalID: -1636119398
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: rooms_icon_3
+      name: rooms_larges_3
       rect:
         serializedVersion: 2
         x: 48
         y: 0
-        width: 16
-        height: 16
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
-      outline: []
-      physicsShape: []
+      outline:
+      - - {x: 0, y: -16}
+        - {x: 8, y: 0}
+        - {x: 0, y: 16}
+        - {x: -8, y: 0}
+      physicsShape:
+      - - {x: 0, y: -16}
+        - {x: 8, y: 0}
+        - {x: 0, y: 16}
+        - {x: -8, y: 0}
       tessellationDetail: 0
       bones: []
-      spriteID: c367e3018c63941448c7bec12854db62
-      internalID: -1034525646
+      spriteID: 02de6de7906b142439817c0794412651
+      internalID: -1072999033
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: rooms_icon_4
-      rect:
-        serializedVersion: 2
-        x: 64
-        y: 0
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: b7478128c08569143afe86e71c07c1e0
-      internalID: 1687693413
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: rooms_icon_5
+      name: rooms_larges_5
       rect:
         serializedVersion: 2
         x: 80
         y: 0
-        width: 16
-        height: 16
-      alignment: 0
+        width: 32
+        height: 32
+      alignment: 9
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
@@ -238,8 +218,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d54467beb57f0dd4fb0a9baafd4d0f3a
-      internalID: 1047999966
+      spriteID: 40c89fa6dc94c854c93130538c33c17f
+      internalID: -1930646587
       vertices: []
       indices: 
       edges: []
@@ -248,7 +228,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 1899f68c1e9e7f542b57a3742eeec07a
+    spriteID: a351d2cb792f70440bc829b9662ff648
     internalID: 0
     vertices: []
     indices: 
@@ -258,14 +238,15 @@ TextureImporter:
     spriteCustomMetadata:
       entries:
       - key: SpriteEditor.SliceSettings
-        value: '{"sliceOnImport":false,"gridCellCount":{"x":1.0,"y":1.0},"gridSpriteSize":{"x":16.0,"y":16.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":1,"keepEmptyRects":false,"isAlternate":false}'
+        value: '{"sliceOnImport":false,"gridCellCount":{"x":1.0,"y":1.0},"gridSpriteSize":{"x":16.0,"y":32.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":1,"keepEmptyRects":false,"isAlternate":false}'
     nameFileIdTable:
-      rooms_icon_0: 4881671108925363001
-      rooms_icon_1: 156942218
-      rooms_icon_2: -1636119398
-      rooms_icon_3: -1034525646
-      rooms_icon_4: 1687693413
-      rooms_icon_5: 1047999966
+      rooms_larges_0: -5654900837252959266
+      rooms_larges_1: -936088348
+      rooms_larges_2: -757181611
+      rooms_larges_3: -1072999033
+      rooms_larges_4: -1559686599
+      rooms_larges_5: -1930646587
+      rooms_larges_6: -323399684
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

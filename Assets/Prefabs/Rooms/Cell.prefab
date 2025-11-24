@@ -139,6 +139,7 @@ MonoBehaviour:
   index: 0
   value: 0
   spriteRenderer: {fileID: 6431173507730021122}
+  roomSprite: {fileID: 8289240802155501652}
 --- !u!212 &8289240802155501652
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -191,7 +192,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 0.16, y: 0.16}
+  m_Size: {x: 0.96, y: 0.16}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
