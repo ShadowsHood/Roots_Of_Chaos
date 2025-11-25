@@ -1,0 +1,501 @@
+fileFormatVersion: 2
+guid: b07f56e865aaa9648888f19dfce44046
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -7030522105765775365
+    second: PC _ Computer - The Binding of Isaac_ Rebirth - Rooms - The Chest_0
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: PC _ Computer - The Binding of Isaac_ Rebirth - Rooms - The Chest_0
+      rect:
+        serializedVersion: 2
+        x: 4
+        y: 682
+        width: 233
+        height: 155
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bf7bc44e4619e6e90800000000000000
+      internalID: -7030522105765775365
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC _ Computer - The Binding of Isaac_ Rebirth - Rooms - The Chest_10
+      rect:
+        serializedVersion: 2
+        x: 656
+        y: 656
+        width: 129
+        height: 181
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b2f050e69b7974946b346de14003fa75
+      internalID: 1200600972
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC _ Computer - The Binding of Isaac_ Rebirth - Rooms - The Chest_20
+      rect:
+        serializedVersion: 2
+        x: 527
+        y: 656
+        width: 129
+        height: 181
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1c156b9412670da42a0e8944927e932d
+      internalID: -139114897
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC _ Computer - The Binding of Isaac_ Rebirth - Rooms - The Chest_50
+      rect:
+        serializedVersion: 2
+        x: 527
+        y: 578
+        width: 336
+        height: 78
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 366a8c8119f175d4fa5df10045b8c359
+      internalID: -1980277207
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC _ Computer - The Binding of Isaac_ Rebirth - Rooms - The Chest_60
+      rect:
+        serializedVersion: 2
+        x: 3
+        y: 186
+        width: 676
+        height: 181
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1b65259220345c14cbe219c1c2f64378
+      internalID: -701692753
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC _ Computer - The Binding of Isaac_ Rebirth - Rooms - The Chest_70
+      rect:
+        serializedVersion: 2
+        x: 3
+        y: 4
+        width: 676
+        height: 182
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ed50cfa144b663b4bb59e7d34244bfd1
+      internalID: -2017118839
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC _ Computer - The Binding of Isaac_ Rebirth - Rooms - The Chest_1
+      rect:
+        serializedVersion: 2
+        x: 679
+        y: 186
+        width: 337
+        height: 180
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b5a315946f009d648930f738b53e4d71
+      internalID: 1791980466
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC _ Computer - The Binding of Isaac_ Rebirth - Rooms - The Chest_2
+      rect:
+        serializedVersion: 2
+        x: 679
+        y: 4
+        width: 337
+        height: 182
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 76fce05e81599024faa80b75229dbae4
+      internalID: -655273110
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC _ Computer - The Binding of Isaac_ Rebirth - Rooms - The Chest_3
+      rect:
+        serializedVersion: 2
+        x: 527
+        y: 501
+        width: 336
+        height: 77
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1c047ca0c10ee1841a19abd99f7f6255
+      internalID: 1589649909
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC _ Computer - The Binding of Isaac_ Rebirth - Rooms - The Chest_4
+      rect:
+        serializedVersion: 2
+        x: 238
+        y: 682
+        width: 232
+        height: 155
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 290b0dcab954c6947b3413ca00024618
+      internalID: 1977955970
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC _ Computer - The Binding of Isaac_ Rebirth - Rooms - The Chest_5
+      rect:
+        serializedVersion: 2
+        x: 470
+        y: 787
+        width: 52
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f7c08a516b40625449aa6a2e2251e287
+      internalID: 1880829235
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC _ Computer - The Binding of Isaac_ Rebirth - Rooms - The Chest_6
+      rect:
+        serializedVersion: 2
+        x: 238
+        y: 527
+        width: 232
+        height: 154
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 481cea1e3d66dc140a735eec2db7ac61
+      internalID: -603754227
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC _ Computer - The Binding of Isaac_ Rebirth - Rooms - The Chest_7
+      rect:
+        serializedVersion: 2
+        x: 4
+        y: 527
+        width: 233
+        height: 154
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 919227656fb9dca44858ef7a59182ad5
+      internalID: -1343830942
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: e84f310fc7bc2b147a543c502cf5a194
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries:
+      - key: SpriteEditor.SliceSettings
+        value: '{"sliceOnImport":false,"gridCellCount":{"x":1.0,"y":1.0},"gridSpriteSize":{"x":100.0,"y":100.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":1,"keepEmptyRects":false,"isAlternate":false}'
+    nameFileIdTable:
+      PC _ Computer - The Binding of Isaac_ Rebirth - Rooms - The Chest_0: -7030522105765775365
+      PC _ Computer - The Binding of Isaac_ Rebirth - Rooms - The Chest_1: 1791980466
+      PC _ Computer - The Binding of Isaac_ Rebirth - Rooms - The Chest_10: 1200600972
+      PC _ Computer - The Binding of Isaac_ Rebirth - Rooms - The Chest_11: -632325733
+      PC _ Computer - The Binding of Isaac_ Rebirth - Rooms - The Chest_12: -1729456451
+      PC _ Computer - The Binding of Isaac_ Rebirth - Rooms - The Chest_13: 1995423778
+      PC _ Computer - The Binding of Isaac_ Rebirth - Rooms - The Chest_14: 2075316234
+      PC _ Computer - The Binding of Isaac_ Rebirth - Rooms - The Chest_15: 1664527140
+      PC _ Computer - The Binding of Isaac_ Rebirth - Rooms - The Chest_16: -711795499
+      PC _ Computer - The Binding of Isaac_ Rebirth - Rooms - The Chest_17: 129694559
+      PC _ Computer - The Binding of Isaac_ Rebirth - Rooms - The Chest_18: 1068692417
+      PC _ Computer - The Binding of Isaac_ Rebirth - Rooms - The Chest_19: 2034844222
+      PC _ Computer - The Binding of Isaac_ Rebirth - Rooms - The Chest_2: -655273110
+      PC _ Computer - The Binding of Isaac_ Rebirth - Rooms - The Chest_20: -139114897
+      PC _ Computer - The Binding of Isaac_ Rebirth - Rooms - The Chest_21: 1740691955
+      PC _ Computer - The Binding of Isaac_ Rebirth - Rooms - The Chest_22: -2033995909
+      PC _ Computer - The Binding of Isaac_ Rebirth - Rooms - The Chest_23: -1699894611
+      PC _ Computer - The Binding of Isaac_ Rebirth - Rooms - The Chest_24: 1350642101
+      PC _ Computer - The Binding of Isaac_ Rebirth - Rooms - The Chest_25: -1789178797
+      PC _ Computer - The Binding of Isaac_ Rebirth - Rooms - The Chest_26: -1480398958
+      PC _ Computer - The Binding of Isaac_ Rebirth - Rooms - The Chest_27: -1197913798
+      PC _ Computer - The Binding of Isaac_ Rebirth - Rooms - The Chest_28: 904433197
+      PC _ Computer - The Binding of Isaac_ Rebirth - Rooms - The Chest_29: -6075169
+      PC _ Computer - The Binding of Isaac_ Rebirth - Rooms - The Chest_3: 1589649909
+      PC _ Computer - The Binding of Isaac_ Rebirth - Rooms - The Chest_30: 395928682
+      PC _ Computer - The Binding of Isaac_ Rebirth - Rooms - The Chest_31: -242077450
+      PC _ Computer - The Binding of Isaac_ Rebirth - Rooms - The Chest_32: -1884447818
+      PC _ Computer - The Binding of Isaac_ Rebirth - Rooms - The Chest_33: 1495807443
+      PC _ Computer - The Binding of Isaac_ Rebirth - Rooms - The Chest_34: 1333215143
+      PC _ Computer - The Binding of Isaac_ Rebirth - Rooms - The Chest_35: 1670053428
+      PC _ Computer - The Binding of Isaac_ Rebirth - Rooms - The Chest_36: -66508750
+      PC _ Computer - The Binding of Isaac_ Rebirth - Rooms - The Chest_37: 1591426714
+      PC _ Computer - The Binding of Isaac_ Rebirth - Rooms - The Chest_38: 249104656
+      PC _ Computer - The Binding of Isaac_ Rebirth - Rooms - The Chest_39: -888772864
+      PC _ Computer - The Binding of Isaac_ Rebirth - Rooms - The Chest_4: 1977955970
+      PC _ Computer - The Binding of Isaac_ Rebirth - Rooms - The Chest_40: -24090085
+      PC _ Computer - The Binding of Isaac_ Rebirth - Rooms - The Chest_41: 228387086
+      PC _ Computer - The Binding of Isaac_ Rebirth - Rooms - The Chest_42: 381195611
+      PC _ Computer - The Binding of Isaac_ Rebirth - Rooms - The Chest_43: -97931370
+      PC _ Computer - The Binding of Isaac_ Rebirth - Rooms - The Chest_44: 1109775999
+      PC _ Computer - The Binding of Isaac_ Rebirth - Rooms - The Chest_45: 67412920
+      PC _ Computer - The Binding of Isaac_ Rebirth - Rooms - The Chest_46: 2146541828
+      PC _ Computer - The Binding of Isaac_ Rebirth - Rooms - The Chest_47: 2092294341
+      PC _ Computer - The Binding of Isaac_ Rebirth - Rooms - The Chest_48: 335101011
+      PC _ Computer - The Binding of Isaac_ Rebirth - Rooms - The Chest_49: -2123349499
+      PC _ Computer - The Binding of Isaac_ Rebirth - Rooms - The Chest_5: 1880829235
+      PC _ Computer - The Binding of Isaac_ Rebirth - Rooms - The Chest_50: -1980277207
+      PC _ Computer - The Binding of Isaac_ Rebirth - Rooms - The Chest_51: -609734199
+      PC _ Computer - The Binding of Isaac_ Rebirth - Rooms - The Chest_52: -1130737332
+      PC _ Computer - The Binding of Isaac_ Rebirth - Rooms - The Chest_53: 446075670
+      PC _ Computer - The Binding of Isaac_ Rebirth - Rooms - The Chest_54: -1030669789
+      PC _ Computer - The Binding of Isaac_ Rebirth - Rooms - The Chest_55: 1542719444
+      PC _ Computer - The Binding of Isaac_ Rebirth - Rooms - The Chest_56: 135942004
+      PC _ Computer - The Binding of Isaac_ Rebirth - Rooms - The Chest_57: 1687093380
+      PC _ Computer - The Binding of Isaac_ Rebirth - Rooms - The Chest_58: -360108524
+      PC _ Computer - The Binding of Isaac_ Rebirth - Rooms - The Chest_59: -1255333638
+      PC _ Computer - The Binding of Isaac_ Rebirth - Rooms - The Chest_6: -603754227
+      PC _ Computer - The Binding of Isaac_ Rebirth - Rooms - The Chest_60: -701692753
+      PC _ Computer - The Binding of Isaac_ Rebirth - Rooms - The Chest_61: -1260833959
+      PC _ Computer - The Binding of Isaac_ Rebirth - Rooms - The Chest_62: 117924708
+      PC _ Computer - The Binding of Isaac_ Rebirth - Rooms - The Chest_63: 1846485304
+      PC _ Computer - The Binding of Isaac_ Rebirth - Rooms - The Chest_64: 200442335
+      PC _ Computer - The Binding of Isaac_ Rebirth - Rooms - The Chest_65: 660971659
+      PC _ Computer - The Binding of Isaac_ Rebirth - Rooms - The Chest_66: 1430613562
+      PC _ Computer - The Binding of Isaac_ Rebirth - Rooms - The Chest_67: -1382472730
+      PC _ Computer - The Binding of Isaac_ Rebirth - Rooms - The Chest_68: -1867114089
+      PC _ Computer - The Binding of Isaac_ Rebirth - Rooms - The Chest_69: -1234325004
+      PC _ Computer - The Binding of Isaac_ Rebirth - Rooms - The Chest_7: -1343830942
+      PC _ Computer - The Binding of Isaac_ Rebirth - Rooms - The Chest_70: -2017118839
+      PC _ Computer - The Binding of Isaac_ Rebirth - Rooms - The Chest_71: 1439920485
+      PC _ Computer - The Binding of Isaac_ Rebirth - Rooms - The Chest_72: -360636141
+      PC _ Computer - The Binding of Isaac_ Rebirth - Rooms - The Chest_73: -1632904545
+      PC _ Computer - The Binding of Isaac_ Rebirth - Rooms - The Chest_74: -1607611697
+      PC _ Computer - The Binding of Isaac_ Rebirth - Rooms - The Chest_75: -272899284
+      PC _ Computer - The Binding of Isaac_ Rebirth - Rooms - The Chest_76: 605143551
+      PC _ Computer - The Binding of Isaac_ Rebirth - Rooms - The Chest_77: 307658309
+      PC _ Computer - The Binding of Isaac_ Rebirth - Rooms - The Chest_78: 389225865
+      PC _ Computer - The Binding of Isaac_ Rebirth - Rooms - The Chest_79: 1849577576
+      PC _ Computer - The Binding of Isaac_ Rebirth - Rooms - The Chest_8: -1257006198
+      PC _ Computer - The Binding of Isaac_ Rebirth - Rooms - The Chest_9: 330263250
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

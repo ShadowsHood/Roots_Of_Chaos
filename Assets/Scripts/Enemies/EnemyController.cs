@@ -14,16 +14,22 @@ public class EnemyController : MonoBehaviour
     public EnemyState currentState = EnemyState.Wander;
     private bool isDead = false;
     private float currentSpeed;
+    private Rigidbody2D rb;
 
     private bool chooseDir = false;
-    private Vector3 randomDir;
+    private Vector2 randomDir;
     private GameObject player;
     private float lastHit = 0f;
     public float hitCooldown = 0.3f;
+
+    public LayerMask obstacleMask;
+
+
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
         currentSpeed = enemy.moveSpeed;
+        rb = GetComponent<Rigidbody2D>();
     }
 
     void OnCollisionStay2D(Collision2D collision)
@@ -65,7 +71,10 @@ public class EnemyController : MonoBehaviour
 
         // nouvelle direction aléatoire en 2D
         float angle = Random.Range(0f, 360f);
-        randomDir = new Vector3(Mathf.Cos(angle * Mathf.Deg2Rad), Mathf.Sin(angle * Mathf.Deg2Rad), 0);
+        randomDir = new Vector2(
+            Mathf.Cos(angle * Mathf.Deg2Rad),
+            Mathf.Sin(angle * Mathf.Deg2Rad)
+        );
 
         yield return new WaitForSeconds(Random.Range(2f, 5f));
         chooseDir = false;
@@ -76,38 +85,48 @@ public class EnemyController : MonoBehaviour
         if (!chooseDir)
             StartCoroutine(ChooseDirection());
 
-        transform.position += randomDir.normalized * currentSpeed * Time.deltaTime;
+        // // transform.position += randomDir.normalized * currentSpeed * Time.deltaTime;
+        // Vector2 newPos = rb.position + (Vector2)randomDir.normalized * currentSpeed * Time.deltaTime;
+        // rb.MovePosition(newPos);
 
-        // // Limites de l'écran
-        // Vector3 pos = transform.position;
-        // Vector3 min = Camera.main.ViewportToWorldPoint(new Vector3(0, 0, 0));
-        // Vector3 max = Camera.main.ViewportToWorldPoint(new Vector3(1, 1, 0));
+        // Raycast pour détecter les murs
+        RaycastHit2D hit = Physics2D.Raycast(rb.position, randomDir, 0.5f, obstacleMask);
+        if (hit.collider != null)
+        {
+            // Obstacle → nouvelle direction immédiate
+            chooseDir = false;
+            StartCoroutine(ChooseDirection());
+            return;
+        }
 
-        // // Ajuste la position pour rester dans l'écran
-        // pos.x = Mathf.Clamp(pos.x, min.x, max.x);
-        // pos.y = Mathf.Clamp(pos.y, min.y, max.y);
-        // transform.position = pos;
+        rb.MovePosition(rb.position + randomDir.normalized * currentSpeed * Time.fixedDeltaTime);
     }
 
     void Follow()
     {
         if (player == null) return;
 
-        transform.position = Vector2.MoveTowards(
-            transform.position,
-            player.transform.position,
-            currentSpeed * Time.deltaTime
-        );
+        // transform.position = Vector2.MoveTowards(
+        //     transform.position,
+        //     player.transform.position,
+        //     currentSpeed * Time.deltaTime
+        // );
+        // Vector2 direction = (player.transform.position - transform.position).normalized;
+        // Vector2 newPos = rb.position + direction * currentSpeed * Time.deltaTime;
+        // rb.MovePosition(newPos);
 
-        // // Limites de l'écran
-        // Vector3 pos = transform.position;
-        // Vector3 min = Camera.main.ViewportToWorldPoint(new Vector3(0, 0, 0));
-        // Vector3 max = Camera.main.ViewportToWorldPoint(new Vector3(1, 1, 0));
+        Vector2 direction = (player.transform.position - transform.position).normalized;
 
-        // // Ajuste la position pour rester dans l'écran
-        // pos.x = Mathf.Clamp(pos.x, min.x, max.x);
-        // pos.y = Mathf.Clamp(pos.y, min.y, max.y);
-        // transform.position = pos;
+        // Empêche le follow de traverser un mur
+        RaycastHit2D hit = Physics2D.Raycast(rb.position, direction, 0.5f, obstacleMask);
+        if (hit.collider != null)
+        {
+            // Si mur entre joueur et ennemi : passe en wander
+            currentState = EnemyState.Wander;
+            return;
+        }
+
+        rb.MovePosition(rb.position + direction * currentSpeed * Time.fixedDeltaTime);
     }
 
     public void Die()
