@@ -130,6 +130,8 @@ public class MapGenerator : MonoBehaviour
         CleanEndRoomsList();
 
         SetupSpecialRooms();
+
+        Debug.Log($"Big room indexes : {string.Join(", ", bigRoomIndexes)}");
         // UpdateSpecialRoomVisuals();
     }
 
@@ -329,6 +331,10 @@ public class MapGenerator : MonoBehaviour
         int combinedX = default;
         int combinedY = default;
         float offset = cellSize / 2f;
+        // int minX = int.MaxValue;
+        // int maxX = int.MinValue;
+        // int minY = int.MaxValue;
+        // int maxY = int.MinValue;
 
         for (int i = 0; i < largeRoomIndexes.Count; i++)
         {
@@ -338,7 +344,31 @@ public class MapGenerator : MonoBehaviour
 
             combinedX += x;
             combinedY += y;
+            // minX = Mathf.Min(minX, x);
+            // maxX = Mathf.Max(maxX, x);
+            // minY = Mathf.Min(minY, y);
+            // maxY = Mathf.Max(maxY, y);
         }
+
+        // float centerX = ((minX + maxX + 1) / 2f) * cellSize;
+        // float centerY = -((minY + maxY + 1) / 2f) * cellSize;
+
+        // Cell cell = Instantiate(cellPrefab, new Vector2(centerX, centerY), Quaternion.identity);
+
+        // if (largeRoomIndexes.Count == 4)
+        //     cell.SetRoomSprite(largeRoom);
+        // else if (largeRoomIndexes.Count == 3)
+        // {
+        //     cell.SetRoomSprite(LRoom);
+        //     cell.RotateCell(largeRoomIndexes);
+        // }
+        // else if (largeRoomIndexes.Count == 2)
+        // {
+        //     bool vertical = Mathf.Abs((largeRoomIndexes[0] / 10) - (largeRoomIndexes[1] / 10)) == 1;
+        //     cell.SetRoomSprite(vertical ? verticalRoom : horizontalRoom);
+        // }
+
+        // spawnedCells.Add(cell);
 
         if (largeRoomIndexes.Count == 4)
         {

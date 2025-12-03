@@ -129,36 +129,14 @@ GameObject:
   m_Component:
   - component: {fileID: 97107574}
   - component: {fileID: 97107573}
-  - component: {fileID: 97107572}
+  - component: {fileID: 97107575}
   m_Layer: 0
   m_Name: LayoutGenerator
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!114 &97107572
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 97107571}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f72d2143cb98a1e4db5911005d065bcd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::MapGenerator
-  cellPrefab: {fileID: 610471884479250919, guid: 9a91a92490699b5438f4a99a03d0ff10, type: 3}
-  start: {fileID: 1047999966, guid: d9050d21c267c264d8b84d019263b0b5, type: 3}
-  item: {fileID: 1687693413, guid: d9050d21c267c264d8b84d019263b0b5, type: 3}
-  forge: {fileID: -1034525646, guid: d9050d21c267c264d8b84d019263b0b5, type: 3}
-  heal: {fileID: -1636119398, guid: d9050d21c267c264d8b84d019263b0b5, type: 3}
-  boss: {fileID: 156942218, guid: d9050d21c267c264d8b84d019263b0b5, type: 3}
-  largeRoom: {fileID: -1930646587, guid: c74f9542eb8096d4e88931b24e6f0e7d, type: 3}
-  LRoom: {fileID: -1072999033, guid: c74f9542eb8096d4e88931b24e6f0e7d, type: 3}
-  verticalRoom: {fileID: -5654900837252959266, guid: c74f9542eb8096d4e88931b24e6f0e7d, type: 3}
-  horizontalRoom: {fileID: -757181611, guid: c74f9542eb8096d4e88931b24e6f0e7d, type: 3}
+  m_IsActive: 1
 --- !u!114 &97107573
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -186,58 +164,29 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &790297509
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 790297511}
-  - component: {fileID: 790297510}
-  m_Layer: 0
-  m_Name: FloorGenerator
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &790297510
+--- !u!114 &97107575
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 790297509}
+  m_GameObject: {fileID: 97107571}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f2ba870c7a95ea94da3e763849126cc6, type: 3}
+  m_Script: {fileID: 11500000, guid: 83096bf48cb099946ada7798829b1912, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::FloorGenerator
-  normalRoom: {fileID: 7882520557172435687, guid: 5e540b7eeee37c54aa895d7b69166212, type: 3}
-  startRoom: {fileID: 7882520557172435687, guid: ff294f069eac8794c88efce269ada33c, type: 3}
-  bossRoom: {fileID: 7882520557172435687, guid: 81254457c60aea64cbb618c430e49f8c, type: 3}
-  healRoom: {fileID: 7882520557172435687, guid: 199db1685b5bc9348abd78524bd62aed, type: 3}
-  forgeRoom: {fileID: 7882520557172435687, guid: b7fe520a8259471429ade7c07fdaead3, type: 3}
-  lightRoom: {fileID: 7882520557172435687, guid: 7c7978921d09efe43b6374e42052bc49, type: 3}
-  roomSpacing: 16
-  player: {fileID: 0}
---- !u!4 &790297511
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 790297509}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.69076, y: 0.79055, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_EditorClassIdentifier: Assembly-CSharp::MapDisplay
+  cellPrefab: {fileID: 610471884479250919, guid: 9a91a92490699b5438f4a99a03d0ff10, type: 3}
+  start: {fileID: 1047999966, guid: d9050d21c267c264d8b84d019263b0b5, type: 3}
+  item: {fileID: 1687693413, guid: d9050d21c267c264d8b84d019263b0b5, type: 3}
+  forge: {fileID: -1034525646, guid: d9050d21c267c264d8b84d019263b0b5, type: 3}
+  heal: {fileID: -1636119398, guid: d9050d21c267c264d8b84d019263b0b5, type: 3}
+  boss: {fileID: 156942218, guid: d9050d21c267c264d8b84d019263b0b5, type: 3}
+  largeRoom: {fileID: -1930646587, guid: c74f9542eb8096d4e88931b24e6f0e7d, type: 3}
+  LRoom: {fileID: -1072999033, guid: c74f9542eb8096d4e88931b24e6f0e7d, type: 3}
+  verticalRoom: {fileID: -5654900837252959266, guid: c74f9542eb8096d4e88931b24e6f0e7d, type: 3}
+  horizontalRoom: {fileID: -757181611, guid: c74f9542eb8096d4e88931b24e6f0e7d, type: 3}
+  startIndex: 75
 --- !u!1 &1093535773
 GameObject:
   m_ObjectHideFlags: 0
@@ -336,4 +285,3 @@ SceneRoots:
   m_Roots:
   - {fileID: 1093535776}
   - {fileID: 97107574}
-  - {fileID: 790297511}
