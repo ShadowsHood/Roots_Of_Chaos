@@ -11,7 +11,8 @@ public class RoomSpawner : MonoBehaviour
     public GameObject lightRoom;
 
     [Header("Positioning")]
-    public float roomSpacing = 16f;
+    public float hSpacing = 18f;
+    public float vSpacing = 10f;
 
     private Transform roomsRoot;
     public GameObject player;
@@ -44,7 +45,7 @@ public class RoomSpawner : MonoBehaviour
         int x = index % 10;
         int y = index / 10;
 
-        Vector2 pos = new Vector2(x * roomSpacing, -y * roomSpacing);
+        Vector2 pos = new Vector2(x * hSpacing, -y * vSpacing);
         GameObject prefab = GetPrefab(type);
 
         if (prefab == null)
@@ -94,8 +95,7 @@ public class RoomSpawner : MonoBehaviour
         // Joueur
         if (player != null && startRoomInstance.playerSpawnPoint != null)
         {
-            Instantiate(player, startRoomInstance.playerSpawnPoint.position, Quaternion.identity);
-            // player.transform.position = startRoomInstance.playerSpawnPoint.position;
+            player.transform.position = startRoomInstance.playerSpawnPoint.position;
         }
     }
 

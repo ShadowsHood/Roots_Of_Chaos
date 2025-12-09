@@ -32,7 +32,6 @@ public class MapDisplay : MonoBehaviour
         {
             RoomData data = FloorMap.Instance.rooms[index];
             if (!data.filled) continue;
-
             SpawnCell(index, data.type);
         }
     }
