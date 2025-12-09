@@ -1564,52 +1564,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4b2488c32d211cf4fa81299841b40796, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DoorController
---- !u!1 &5595278889147046204
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 4302145050588873327}
-  - component: {fileID: 5058285220707385752}
-  m_Layer: 0
-  m_Name: Room
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &4302145050588873327
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5595278889147046204}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1.27807, y: -1.15712, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 8462865669330044382}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &5058285220707385752
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5595278889147046204}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0cf73156cd8a4f144b75ab8217964861, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Room
-  cameraFocusPoint: {fileID: 1319824534941931230}
-  playerSpawnPoint: {fileID: 1319824534941931230}
 --- !u!1 &6455559568251197140
 GameObject:
   m_ObjectHideFlags: 0
@@ -2456,6 +2410,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8462865669330044382}
   - component: {fileID: 4421105598294545472}
+  - component: {fileID: 869190772168090256}
   m_Layer: 0
   m_Name: RoomTestBoss
   m_TagString: Untagged
@@ -2477,7 +2432,6 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1319824534941931230}
-  - {fileID: 4302145050588873327}
   - {fileID: 4662173513315612185}
   - {fileID: 3371761403020195512}
   - {fileID: 5020088505245199668}
@@ -2498,6 +2452,21 @@ Grid:
   m_CellGap: {x: 0, y: 0, z: 0}
   m_CellLayout: 0
   m_CellSwizzle: 0
+--- !u!114 &869190772168090256
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7882520557172435687}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0cf73156cd8a4f144b75ab8217964861, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Room
+  mapIndex: 0
+  cameraFocusPoint: {fileID: 1319824534941931230}
+  playerSpawnPoint: {fileID: 1319824534941931230}
 --- !u!1 &8708832917543152981
 GameObject:
   m_ObjectHideFlags: 0

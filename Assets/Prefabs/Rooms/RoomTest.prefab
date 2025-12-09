@@ -1,51 +1,5 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &643933320079343945
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 12986338246850217}
-  - component: {fileID: 799253288486803651}
-  m_Layer: 0
-  m_Name: Room
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &12986338246850217
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 643933320079343945}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1.27807, y: -1.15712, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 8462865669330044382}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &799253288486803651
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 643933320079343945}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0cf73156cd8a4f144b75ab8217964861, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Room
-  cameraFocusPoint: {fileID: 8949712660078458634}
-  playerSpawnPoint: {fileID: 8949712660078458634}
 --- !u!1 &816417676505841859
 GameObject:
   m_ObjectHideFlags: 0
@@ -2536,6 +2490,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8462865669330044382}
   - component: {fileID: 4421105598294545472}
+  - component: {fileID: 3623372494091147571}
   m_Layer: 0
   m_Name: RoomTest
   m_TagString: Untagged
@@ -2557,7 +2512,6 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 8949712660078458634}
-  - {fileID: 12986338246850217}
   - {fileID: 4662173513315612185}
   - {fileID: 3371761403020195512}
   - {fileID: 5020088505245199668}
@@ -2578,6 +2532,21 @@ Grid:
   m_CellGap: {x: 0, y: 0, z: 0}
   m_CellLayout: 0
   m_CellSwizzle: 0
+--- !u!114 &3623372494091147571
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7882520557172435687}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0cf73156cd8a4f144b75ab8217964861, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Room
+  mapIndex: 0
+  cameraFocusPoint: {fileID: 8949712660078458634}
+  playerSpawnPoint: {fileID: 8949712660078458634}
 --- !u!1 &8708832917543152981
 GameObject:
   m_ObjectHideFlags: 0

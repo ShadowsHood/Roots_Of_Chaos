@@ -11,6 +11,10 @@ public class GameStats : ScriptableObject
     private float moveSpeed;
     private float fireRate;
 
+    // private int damage = 1;
+    // private int range = 4;
+    // private float corruption = 0.0f;
+
     public event Action OnHealthChanged;
     public event Action OnScoreChanged;
 

@@ -2,7 +2,7 @@ using UnityEngine;
 using System.Collections.Generic;
 using UnityEngine.InputSystem;
 
-public class MapDisplay : MonoBehaviour
+public class MapDisplay0 : MonoBehaviour
 {
     [Header("Prefabs")]
     public Cell cellPrefab;
