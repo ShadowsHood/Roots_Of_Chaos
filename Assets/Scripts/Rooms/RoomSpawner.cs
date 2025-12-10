@@ -37,6 +37,7 @@ public class RoomSpawner : MonoBehaviour
             SpawnRoom(index, data.type);
         }
 
+        UpdateAllDoors();
         PositionPlayerAndCamera();
     }
 
@@ -59,6 +60,7 @@ public class RoomSpawner : MonoBehaviour
         if (roomInfo != null)
         {
             roomInfo.mapIndex = index;
+            RoomManager.Instance.AddRoom(roomInfo);
             if (type == RoomType.Start)
                 startRoomInstance = roomInfo;
         }
@@ -78,11 +80,19 @@ public class RoomSpawner : MonoBehaviour
         }
     }
 
+    void UpdateAllDoors()
+    {
+        Room[] all = roomsRoot.GetComponentsInChildren<Room>();
+        foreach (var room in all)
+        {
+            room.UpdateDoors();
+        }
+    }
     void PositionPlayerAndCamera()
     {
         if (startRoomInstance == null) return;
 
-        // Caméra
+        // Camera
         if (startRoomInstance.cameraFocusPoint != null)
         {
             Camera.main.transform.position = new Vector3(
@@ -92,7 +102,7 @@ public class RoomSpawner : MonoBehaviour
             );
         }
 
-        // Joueur
+        // Player
         if (player != null && startRoomInstance.playerSpawnPoint != null)
         {
             player.transform.position = startRoomInstance.playerSpawnPoint.position;

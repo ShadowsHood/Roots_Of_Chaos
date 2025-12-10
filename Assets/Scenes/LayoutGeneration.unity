@@ -539,6 +539,7 @@ GameObject:
   - component: {fileID: 561800574}
   - component: {fileID: 561800578}
   - component: {fileID: 561800573}
+  - component: {fileID: 561800579}
   m_Layer: 0
   m_Name: Map Manager
   m_TagString: Untagged
@@ -1022,8 +1023,22 @@ MonoBehaviour:
   healRoom: {fileID: 7882520557172435687, guid: 199db1685b5bc9348abd78524bd62aed, type: 3}
   forgeRoom: {fileID: 7882520557172435687, guid: b7fe520a8259471429ade7c07fdaead3, type: 3}
   lightRoom: {fileID: 7882520557172435687, guid: 7c7978921d09efe43b6374e42052bc49, type: 3}
-  roomSpacing: 16
+  hSpacing: 18
+  vSpacing: 10
   player: {fileID: 363514448}
+--- !u!114 &561800579
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 561800572}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ed3f547351f14274bad4f3791d2125d9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::RoomManager
+  currentRoomIndex: 0
 --- !u!1 &709553713
 GameObject:
   m_ObjectHideFlags: 0
@@ -1242,6 +1257,7 @@ MonoBehaviour:
   m_VerticalAlignment: 256
   m_textAlignment: 65535
   m_characterSpacing: 0
+  m_characterHorizontalScale: 1
   m_wordSpacing: 0
   m_lineSpacing: 0
   m_lineSpacingMax: 0

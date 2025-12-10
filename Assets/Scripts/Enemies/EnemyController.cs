@@ -36,7 +36,7 @@ public class EnemyController : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player") && Time.time > lastHit + hitCooldown)
         {
-            Debug.Log("Hit");
+            // Debug.Log("Hit");
             collision.gameObject.GetComponent<PlayerController>().TakeDamage(enemy.damage);
             lastHit = Time.time;
         }

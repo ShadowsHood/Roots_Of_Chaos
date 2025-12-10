@@ -37,7 +37,7 @@ public class ProjectileController : MonoBehaviour
         if (projectile == null) return;
         if (col.CompareTag(projectile.targetTag))
         {
-            Debug.Log($"Projectile hit {projectile.targetTag}");
+            // Debug.Log($"Projectile hit {projectile.targetTag}");
 
             // applique les dégâts si possible
             EnemyController enemy = col.GetComponent<EnemyController>();
