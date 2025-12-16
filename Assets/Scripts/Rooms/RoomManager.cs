@@ -55,16 +55,12 @@ public class RoomManager : MonoBehaviour
         currentRoomIndex = index;
 
         // Camera
-        Camera.main.transform.position = new Vector3(
-            r.cameraFocusPoint.position.x,
-            r.cameraFocusPoint.position.y,
-            -10f
-        );
+        CameraController.Instance.target = r.cameraFocusPoint;
 
         // Player
         GameObject player = GameObject.FindGameObjectWithTag("Player");
-        Collider2D col = player.GetComponent<Collider2D>();
-        col.enabled = false;
+        // Collider2D col = player.GetComponent<Collider2D>();
+        // col.enabled = false;
 
         var spawnPoint = r.GetSpawnPointFrom(dir);
         if (spawnPoint != null)
@@ -72,12 +68,12 @@ public class RoomManager : MonoBehaviour
 
         r.Enter();
 
-        IEnumerator ReenableCollider(Collider2D col, float delay = 0.2f)
-        {
-            yield return new WaitForSeconds(delay);
-            col.enabled = true;
-        }
-        StartCoroutine(ReenableCollider(col, 0.5f));
+        // IEnumerator ReenableCollider(Collider2D col, float delay = 0.2f)
+        // {
+        //     yield return new WaitForSeconds(delay);
+        //     col.enabled = true;
+        // }
+        // StartCoroutine(ReenableCollider(col, 0.5f));
 
         Debug.Log("Entrée dans la salle: " + index);
     }
