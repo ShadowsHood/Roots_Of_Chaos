@@ -103,9 +103,9 @@ public class RoomSpawner : MonoBehaviour
         }
 
         // Player
-        if (player != null && startRoomInstance.playerSpawnPoint != null)
+        if (player != null && startRoomInstance.center != null)
         {
-            player.transform.position = startRoomInstance.playerSpawnPoint.position;
+            player.transform.position = startRoomInstance.center.position;
         }
     }
 

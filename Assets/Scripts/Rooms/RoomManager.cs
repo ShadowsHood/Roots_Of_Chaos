@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections.Generic;
+using System.Collections;
 
 public class RoomManager : MonoBehaviour
 {
@@ -33,7 +34,7 @@ public class RoomManager : MonoBehaviour
             return;
         }
 
-        MoveToRoom(nextRoom, nextIndex);
+        MoveToRoom(nextRoom, nextIndex, dir);
     }
 
     int GetNextRoomIndex(int current, DoorDirection dir)
@@ -48,8 +49,9 @@ public class RoomManager : MonoBehaviour
         return current;
     }
 
-    void MoveToRoom(Room r, int index)
+    void MoveToRoom(Room r, int index, DoorDirection dir)
     {
+
         currentRoomIndex = index;
 
         // Camera
@@ -61,7 +63,21 @@ public class RoomManager : MonoBehaviour
 
         // Player
         GameObject player = GameObject.FindGameObjectWithTag("Player");
-        player.transform.position = r.playerSpawnPoint.position;
+        Collider2D col = player.GetComponent<Collider2D>();
+        col.enabled = false;
+
+        var spawnPoint = r.GetSpawnPointFrom(dir);
+        if (spawnPoint != null)
+            player.transform.position = spawnPoint.position;
+
+        r.Enter();
+
+        IEnumerator ReenableCollider(Collider2D col, float delay = 0.2f)
+        {
+            yield return new WaitForSeconds(delay);
+            col.enabled = true;
+        }
+        StartCoroutine(ReenableCollider(col, 0.5f));
 
         Debug.Log("Entrée dans la salle: " + index);
     }

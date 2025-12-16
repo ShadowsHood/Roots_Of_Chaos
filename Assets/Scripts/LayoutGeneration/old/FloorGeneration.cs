@@ -232,9 +232,9 @@ public class FloorGeneration : MonoBehaviour
         }
 
         // Joueur
-        if (player != null && startRoomInstance.playerSpawnPoint != null)
-        {
-            player.transform.position = startRoomInstance.playerSpawnPoint.position;
-        }
+        // if (player != null && startRoomInstance.playerSpawnPoint != null)
+        // {
+        //     player.transform.position = startRoomInstance.playerSpawnPoint.position;
+        // }
     }
 }

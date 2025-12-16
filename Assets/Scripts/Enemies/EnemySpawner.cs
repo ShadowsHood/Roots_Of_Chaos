@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.Tilemaps;
 using System.Collections.Generic;
+using System.Collections;
 
 public class EnemySpawner : MonoBehaviour
 {
@@ -10,7 +11,7 @@ public class EnemySpawner : MonoBehaviour
     public int spawnMin = 3;
     public int spawnMax = 6;
 
-    public bool spawnOnStart = true;
+    // public bool spawnOnStart = true;
 
     private Tilemap tilemap;
 
@@ -21,12 +22,23 @@ public class EnemySpawner : MonoBehaviour
 
     private void Start()
     {
-        if (spawnOnStart)
-            SpawnAll();
+        // if (spawnOnStart)
+        //     Spawn();
     }
 
-    public void SpawnAll()
+    public void Init()
     {
+        StartCoroutine(SpawnWithDelay(1f));
+    }
+    private IEnumerator SpawnWithDelay(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        Spawn();
+    }
+
+    public void Spawn()
+    {
+        Debug.Log("EnemySpawner: Spawning enemies...");
         if (enemyPrefabs.Length == 0)
         {
             Debug.LogWarning("EnemySpawner: Aucun enemyPrefab assigné !");
@@ -49,8 +61,13 @@ public class EnemySpawner : MonoBehaviour
             return;
         }
 
-        int spawnCount = Random.Range(spawnMin, spawnMax + 1);
-        spawnCount = Mathf.Min(spawnCount, spawnPositions.Count);
+        if (spawnMin > spawnPositions.Count)
+        {
+            Debug.LogWarning($"EnemySpawner: spawnMin ({spawnMin}) supérieur aux positions disponibles ({spawnPositions.Count}). Ajustement automatique.");
+            spawnMin = spawnPositions.Count;
+        }
+
+        int spawnCount = Random.Range(spawnMin, Mathf.Min(spawnMax, spawnPositions.Count) + 1);
         ShuffleList(spawnPositions);
 
         for (int i = 0; i < spawnCount; i++)
@@ -61,6 +78,7 @@ public class EnemySpawner : MonoBehaviour
 
         tilemap.ClearAllTiles();
     }
+
 
     void ShuffleList(List<Vector3> list)
     {

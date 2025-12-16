@@ -4,13 +4,26 @@ public class Room : MonoBehaviour
 {
     public int mapIndex;
     public Transform cameraFocusPoint;
-    public Transform playerSpawnPoint;
+    public Transform center;
 
     [Header("Doors")]
     public GameObject doorNorth;
     public GameObject doorSouth;
     public GameObject doorEast;
     public GameObject doorWest;
+    [Header("Door Spawn Points")]
+    public GameObject spawnDoorNorth;
+    public GameObject spawnDoorSouth;
+    public GameObject spawnDoorEast;
+    public GameObject spawnDoorWest;
+
+    private bool visited = false;
+    private EnemySpawner enemySpawner;
+
+    public void Awake()
+    {
+        enemySpawner = GetComponentInChildren<EnemySpawner>();
+    }
 
     public void UpdateDoors()
     {
@@ -46,19 +59,27 @@ public class Room : MonoBehaviour
             door.SetActive(state);
     }
 
-    private void CloseAllDoors()
+    public Transform GetSpawnPointFrom(DoorDirection entryDir)
     {
-        if (doorNorth) doorNorth.SetActive(false);
-        if (doorSouth) doorSouth.SetActive(false);
-        if (doorEast) doorEast.SetActive(false);
-        if (doorWest) doorWest.SetActive(false);
+        return entryDir switch
+        {
+            DoorDirection.North => spawnDoorSouth.transform,
+            DoorDirection.South => spawnDoorNorth.transform,
+            DoorDirection.East => spawnDoorWest.transform,
+            DoorDirection.West => spawnDoorEast.transform,
+            _ => null
+        };
     }
 
-    private void OpenAllDoors()
+    public void Enter()
     {
-        if (doorNorth) doorNorth.SetActive(true);
-        if (doorSouth) doorSouth.SetActive(true);
-        if (doorEast) doorEast.SetActive(true);
-        if (doorWest) doorWest.SetActive(true);
+        if (!visited)
+        {
+            visited = true;
+            enemySpawner.Init();
+        }
+
+        foreach (var door in GetComponentsInChildren<DoorController>())
+            door.Lock(1f);
     }
 }
