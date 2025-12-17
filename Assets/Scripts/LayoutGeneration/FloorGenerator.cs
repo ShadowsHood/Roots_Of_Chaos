@@ -19,14 +19,14 @@ public class FloorGenerator : MonoBehaviour
     private List<int> endRooms = new List<int>();
 
     private RoomSpawner roomSpawner;
-    private MapDisplay mapDisplay;
+    private MinimapController minimap;
     private RoomManager roomManager;
 
 
     void Awake()
     {
         roomSpawner = GetComponent<RoomSpawner>();
-        mapDisplay = GetComponent<MapDisplay>();
+        minimap = GetComponent<MinimapController>();
         roomManager = GetComponent<RoomManager>();
     }
 
@@ -56,7 +56,7 @@ public class FloorGenerator : MonoBehaviour
         ApplyRoomTypes();
 
         roomSpawner.SpawnRooms();
-        mapDisplay.SpawnRooms();
+        // minimap.UpdateMinimap();
         roomManager.currentRoomIndex = startIndex;
     }
 

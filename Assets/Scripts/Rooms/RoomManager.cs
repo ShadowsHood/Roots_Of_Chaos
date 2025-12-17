@@ -1,12 +1,14 @@
 using UnityEngine;
 using System.Collections.Generic;
 using System.Collections;
+using System;
 
 public class RoomManager : MonoBehaviour
 {
     public static RoomManager Instance;
     public int currentRoomIndex;
     public Dictionary<int, Room> allRooms = new Dictionary<int, Room>();
+    public event Action OnEnterRoom;
 
     void Awake()
     {
@@ -37,7 +39,7 @@ public class RoomManager : MonoBehaviour
         MoveToRoom(nextRoom, nextIndex, dir);
     }
 
-    int GetNextRoomIndex(int current, DoorDirection dir)
+    private int GetNextRoomIndex(int current, DoorDirection dir)
     {
         switch (dir)
         {
@@ -49,11 +51,9 @@ public class RoomManager : MonoBehaviour
         return current;
     }
 
-    void MoveToRoom(Room r, int index, DoorDirection dir)
+    public void MoveToRoom(Room r, int index, DoorDirection? dir = null)
     {
-
         currentRoomIndex = index;
-
         // Camera
         CameraController.Instance.target = r.cameraFocusPoint;
 
@@ -61,12 +61,16 @@ public class RoomManager : MonoBehaviour
         GameObject player = GameObject.FindGameObjectWithTag("Player");
         // Collider2D col = player.GetComponent<Collider2D>();
         // col.enabled = false;
-
-        var spawnPoint = r.GetSpawnPointFrom(dir);
+        Transform spawnPoint = null;
+        if (dir.HasValue)
+            spawnPoint = r.GetSpawnPointFrom(dir.Value);
         if (spawnPoint != null)
             player.transform.position = spawnPoint.position;
+        else if (r.center != null)
+            player.transform.position = r.center.position;
 
         r.Enter();
+        OnEnterRoom?.Invoke();
 
         // IEnumerator ReenableCollider(Collider2D col, float delay = 0.2f)
         // {
@@ -74,7 +78,6 @@ public class RoomManager : MonoBehaviour
         //     col.enabled = true;
         // }
         // StartCoroutine(ReenableCollider(col, 0.5f));
-
         Debug.Log("Entrée dans la salle: " + index);
     }
 }

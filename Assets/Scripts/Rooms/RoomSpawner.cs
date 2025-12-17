@@ -11,8 +11,8 @@ public class RoomSpawner : MonoBehaviour
     public GameObject lightRoom;
 
     [Header("Positioning")]
-    public float hSpacing = 18f;
-    public float vSpacing = 10f;
+    private float hSpacing = 15f * 1.5f;
+    private float vSpacing = 9f * 1.5f;
 
     private Transform roomsRoot;
     public GameObject player;
@@ -38,7 +38,8 @@ public class RoomSpawner : MonoBehaviour
         }
 
         UpdateAllDoors();
-        PositionPlayerAndCamera();
+        // PositionPlayerAndCamera();
+        RoomManager.Instance.MoveToRoom(startRoomInstance, startRoomInstance.mapIndex, null);
     }
 
     private void SpawnRoom(int index, RoomType type)
