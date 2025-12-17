@@ -234,7 +234,7 @@ GameObject:
   - component: {fileID: 158430142}
   m_Layer: 5
   m_Name: UI
-  m_TagString: Untagged
+  m_TagString: UI
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -338,6 +338,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::UIManager
   lifeManager: {fileID: 413211315}
   scoreText: {fileID: 1023021744}
+  minimapController: {fileID: 314040402}
 --- !u!1 &314040398
 GameObject:
   m_ObjectHideFlags: 0
@@ -352,7 +353,7 @@ GameObject:
   - component: {fileID: 314040402}
   m_Layer: 5
   m_Name: Minimap_Container
-  m_TagString: Untagged
+  m_TagString: UI
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -374,7 +375,7 @@ RectTransform:
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: -40, y: -40}
-  m_SizeDelta: {x: 100, y: 100}
+  m_SizeDelta: {x: 200, y: 200}
   m_Pivot: {x: 1, y: 1}
 --- !u!114 &314040400
 MonoBehaviour:
@@ -383,7 +384,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 314040398}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
@@ -432,6 +433,9 @@ MonoBehaviour:
   forge: {fileID: -1034525646, guid: d9050d21c267c264d8b84d019263b0b5, type: 3}
   heal: {fileID: -1636119398, guid: d9050d21c267c264d8b84d019263b0b5, type: 3}
   boss: {fileID: 156942218, guid: d9050d21c267c264d8b84d019263b0b5, type: 3}
+  normalScale: 1
+  zoomedScale: 2.5
+  zoomSpeed: 10
 --- !u!1 &363514448 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2476983268495419046, guid: 5787d9044dfb8764e8015bc2d624dbd0, type: 3}
@@ -474,7 +478,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 40, y: -40}
-  m_SizeDelta: {x: 400, y: 40}
+  m_SizeDelta: {x: 400, y: 60}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &413211315
 MonoBehaviour:
@@ -497,7 +501,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 413211313}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
@@ -1238,7 +1242,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 40, y: -90.7}
+  m_AnchoredPosition: {x: 40, y: -120}
   m_SizeDelta: {x: 200, y: 25}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &1023021744

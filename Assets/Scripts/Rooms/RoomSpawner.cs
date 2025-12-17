@@ -38,7 +38,7 @@ public class RoomSpawner : MonoBehaviour
         }
 
         UpdateAllDoors();
-        // PositionPlayerAndCamera();
+        // CameraController.Instance.transform.position = startRoomInstance.cameraFocusPoint.position;
         RoomManager.Instance.MoveToRoom(startRoomInstance, startRoomInstance.mapIndex, null);
     }
 
@@ -87,26 +87,6 @@ public class RoomSpawner : MonoBehaviour
         foreach (var room in all)
         {
             room.UpdateDoors();
-        }
-    }
-    void PositionPlayerAndCamera()
-    {
-        if (startRoomInstance == null) return;
-
-        // Camera
-        if (startRoomInstance.cameraFocusPoint != null)
-        {
-            Camera.main.transform.position = new Vector3(
-                startRoomInstance.cameraFocusPoint.position.x,
-                startRoomInstance.cameraFocusPoint.position.y,
-                -10f
-            );
-        }
-
-        // Player
-        if (player != null && startRoomInstance.center != null)
-        {
-            player.transform.position = startRoomInstance.center.position;
         }
     }
 

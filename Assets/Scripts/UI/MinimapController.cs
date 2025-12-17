@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 using System.Collections.Generic;
 
 public class MinimapController : MonoBehaviour
@@ -12,15 +13,28 @@ public class MinimapController : MonoBehaviour
     public Sprite heal;
     public Sprite boss;
 
+    // Layout
     private float cellSize = 25f;
     private int mapWidth = 10;
 
+    // Zoom settings
+    public float normalScale = 1f;
+    public float zoomedScale = 2.5f;
+    public float zoomSpeed = 0.2f;
+
     private Transform minimapRoot;
     private List<Cell> spawnedCells = new List<Cell>();
+    private PlayerInput playerInput;
 
     void Awake()
     {
         minimapRoot = GetComponent<RectTransform>();
+    }
+
+    private void Update()
+    {
+        bool tabPressed = Keyboard.current.tabKey.isPressed;
+        minimapRoot.localScale = Vector3.Lerp(minimapRoot.localScale, Vector3.one * (tabPressed ? zoomedScale : normalScale), Time.deltaTime * zoomSpeed);
     }
 
     public void UpdateMinimap()
