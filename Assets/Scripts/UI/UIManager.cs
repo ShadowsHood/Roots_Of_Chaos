@@ -5,11 +5,17 @@ using TMPro;
 
 public class UIManager : MonoBehaviour
 {
-    private GameStats stats => GameManager.runtimeStats;
+    private PlayerStats stats => GameManager.runtimeStats;
     private RoomManager roomManager => RoomManager.Instance;
     public LifeManager lifeManager;
-    public TextMeshProUGUI scoreText;
     public MinimapController minimapController;
+
+    [Header("Stats Texts")]
+    public TextMeshProUGUI moveSpeedText;
+    public TextMeshProUGUI fireRateText;
+    public TextMeshProUGUI damageText;
+    public TextMeshProUGUI rangeText;
+    public TextMeshProUGUI corruptionText;
 
     // set things up (before the game starts)
     // void Awake()
@@ -21,8 +27,20 @@ public class UIManager : MonoBehaviour
     void Start()
     {
         stats.OnHealthChanged += UpdateHealthUI;
-        stats.OnScoreChanged += UpdateScoreUI;
+        stats.OnMoveSpeedChanged += UpdateMoveSpeedUI;
+        stats.OnFireRateChanged += UpdateFireRateUI;
+        stats.OnDamageChanged += UpdateDamageUI;
+        stats.OnRangeChanged += UpdateRangeUI;
+        stats.OnCorruptionChanged += UpdateCorruptionUI;
         roomManager.OnEnterRoom += UpdateMinimap;
+
+        // Initial UI update
+        UpdateHealthUI();
+        UpdateMoveSpeedUI();
+        UpdateFireRateUI();
+        UpdateDamageUI();
+        UpdateRangeUI();
+        UpdateCorruptionUI();
     }
 
     // runs every frame
@@ -35,9 +53,25 @@ public class UIManager : MonoBehaviour
         // healthText.text = $"HP: {stats.Health}";
         lifeManager.UpdateLifeUI(stats.MaxHealth, stats.Health);
     }
-    void UpdateScoreUI()
+    void UpdateMoveSpeedUI()
     {
-        scoreText.text = $"Score: {stats.Score}";
+        moveSpeedText.text = $"Move Speed: {stats.MoveSpeed}";
+    }
+    void UpdateFireRateUI()
+    {
+        fireRateText.text = $"Fire Rate: {stats.FireRate}";
+    }
+    void UpdateDamageUI()
+    {
+        damageText.text = $"Damage: {stats.Damage}";
+    }
+    void UpdateRangeUI()
+    {
+        rangeText.text = $"Range: {stats.Range}";
+    }
+    void UpdateCorruptionUI()
+    {
+        corruptionText.text = $"Corruption: {stats.Corruption}";
     }
 
     void UpdateMinimap()

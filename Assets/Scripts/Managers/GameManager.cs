@@ -8,18 +8,19 @@ public class GameManager : MonoBehaviour
     public static GameManager Instance { get; private set; }
     // [Header("Data")]
     // [HideInInspector]
-    public static GameStats runtimeStats;
+    public static PlayerStats runtimeStats;
 
     // set things up (before the game starts)
     void Awake()
     {
         if (Instance == null)
             Instance = this;
-        runtimeStats = ScriptableObject.CreateInstance<GameStats>();
+        runtimeStats = ScriptableObject.CreateInstance<PlayerStats>();
     }
 
     // initialize things once
-    void Start() {
+    void Start()
+    {
 
     }
 

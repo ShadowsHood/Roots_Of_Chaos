@@ -38,7 +38,7 @@ public class RoomSpawner : MonoBehaviour
         }
 
         UpdateAllDoors();
-        // CameraController.Instance.transform.position = startRoomInstance.cameraFocusPoint.position;
+        CameraController.Instance.transform.position = startRoomInstance.cameraFocusPoint.position;
         RoomManager.Instance.MoveToRoom(startRoomInstance, startRoomInstance.mapIndex, null);
     }
 

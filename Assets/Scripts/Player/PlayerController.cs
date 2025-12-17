@@ -5,7 +5,7 @@ using UnityEngine.UI;
 [RequireComponent(typeof(Rigidbody2D))]
 public class PlayerController : MonoBehaviour
 {
-    private GameStats stats => GameManager.runtimeStats;
+    private PlayerStats stats => GameManager.runtimeStats;
     public PlayerData player;
     private Rigidbody2D rbody;
     private Vector2 moveInput;
