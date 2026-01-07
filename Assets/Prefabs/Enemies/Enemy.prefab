@@ -37,6 +37,7 @@ Transform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &303586371712601470
 SpriteRenderer:
+  serializedVersion: 2
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -82,6 +83,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_MaskInteraction: 0
   m_Sprite: {fileID: 4334783836991956000, guid: b35447c44921ce544abe871f99a3c650, type: 3}
   m_Color: {r: 1, g: 0.323483, b: 0, a: 1}
   m_FlipX: 0
@@ -91,7 +93,6 @@ SpriteRenderer:
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!61 &2973883379622612600
 BoxCollider2D:
@@ -153,10 +154,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::EnemyController
   enemy: {fileID: 11400000, guid: 1ab6b78c20202b74eb0b8046888bef19, type: 2}
   currentState: 0
-  hitCooldown: 0.3
   obstacleMask:
     serializedVersion: 2
     m_Bits: 128
+  hitCooldown: 0.3
 --- !u!50 &4979105089636500798
 Rigidbody2D:
   serializedVersion: 5

@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e1d75168fe711e54292ed869e6a00039, type: 3}
   m_Name: MainCharacter
   m_EditorClassIdentifier: Assembly-CSharp::PlayerData
-  moveSpeed: 4
-  maxHealth: 6
-  fireRate: 2
+  moveSpeed: 6
+  baseHealth: 6
+  fireRate: 3

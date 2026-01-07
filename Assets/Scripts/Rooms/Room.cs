@@ -23,7 +23,15 @@ public class Room : MonoBehaviour
     public void Awake()
     {
         enemySpawner = GetComponentInChildren<EnemySpawner>();
+    }
 
+    // void Start()
+    // {
+    // }
+
+    void OnDestroy()
+    {
+        EnemyController.OnEnemyKill -= HandleKill;
     }
 
     public void UpdateDoors()
@@ -75,14 +83,41 @@ public class Room : MonoBehaviour
     public void Enter()
     {
         if (!roomData.visited) roomData.visited = true;
+        EnemyController.OnEnemyKill += HandleKill;
         GameManager.inCombat = false;
-        if (roomData.savedEnemies.Count > 0)
+        if (roomData.savedEnemies.Count > 0 && !roomData.IsCleared())
         {
             enemySpawner.Spawn(roomData);
             GameManager.inCombat = true;
+            foreach (var door in GetComponentsInChildren<DoorController>())
+                door.Lock();
+        }
+        else
+        {
+            foreach (var door in GetComponentsInChildren<DoorController>())
+                door.Lock(0.5f);
         }
 
-        foreach (var door in GetComponentsInChildren<DoorController>())
-            door.Lock(1f);
     }
+    public void Exit()
+    {
+        EnemyController.OnEnemyKill -= HandleKill;
+    }
+
+    private void HandleKill()
+    {
+        roomData.activeEnemies--;
+        Debug.Log("In room " + mapIndex + " active Enemies: " + roomData.activeEnemies);
+        if (roomData.IsCleared())
+        {
+            ClearRoom();
+        }
+    }
+    public void ClearRoom()
+    {
+        GameManager.inCombat = false;
+        foreach (var door in GetComponentsInChildren<DoorController>())
+            door.Unlock();
+    }
+
 }

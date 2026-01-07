@@ -35,6 +35,7 @@ public class EnemySpawner : MonoBehaviour
 
         int spawnCount = Random.Range(spawnMin, Mathf.Min(spawnMax, spawnPositions.Count) + 1);
         ShuffleList(spawnPositions);
+        data.activeEnemies = spawnCount;
 
         for (int i = 0; i < spawnCount; i++)
         {
@@ -49,10 +50,20 @@ public class EnemySpawner : MonoBehaviour
 
     public void Spawn(RoomData data)
     {
+        ClearEnemies();
         foreach (var spawnData in data.savedEnemies)
         {
             GameObject enemy = Instantiate(spawnData.enemyType, spawnData.position, Quaternion.identity, transform);
             // GameObject enemy = Instantiate(spawnData.enemyType.prefab, spawnData.position, Quaternion.identity, transform);//TODO
+        }
+        Debug.Log("Active Enemies: " + data.activeEnemies);
+    }
+
+    public void ClearEnemies()
+    {
+        foreach (Transform child in transform)
+        {
+            Destroy(child.gameObject);
         }
     }
 

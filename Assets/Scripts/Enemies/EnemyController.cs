@@ -1,5 +1,6 @@
-using System.Collections;
 using UnityEngine;
+using System.Collections;
+using System;
 
 public enum EnemyState
 {
@@ -12,34 +13,27 @@ public class EnemyController : MonoBehaviour
 {
     public EnemyData enemy;
     public EnemyState currentState = EnemyState.Wander;
-    private bool isDead = false;
-    private float currentSpeed;
-    private Rigidbody2D rb;
 
-    private bool chooseDir = false;
-    private Vector2 randomDir;
+    public LayerMask obstacleMask;
+
+    private Rigidbody2D rb;
     private GameObject player;
+    private Vector2 movement;
+
+    private bool isDead = false;
+    private bool chooseDir = false;
     private float lastHit = 0f;
     public float hitCooldown = 0.3f;
 
-    public LayerMask obstacleMask;
+    public static event Action OnEnemyKill;
 
 
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
-        currentSpeed = enemy.moveSpeed;
         rb = GetComponent<Rigidbody2D>();
-    }
-
-    void OnCollisionStay2D(Collision2D collision)
-    {
-        if (collision.gameObject.CompareTag("Player") && Time.time > lastHit + hitCooldown)
-        {
-            // Debug.Log("Hit");
-            collision.gameObject.GetComponent<PlayerController>().TakeDamage(enemy.damage);
-            lastHit = Time.time;
-        }
+        rb.freezeRotation = true;
+        rb.interpolation = RigidbodyInterpolation2D.Interpolate;
     }
 
     void Update()
@@ -47,17 +41,19 @@ public class EnemyController : MonoBehaviour
         if (isDead) return;
 
         currentState = IsPlayerInRange(enemy.detectionRange) ? EnemyState.Follow : EnemyState.Wander;
-        currentSpeed = currentState == EnemyState.Follow ? enemy.moveSpeed : enemy.moveSpeed * 0.7f;
+        float speed = currentState == EnemyState.Follow ? enemy.moveSpeed : enemy.moveSpeed * 0.7f;
 
         switch (currentState)
         {
-            case EnemyState.Wander:
-                Wander();
-                break;
-            case EnemyState.Follow:
-                Follow();
-                break;
+            case EnemyState.Wander: Wander(speed); break;
+            case EnemyState.Follow: Follow(speed); break;
         }
+    }
+
+    void FixedUpdate()
+    {
+        if (isDead) { rb.linearVelocity = Vector2.zero; return; }
+        rb.linearVelocity = movement;
     }
 
     private bool IsPlayerInRange(float range)
@@ -68,71 +64,56 @@ public class EnemyController : MonoBehaviour
     private IEnumerator ChooseDirection()
     {
         chooseDir = true;
+        float angle = UnityEngine.Random.Range(0f, 360f) * Mathf.Deg2Rad;
+        Vector2 randomDir = new Vector2(Mathf.Cos(angle), Mathf.Sin(angle));
 
-        // nouvelle direction aléatoire en 2D
-        float angle = Random.Range(0f, 360f);
-        randomDir = new Vector2(
-            Mathf.Cos(angle * Mathf.Deg2Rad),
-            Mathf.Sin(angle * Mathf.Deg2Rad)
-        );
+        movement = randomDir * (enemy.moveSpeed * 0.7f);
 
-        yield return new WaitForSeconds(Random.Range(2f, 5f));
+        yield return new WaitForSeconds(UnityEngine.Random.Range(2f, 5f));
         chooseDir = false;
     }
 
-    void Wander()
+    void Wander(float speed)
     {
         if (!chooseDir)
             StartCoroutine(ChooseDirection());
 
-        // // transform.position += randomDir.normalized * currentSpeed * Time.deltaTime;
-        // Vector2 newPos = rb.position + (Vector2)randomDir.normalized * currentSpeed * Time.deltaTime;
-        // rb.MovePosition(newPos);
-
-        // Raycast pour détecter les murs
-        RaycastHit2D hit = Physics2D.Raycast(rb.position, randomDir, 0.5f, obstacleMask);
-        if (hit.collider != null)
-        {
-            // Obstacle → nouvelle direction immédiate
-            chooseDir = false;
-            StartCoroutine(ChooseDirection());
-            return;
-        }
-
-        rb.MovePosition(rb.position + randomDir.normalized * currentSpeed * Time.fixedDeltaTime);
+        if (movement != Vector2.zero)
+            movement = movement.normalized * speed;
     }
 
-    void Follow()
+    void Follow(float speed)
     {
         if (player == null) return;
 
-        // transform.position = Vector2.MoveTowards(
-        //     transform.position,
-        //     player.transform.position,
-        //     currentSpeed * Time.deltaTime
-        // );
-        // Vector2 direction = (player.transform.position - transform.position).normalized;
-        // Vector2 newPos = rb.position + direction * currentSpeed * Time.deltaTime;
-        // rb.MovePosition(newPos);
-
         Vector2 direction = (player.transform.position - transform.position).normalized;
+        movement = direction * speed;
+    }
 
-        // Empêche le follow de traverser un mur
-        RaycastHit2D hit = Physics2D.Raycast(rb.position, direction, 0.5f, obstacleMask);
-        if (hit.collider != null)
+    void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (((1 << collision.gameObject.layer) & obstacleMask) != 0)
         {
-            // Si mur entre joueur et ennemi : passe en wander
-            currentState = EnemyState.Wander;
-            return;
+            if (currentState == EnemyState.Wander)
+            {
+                StopCoroutine(ChooseDirection());
+                chooseDir = false;
+                movement = Vector2.zero;
+            }
         }
 
-        rb.MovePosition(rb.position + direction * currentSpeed * Time.fixedDeltaTime);
+        if (collision.gameObject.CompareTag("Player") && Time.time > lastHit + hitCooldown)
+        {
+            collision.gameObject.GetComponent<PlayerController>().TakeDamage(enemy.damage);
+            lastHit = Time.time;
+        }
     }
 
     public void Die()
     {
         if (isDead) return;
         isDead = true;
+        OnEnemyKill?.Invoke();
         Destroy(gameObject);
     }
 }

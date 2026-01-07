@@ -19,6 +19,7 @@ public class RoomData
     public RoomType type;
     public bool visited;
     public List<EnemySpawner.SpawnPointData> savedEnemies;
+    public int activeEnemies;
 
     public RoomData(bool filled)
     {
@@ -26,7 +27,8 @@ public class RoomData
         this.type = RoomType.Normal;
         this.visited = false;
         this.savedEnemies = new List<EnemySpawner.SpawnPointData>();
+        this.activeEnemies = 0;
     }
 
-    public bool IsCleared() => visited && savedEnemies.Count == 0;
+    public bool IsCleared() => visited && activeEnemies == 0;
 }

@@ -17,7 +17,7 @@ public class HitFeedback : MonoBehaviour
 
     public void PlayHitEffect()
     {
-        StopAllCoroutines(); // éviter que plusieurs hits se mélangent
+        // StopAllCoroutines(); // éviter que plusieurs hits se mélangent
         StartCoroutine(HitCoroutine());
     }
 

@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
+using System;
 
 [RequireComponent(typeof(Rigidbody2D))]
 public class PlayerController : MonoBehaviour
@@ -10,6 +11,8 @@ public class PlayerController : MonoBehaviour
     private Rigidbody2D rbody;
     private Vector2 moveInput;
     private HitFeedback hitFeedback;
+
+    public static event Action OnTakeDamage;
 
     void Awake()
     {
@@ -25,6 +28,21 @@ public class PlayerController : MonoBehaviour
         stats.Health = stats.MaxHealth;
         stats.MoveSpeed = player.moveSpeed;
         stats.FireRate = player.fireRate;
+
+        OnTakeDamage += () =>
+        {
+            stats.Corruption += stats.hitPenalty / 100f;
+            hitFeedback.PlayHitEffect();
+        };
+    }
+
+    void OnDestroy()
+    {
+        OnTakeDamage -= () =>
+        {
+            stats.Corruption += stats.hitPenalty / 100f;
+            hitFeedback.PlayHitEffect();
+        };
     }
 
     void OnMove(InputValue value)
@@ -39,16 +57,6 @@ public class PlayerController : MonoBehaviour
     {
         // Debug.Log("Speed : " + player.moveSpeed);
         rbody.linearVelocity = moveInput * stats.MoveSpeed;
-
-        // // Limites de l'écran
-        // Vector3 pos = transform.position;
-        // Vector3 min = Camera.main.ViewportToWorldPoint(new Vector3(0, 0, 0));
-        // Vector3 max = Camera.main.ViewportToWorldPoint(new Vector3(1, 1, 0));
-
-        // // Ajuste la position pour rester dans l'écran
-        // pos.x = Mathf.Clamp(pos.x, min.x, max.x);
-        // pos.y = Mathf.Clamp(pos.y, min.y, max.y);
-        // transform.position = pos;
     }
 
     // void LateUpdate()
@@ -58,7 +66,8 @@ public class PlayerController : MonoBehaviour
     public void TakeDamage(int dmg)
     {
         stats.Health -= dmg;
-        hitFeedback.PlayHitEffect();
+        OnTakeDamage?.Invoke();
+
         if (stats.Health <= 0)
         {
             Die();

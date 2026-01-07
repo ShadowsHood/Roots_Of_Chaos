@@ -35,7 +35,9 @@ public class RoomManager : MonoBehaviour
             Debug.LogWarning("La salle suivante n'existe pas !");
             return;
         }
-
+        Room currentRoom = GetRoom(currentRoomIndex);
+        currentRoom.Exit();
+        
         MoveToRoom(nextRoom, nextIndex, dir);
     }
 
@@ -71,13 +73,6 @@ public class RoomManager : MonoBehaviour
 
         r.Enter();
         OnEnterRoom?.Invoke();
-
-        // IEnumerator ReenableCollider(Collider2D col, float delay = 0.2f)
-        // {
-        //     yield return new WaitForSeconds(delay);
-        //     col.enabled = true;
-        // }
-        // StartCoroutine(ReenableCollider(col, 0.5f));
         Debug.Log("Entrée dans la salle: " + index);
     }
 }

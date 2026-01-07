@@ -43,6 +43,17 @@ public class UIManager : MonoBehaviour
         UpdateCorruptionUI();
     }
 
+    void OnDestroy()
+    {
+        stats.OnHealthChanged -= UpdateHealthUI;
+        stats.OnMoveSpeedChanged -= UpdateMoveSpeedUI;
+        stats.OnFireRateChanged -= UpdateFireRateUI;
+        stats.OnDamageChanged -= UpdateDamageUI;
+        stats.OnRangeChanged -= UpdateRangeUI;
+        stats.OnCorruptionChanged -= UpdateCorruptionUI;
+        roomManager.OnEnterRoom -= UpdateMinimap;
+    }
+
     // runs every frame
     // void Update()
     // {

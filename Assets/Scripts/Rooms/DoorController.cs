@@ -15,8 +15,7 @@ public class DoorController : MonoBehaviour
     // private bool hidden = false;
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (locked) return;
-        if (collision.CompareTag("Player"))
+        if (collision.CompareTag("Player") && !locked)
         {
             RoomManager.Instance.EnterDoor(direction);
         }
@@ -32,7 +31,7 @@ public class DoorController : MonoBehaviour
         Invoke(nameof(Unlock), duration);
     }
 
-    void Unlock()
+    public void Unlock()
     {
         locked = false;
     }

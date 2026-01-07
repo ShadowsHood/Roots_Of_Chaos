@@ -317,6 +317,7 @@ RectTransform:
   - {fileID: 413211314}
   - {fileID: 314040399}
   - {fileID: 1216674660}
+  - {fileID: 193889476}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -408,8 +409,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 24
-  m_fontSizeBase: 24
+  m_fontSize: 30
+  m_fontSizeBase: 30
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -473,12 +474,12 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1216674660}
+  m_Father: {fileID: 158430141}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 1456, y: -729}
+  m_SizeDelta: {x: 400, y: 26.82}
   m_Pivot: {x: 0, y: 1}
 --- !u!1 &314040398
 GameObject:
@@ -770,403 +771,403 @@ MonoBehaviour:
   - filled: 0
     type: 0
     visited: 0
-    enemiesLeft: 0
+    savedEnemies: []
   - filled: 0
     type: 0
     visited: 0
-    enemiesLeft: 0
+    savedEnemies: []
   - filled: 0
     type: 0
     visited: 0
-    enemiesLeft: 0
+    savedEnemies: []
   - filled: 0
     type: 0
     visited: 0
-    enemiesLeft: 0
+    savedEnemies: []
   - filled: 0
     type: 0
     visited: 0
-    enemiesLeft: 0
+    savedEnemies: []
   - filled: 0
     type: 0
     visited: 0
-    enemiesLeft: 0
+    savedEnemies: []
   - filled: 0
     type: 0
     visited: 0
-    enemiesLeft: 0
+    savedEnemies: []
   - filled: 0
     type: 0
     visited: 0
-    enemiesLeft: 0
+    savedEnemies: []
   - filled: 0
     type: 0
     visited: 0
-    enemiesLeft: 0
+    savedEnemies: []
   - filled: 0
     type: 0
     visited: 0
-    enemiesLeft: 0
+    savedEnemies: []
   - filled: 0
     type: 0
     visited: 0
-    enemiesLeft: 0
+    savedEnemies: []
   - filled: 0
     type: 0
     visited: 0
-    enemiesLeft: 0
+    savedEnemies: []
   - filled: 0
     type: 0
     visited: 0
-    enemiesLeft: 0
+    savedEnemies: []
   - filled: 0
     type: 0
     visited: 0
-    enemiesLeft: 0
+    savedEnemies: []
   - filled: 0
     type: 0
     visited: 0
-    enemiesLeft: 0
+    savedEnemies: []
   - filled: 0
     type: 0
     visited: 0
-    enemiesLeft: 0
+    savedEnemies: []
   - filled: 0
     type: 0
     visited: 0
-    enemiesLeft: 0
+    savedEnemies: []
   - filled: 0
     type: 0
     visited: 0
-    enemiesLeft: 0
+    savedEnemies: []
   - filled: 0
     type: 0
     visited: 0
-    enemiesLeft: 0
+    savedEnemies: []
   - filled: 0
     type: 0
     visited: 0
-    enemiesLeft: 0
+    savedEnemies: []
   - filled: 0
     type: 0
     visited: 0
-    enemiesLeft: 0
+    savedEnemies: []
   - filled: 0
     type: 0
     visited: 0
-    enemiesLeft: 0
+    savedEnemies: []
   - filled: 0
     type: 0
     visited: 0
-    enemiesLeft: 0
+    savedEnemies: []
   - filled: 0
     type: 0
     visited: 0
-    enemiesLeft: 0
+    savedEnemies: []
   - filled: 0
     type: 0
     visited: 0
-    enemiesLeft: 0
+    savedEnemies: []
   - filled: 0
     type: 0
     visited: 0
-    enemiesLeft: 0
+    savedEnemies: []
   - filled: 0
     type: 0
     visited: 0
-    enemiesLeft: 0
+    savedEnemies: []
   - filled: 0
     type: 0
     visited: 0
-    enemiesLeft: 0
+    savedEnemies: []
   - filled: 0
     type: 0
     visited: 0
-    enemiesLeft: 0
+    savedEnemies: []
   - filled: 0
     type: 0
     visited: 0
-    enemiesLeft: 0
+    savedEnemies: []
   - filled: 0
     type: 0
     visited: 0
-    enemiesLeft: 0
+    savedEnemies: []
   - filled: 0
     type: 0
     visited: 0
-    enemiesLeft: 0
+    savedEnemies: []
   - filled: 0
     type: 0
     visited: 0
-    enemiesLeft: 0
+    savedEnemies: []
   - filled: 0
     type: 0
     visited: 0
-    enemiesLeft: 0
+    savedEnemies: []
   - filled: 0
     type: 0
     visited: 0
-    enemiesLeft: 0
+    savedEnemies: []
   - filled: 0
     type: 0
     visited: 0
-    enemiesLeft: 0
+    savedEnemies: []
   - filled: 0
     type: 0
     visited: 0
-    enemiesLeft: 0
+    savedEnemies: []
   - filled: 0
     type: 0
     visited: 0
-    enemiesLeft: 0
+    savedEnemies: []
   - filled: 0
     type: 0
     visited: 0
-    enemiesLeft: 0
+    savedEnemies: []
   - filled: 0
     type: 0
     visited: 0
-    enemiesLeft: 0
+    savedEnemies: []
   - filled: 0
     type: 0
     visited: 0
-    enemiesLeft: 0
+    savedEnemies: []
   - filled: 0
     type: 0
     visited: 0
-    enemiesLeft: 0
+    savedEnemies: []
   - filled: 0
     type: 0
     visited: 0
-    enemiesLeft: 0
+    savedEnemies: []
   - filled: 0
     type: 0
     visited: 0
-    enemiesLeft: 0
+    savedEnemies: []
   - filled: 0
     type: 0
     visited: 0
-    enemiesLeft: 0
+    savedEnemies: []
   - filled: 0
     type: 0
     visited: 0
-    enemiesLeft: 0
+    savedEnemies: []
   - filled: 0
     type: 0
     visited: 0
-    enemiesLeft: 0
+    savedEnemies: []
   - filled: 0
     type: 0
     visited: 0
-    enemiesLeft: 0
+    savedEnemies: []
   - filled: 0
     type: 0
     visited: 0
-    enemiesLeft: 0
+    savedEnemies: []
   - filled: 0
     type: 0
     visited: 0
-    enemiesLeft: 0
+    savedEnemies: []
   - filled: 0
     type: 0
     visited: 0
-    enemiesLeft: 0
+    savedEnemies: []
   - filled: 0
     type: 0
     visited: 0
-    enemiesLeft: 0
+    savedEnemies: []
   - filled: 0
     type: 0
     visited: 0
-    enemiesLeft: 0
+    savedEnemies: []
   - filled: 0
     type: 0
     visited: 0
-    enemiesLeft: 0
+    savedEnemies: []
   - filled: 0
     type: 0
     visited: 0
-    enemiesLeft: 0
+    savedEnemies: []
   - filled: 0
     type: 0
     visited: 0
-    enemiesLeft: 0
+    savedEnemies: []
   - filled: 0
     type: 0
     visited: 0
-    enemiesLeft: 0
+    savedEnemies: []
   - filled: 0
     type: 0
     visited: 0
-    enemiesLeft: 0
+    savedEnemies: []
   - filled: 0
     type: 0
     visited: 0
-    enemiesLeft: 0
+    savedEnemies: []
   - filled: 0
     type: 0
     visited: 0
-    enemiesLeft: 0
+    savedEnemies: []
   - filled: 0
     type: 0
     visited: 0
-    enemiesLeft: 0
+    savedEnemies: []
   - filled: 0
     type: 0
     visited: 0
-    enemiesLeft: 0
+    savedEnemies: []
   - filled: 0
     type: 0
     visited: 0
-    enemiesLeft: 0
+    savedEnemies: []
   - filled: 0
     type: 0
     visited: 0
-    enemiesLeft: 0
+    savedEnemies: []
   - filled: 0
     type: 0
     visited: 0
-    enemiesLeft: 0
+    savedEnemies: []
   - filled: 0
     type: 0
     visited: 0
-    enemiesLeft: 0
+    savedEnemies: []
   - filled: 0
     type: 0
     visited: 0
-    enemiesLeft: 0
+    savedEnemies: []
   - filled: 0
     type: 0
     visited: 0
-    enemiesLeft: 0
+    savedEnemies: []
   - filled: 0
     type: 0
     visited: 0
-    enemiesLeft: 0
+    savedEnemies: []
   - filled: 0
     type: 0
     visited: 0
-    enemiesLeft: 0
+    savedEnemies: []
   - filled: 0
     type: 0
     visited: 0
-    enemiesLeft: 0
+    savedEnemies: []
   - filled: 0
     type: 0
     visited: 0
-    enemiesLeft: 0
+    savedEnemies: []
   - filled: 0
     type: 0
     visited: 0
-    enemiesLeft: 0
+    savedEnemies: []
   - filled: 0
     type: 0
     visited: 0
-    enemiesLeft: 0
+    savedEnemies: []
   - filled: 0
     type: 0
     visited: 0
-    enemiesLeft: 0
+    savedEnemies: []
   - filled: 0
     type: 0
     visited: 0
-    enemiesLeft: 0
+    savedEnemies: []
   - filled: 0
     type: 0
     visited: 0
-    enemiesLeft: 0
+    savedEnemies: []
   - filled: 0
     type: 0
     visited: 0
-    enemiesLeft: 0
+    savedEnemies: []
   - filled: 0
     type: 0
     visited: 0
-    enemiesLeft: 0
+    savedEnemies: []
   - filled: 0
     type: 0
     visited: 0
-    enemiesLeft: 0
+    savedEnemies: []
   - filled: 0
     type: 0
     visited: 0
-    enemiesLeft: 0
+    savedEnemies: []
   - filled: 0
     type: 0
     visited: 0
-    enemiesLeft: 0
+    savedEnemies: []
   - filled: 0
     type: 0
     visited: 0
-    enemiesLeft: 0
+    savedEnemies: []
   - filled: 0
     type: 0
     visited: 0
-    enemiesLeft: 0
+    savedEnemies: []
   - filled: 0
     type: 0
     visited: 0
-    enemiesLeft: 0
+    savedEnemies: []
   - filled: 0
     type: 0
     visited: 0
-    enemiesLeft: 0
+    savedEnemies: []
   - filled: 0
     type: 0
     visited: 0
-    enemiesLeft: 0
+    savedEnemies: []
   - filled: 0
     type: 0
     visited: 0
-    enemiesLeft: 0
+    savedEnemies: []
   - filled: 0
     type: 0
     visited: 0
-    enemiesLeft: 0
+    savedEnemies: []
   - filled: 0
     type: 0
     visited: 0
-    enemiesLeft: 0
+    savedEnemies: []
   - filled: 0
     type: 0
     visited: 0
-    enemiesLeft: 0
+    savedEnemies: []
   - filled: 0
     type: 0
     visited: 0
-    enemiesLeft: 0
+    savedEnemies: []
   - filled: 0
     type: 0
     visited: 0
-    enemiesLeft: 0
+    savedEnemies: []
   - filled: 0
     type: 0
     visited: 0
-    enemiesLeft: 0
+    savedEnemies: []
   - filled: 0
     type: 0
     visited: 0
-    enemiesLeft: 0
+    savedEnemies: []
   - filled: 0
     type: 0
     visited: 0
-    enemiesLeft: 0
+    savedEnemies: []
   - filled: 0
     type: 0
     visited: 0
-    enemiesLeft: 0
+    savedEnemies: []
   - filled: 0
     type: 0
     visited: 0
-    enemiesLeft: 0
+    savedEnemies: []
   - filled: 0
     type: 0
     visited: 0
-    enemiesLeft: 0
+    savedEnemies: []
   - filled: 0
     type: 0
     visited: 0
-    enemiesLeft: 0
+    savedEnemies: []
 --- !u!4 &561800576
 Transform:
   m_ObjectHideFlags: 0
@@ -2041,7 +2042,6 @@ RectTransform:
   - {fileID: 928238021}
   - {fileID: 761125712}
   - {fileID: 612066463}
-  - {fileID: 193889476}
   m_Father: {fileID: 158430141}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
