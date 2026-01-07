@@ -6,80 +6,65 @@ using System.Collections;
 public class EnemySpawner : MonoBehaviour
 {
     public GameObject[] enemyPrefabs;
+    // public EnemyData[] enemyTypes; //TODO
 
     [Header("Number of enemies to spawn")]
     public int spawnMin = 3;
     public int spawnMax = 6;
 
-    // public bool spawnOnStart = true;
-
     private Tilemap tilemap;
+    private Room room;
 
     private void Awake()
     {
         tilemap = GetComponent<Tilemap>();
+        room = GetComponentInParent<Room>();
     }
 
-    private void Start()
+    public void GenerateEnemies(RoomData data)
     {
-        // if (spawnOnStart)
-        //     Spawn();
-    }
-
-    public void Init()
-    {
-        StartCoroutine(SpawnWithDelay(1f));
-    }
-    private IEnumerator SpawnWithDelay(float delay)
-    {
-        yield return new WaitForSeconds(delay);
-        Spawn();
-    }
-
-    public void Spawn()
-    {
-        Debug.Log("EnemySpawner: Spawning enemies...");
-        if (enemyPrefabs.Length == 0)
-        {
-            Debug.LogWarning("EnemySpawner: Aucun enemyPrefab assigné !");
-            return;
-        }
-
+        data.savedEnemies.Clear();
         List<Vector3> spawnPositions = new List<Vector3>();
         foreach (Vector3Int pos in tilemap.cellBounds.allPositionsWithin)
         {
             if (tilemap.HasTile(pos))
-            {
-                Vector3 worldPos = tilemap.GetCellCenterWorld(pos);
-                spawnPositions.Add(worldPos);
-            }
+                spawnPositions.Add(tilemap.GetCellCenterWorld(pos));
         }
 
-        if (spawnPositions.Count == 0)
-        {
-            Debug.LogWarning("EnemySpawner: aucune tile trouvée pour le spawn.");
-            return;
-        }
-
-        if (spawnMin > spawnPositions.Count)
-        {
-            Debug.LogWarning($"EnemySpawner: spawnMin ({spawnMin}) supérieur aux positions disponibles ({spawnPositions.Count}). Ajustement automatique.");
-            spawnMin = spawnPositions.Count;
-        }
+        if (spawnPositions.Count == 0) return;
 
         int spawnCount = Random.Range(spawnMin, Mathf.Min(spawnMax, spawnPositions.Count) + 1);
         ShuffleList(spawnPositions);
 
         for (int i = 0; i < spawnCount; i++)
         {
-            GameObject prefab = enemyPrefabs[Random.Range(0, enemyPrefabs.Length)];
-            Instantiate(prefab, spawnPositions[i], Quaternion.identity, transform);
+            data.savedEnemies.Add(new SpawnPointData
+            {
+                enemyType = enemyPrefabs[Random.Range(0, enemyPrefabs.Length)],
+                position = spawnPositions[i]
+            });
         }
-
         tilemap.ClearAllTiles();
     }
 
+    public void Spawn(RoomData data)
+    {
+        foreach (var spawnData in data.savedEnemies)
+        {
+            GameObject enemy = Instantiate(spawnData.enemyType, spawnData.position, Quaternion.identity, transform);
+            // GameObject enemy = Instantiate(spawnData.enemyType.prefab, spawnData.position, Quaternion.identity, transform);//TODO
+        }
+    }
 
+
+
+    [System.Serializable]
+    public class SpawnPointData
+    {
+        public GameObject enemyType;
+        // public EnemyData enemyType; //TODO
+        public Vector3 position;
+    }
     void ShuffleList(List<Vector3> list)
     {
         for (int i = 0; i < list.Count; i++)

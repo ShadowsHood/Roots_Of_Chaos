@@ -17,12 +17,13 @@ public class Room : MonoBehaviour
     public GameObject spawnDoorEast;
     public GameObject spawnDoorWest;
 
-    private bool visited = false;
     private EnemySpawner enemySpawner;
+    private RoomData roomData => FloorMap.Instance.rooms[mapIndex];
 
     public void Awake()
     {
         enemySpawner = GetComponentInChildren<EnemySpawner>();
+
     }
 
     public void UpdateDoors()
@@ -73,10 +74,12 @@ public class Room : MonoBehaviour
 
     public void Enter()
     {
-        if (!visited)
+        if (!roomData.visited) roomData.visited = true;
+        GameManager.inCombat = false;
+        if (roomData.savedEnemies.Count > 0)
         {
-            visited = true;
-            enemySpawner.Init();
+            enemySpawner.Spawn(roomData);
+            GameManager.inCombat = true;
         }
 
         foreach (var door in GetComponentsInChildren<DoorController>())

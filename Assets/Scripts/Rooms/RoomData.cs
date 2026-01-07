@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections.Generic;
 
 public enum RoomType
 {
@@ -12,23 +13,20 @@ public enum RoomType
 }
 
 [System.Serializable]
-public struct RoomData
+public class RoomData
 {
     public bool filled;
     public RoomType type;
     public bool visited;
-    public int enemiesLeft;
+    public List<EnemySpawner.SpawnPointData> savedEnemies;
 
     public RoomData(bool filled)
     {
         this.filled = filled;
         this.type = RoomType.Normal;
         this.visited = false;
-        this.enemiesLeft = 0;
+        this.savedEnemies = new List<EnemySpawner.SpawnPointData>();
     }
 
-    public bool IsCleared()
-    {
-        return enemiesLeft <= 0;
-    }
+    public bool IsCleared() => visited && savedEnemies.Count == 0;
 }

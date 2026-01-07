@@ -13,7 +13,11 @@ public class PlayerStats : ScriptableObject
 
     private int damage = 1;
     private int range = 4;
+
+    [Header("Corruption")]
     private float corruption = 0.0f;
+    public float passiveGainRate = 1f;
+    public float hitPenalty = 5f;
 
     public event Action OnHealthChanged;
     public event Action OnMaxHealthChanged;

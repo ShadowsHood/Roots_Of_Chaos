@@ -9,6 +9,8 @@ public class GameManager : MonoBehaviour
     // [Header("Data")]
     // [HideInInspector]
     public static PlayerStats runtimeStats;
+    public static bool inCombat = false;
+    public static bool isGamePaused = false;
 
     // set things up (before the game starts)
     void Awake()
@@ -25,8 +27,13 @@ public class GameManager : MonoBehaviour
     }
 
     // runs every frame
-    // void Update() {
-    // }
+    void Update()
+    {
+        if (inCombat)
+        {
+            runtimeStats.Corruption += (runtimeStats.passiveGainRate / 100f) * Time.deltaTime;
+        }
+    }
 
     // runs every physics step
     // void FixedUpdate()
