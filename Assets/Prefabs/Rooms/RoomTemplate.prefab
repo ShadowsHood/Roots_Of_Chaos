@@ -732,7 +732,7 @@ GameObject:
   - component: {fileID: 1513994208309214296}
   m_Layer: 7
   m_Name: Tilemap_Walls
-  m_TagString: Untagged
+  m_TagString: Walls
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

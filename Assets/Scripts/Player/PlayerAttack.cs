@@ -35,10 +35,9 @@ public class PlayerAttack : MonoBehaviour
 
     void Shoot(Vector2 direction)
     {
-        // instantiate projectile prefab depuis la data
-        GameObject bullet = Instantiate(projectileData.prefab, transform.position, Quaternion.identity);
+        GameObject bullet = Instantiate(projectileData.prefab, transform.position, Quaternion.identity, transform);
         ProjectileController projCtrl = bullet.GetComponent<ProjectileController>();
-        // initialise le projectile avec data
-        projCtrl.Initialize(projectileData, direction);
+        Vector2 playerVel = GetComponent<Rigidbody2D>().linearVelocity;
+        projCtrl.Initialize(projectileData, direction, playerVel);
     }
 }
