@@ -74,6 +74,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f96985c1cea30c74ea96aa61145c41dc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BulletController
+  curveSpeed: 1
   wallLayer:
     serializedVersion: 2
     m_Bits: 128

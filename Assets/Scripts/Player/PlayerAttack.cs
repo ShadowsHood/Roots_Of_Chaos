@@ -5,13 +5,16 @@ using UnityEngine.UI;
 public class PlayerAttack : MonoBehaviour
 {
     public ProjectileData projectileData;
+    public Transform projectileRoot;
     private PlayerController playerController;
+    private Rigidbody2D rbody;
     private Vector2 shootInput;
     private float lastFire;
 
     void Start()
     {
         playerController = GetComponent<PlayerController>();
+        rbody = GetComponent<Rigidbody2D>();
     }
 
     void OnAttack(InputValue value)
@@ -35,9 +38,9 @@ public class PlayerAttack : MonoBehaviour
 
     void Shoot(Vector2 direction)
     {
-        GameObject bullet = Instantiate(projectileData.prefab, transform.position, Quaternion.identity, transform);
+        GameObject bullet = Instantiate(projectileData.prefab, transform.position, Quaternion.identity, projectileRoot);
         ProjectileController projCtrl = bullet.GetComponent<ProjectileController>();
-        Vector2 playerVel = GetComponent<Rigidbody2D>().linearVelocity;
-        projCtrl.Initialize(projectileData, direction, playerVel);
+        Vector2 velocity = rbody.linearVelocity;
+        projCtrl.Initialize(projectileData, direction, velocity);
     }
 }

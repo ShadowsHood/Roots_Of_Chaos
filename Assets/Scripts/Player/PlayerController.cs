@@ -8,6 +8,10 @@ public class PlayerController : MonoBehaviour
 {
     private PlayerStats stats => GameManager.runtimeStats;
     public PlayerData player;
+
+    [Header("Movement Feel")]
+    public float acceleration = 16f;
+    public float deceleration = 10f;
     private Rigidbody2D rbody;
     private Vector2 moveInput;
     private HitFeedback hitFeedback;
@@ -56,7 +60,10 @@ public class PlayerController : MonoBehaviour
     void FixedUpdate()
     {
         // Debug.Log("Speed : " + player.moveSpeed);
-        rbody.linearVelocity = moveInput * stats.MoveSpeed;
+        // rbody.linearVelocity = moveInput * stats.MoveSpeed;
+        Vector2 targetVelocity = moveInput * stats.MoveSpeed;
+        float lerp = (moveInput.magnitude > 0) ? acceleration : deceleration;
+        rbody.linearVelocity = Vector2.Lerp(rbody.linearVelocity, targetVelocity, lerp * Time.fixedDeltaTime);
     }
 
     // void LateUpdate()
