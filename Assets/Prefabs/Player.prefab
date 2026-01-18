@@ -14,8 +14,8 @@ GameObject:
   - component: {fileID: 124029461026471148}
   - component: {fileID: 2428188981409777054}
   - component: {fileID: 3472185770646661498}
+  - component: {fileID: 2041637739909956676}
   - component: {fileID: 7620435238648225706}
-  - component: {fileID: 4965645048869549698}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -183,6 +183,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerMovement
   player: {fileID: 11400000, guid: d5dc1f5926112c942aacbd3f1821984f, type: 2}
+  acceleration: 16
+  deceleration: 10
 --- !u!114 &3472185770646661498
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -196,6 +198,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerAttack
   projectileData: {fileID: 11400000, guid: a5f178cd65e8a644bbe20c68a3d5c0b5, type: 2}
+  projectileRoot: {fileID: 0}
+--- !u!114 &2041637739909956676
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2476983268495419046}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: efd4e6985e0efb0438b20187451b61fa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::HitFeedback
+  hitColor: {r: 1, g: 0, b: 0, a: 1}
+  flashDuration: 0.1
+  scaleMultiplier: 1.2
 --- !u!114 &7620435238648225706
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -226,18 +244,3 @@ MonoBehaviour:
   m_DefaultActionMap: Player
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
---- !u!114 &4965645048869549698
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2476983268495419046}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 85059301301808c4b8ebd02ed7b85145, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::HitFeedback
-  hitColor: {r: 1, g: 0, b: 0, a: 1}
-  flashDuration: 0.1
-  scaleMultiplier: 1.2

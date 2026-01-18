@@ -8,6 +8,7 @@ public class HitFeedback : MonoBehaviour
     public Color hitColor = Color.red;
     public float flashDuration = 0.1f;
     public float scaleMultiplier = 1.2f;
+    private Coroutine currentRoutine;
 
     void Awake()
     {
@@ -17,8 +18,8 @@ public class HitFeedback : MonoBehaviour
 
     public void PlayHitEffect()
     {
-        // StopAllCoroutines(); // éviter que plusieurs hits se mélangent
-        StartCoroutine(HitCoroutine());
+        if (currentRoutine != null) StopCoroutine(currentRoutine);
+        currentRoutine = StartCoroutine(HitCoroutine());
     }
 
     private IEnumerator HitCoroutine()
@@ -34,5 +35,6 @@ public class HitFeedback : MonoBehaviour
         // Revert
         sr.color = Color.white;
         transform.localScale = originalScale;
+        currentRoutine = null;
     }
 }

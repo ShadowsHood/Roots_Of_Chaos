@@ -15,6 +15,7 @@ public class EnemyController : MonoBehaviour
     public EnemyState currentState = EnemyState.Wander;
 
     public LayerMask obstacleMask;
+    private int health;
 
     private Rigidbody2D rb;
     private GameObject player;
@@ -25,11 +26,14 @@ public class EnemyController : MonoBehaviour
     private float lastHit = 0f;
     public float hitCooldown = 0.3f;
 
+    private bool stunned = false;
+
     public static event Action OnEnemyKill;
 
 
     void Start()
     {
+        health = enemy.maxHealth;
         player = GameObject.FindGameObjectWithTag("Player");
         rb = GetComponent<Rigidbody2D>();
         rb.freezeRotation = true;
@@ -53,7 +57,10 @@ public class EnemyController : MonoBehaviour
     void FixedUpdate()
     {
         if (isDead) { rb.linearVelocity = Vector2.zero; return; }
-        rb.linearVelocity = movement;
+        if (!stunned)
+        {
+            rb.linearVelocity = movement;
+        }
     }
 
     private bool IsPlayerInRange(float range)
@@ -109,11 +116,34 @@ public class EnemyController : MonoBehaviour
         }
     }
 
+    public void TakeDamage(int damage)
+    {
+        if (isDead) return;
+        health -= damage;
+
+        HitFeedback hf = GetComponent<HitFeedback>();
+        if (hf != null) hf.PlayHitEffect();
+
+        if (health <= 0) { Die(); return; }
+
+        Vector2 knockbackDir = (transform.position - player.transform.position).normalized;
+        StartCoroutine(KnockbackRoutine(knockbackDir));
+    }
+
     public void Die()
     {
         if (isDead) return;
         isDead = true;
         OnEnemyKill?.Invoke();
         Destroy(gameObject);
+    }
+
+    private IEnumerator KnockbackRoutine(Vector2 dir)
+    {
+        stunned = true;
+        movement = Vector2.zero;
+        Helpers.Knockback(rb, dir, 3f);
+        yield return new WaitForSeconds(0.2f);
+        stunned = false;
     }
 }
