@@ -8,9 +8,4 @@ public static class Helpers
         // Implémentation fictive pour l'exemple
         Debug.Log($"Camera shake for {duration} seconds with magnitude {magnitude}");
     }
-
-    public static void Knockback(Rigidbody2D rb, Vector2 direction, float force)
-    {
-        rb.AddForce(direction * force, ForceMode2D.Impulse);
-    }
 }

@@ -20,6 +20,7 @@ public class EnemyController : MonoBehaviour
     private Rigidbody2D rb;
     private GameObject player;
     private Vector2 movement;
+    private HitFeedback hf;
 
     private bool isDead = false;
     private bool chooseDir = false;
@@ -35,6 +36,7 @@ public class EnemyController : MonoBehaviour
     {
         health = enemy.maxHealth;
         player = GameObject.FindGameObjectWithTag("Player");
+        hf = GetComponent<HitFeedback>();
         rb = GetComponent<Rigidbody2D>();
         rb.freezeRotation = true;
         rb.interpolation = RigidbodyInterpolation2D.Interpolate;
@@ -111,7 +113,7 @@ public class EnemyController : MonoBehaviour
 
         if (collision.gameObject.CompareTag("Player") && Time.time > lastHit + hitCooldown)
         {
-            collision.gameObject.GetComponent<PlayerController>().TakeDamage(enemy.damage);
+            collision.gameObject.GetComponent<PlayerController>().TakeDamage(enemy.damage, transform.position);
             lastHit = Time.time;
         }
     }
@@ -121,7 +123,6 @@ public class EnemyController : MonoBehaviour
         if (isDead) return;
         health -= damage;
 
-        HitFeedback hf = GetComponent<HitFeedback>();
         if (hf != null) hf.PlayHitEffect();
 
         if (health <= 0) { Die(); return; }
@@ -142,7 +143,7 @@ public class EnemyController : MonoBehaviour
     {
         stunned = true;
         movement = Vector2.zero;
-        Helpers.Knockback(rb, dir, 3f);
+        hf.Knockback(dir);
         yield return new WaitForSeconds(0.2f);
         stunned = false;
     }
