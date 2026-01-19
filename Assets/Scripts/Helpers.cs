@@ -8,4 +8,10 @@ public static class Helpers
         // Implémentation fictive pour l'exemple
         Debug.Log($"Camera shake for {duration} seconds with magnitude {magnitude}");
     }
+
+    public static Color Opacity(Color color, float alpha)
+    {
+        color.a = alpha;
+        return color;
+    }
 }

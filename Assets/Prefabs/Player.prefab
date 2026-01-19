@@ -10,8 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 6652439300285403469}
   - component: {fileID: 398339650487393677}
-  - component: {fileID: 8857645331290852630}
   - component: {fileID: 124029461026471148}
+  - component: {fileID: 8857645331290852630}
   - component: {fileID: 2428188981409777054}
   - component: {fileID: 3472185770646661498}
   - component: {fileID: 2041637739909956676}
@@ -97,33 +97,6 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
---- !u!50 &8857645331290852630
-Rigidbody2D:
-  serializedVersion: 5
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2476983268495419046}
-  m_BodyType: 0
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDamping: 0
-  m_AngularDamping: 0.05
-  m_GravityScale: 0
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 0
 --- !u!61 &124029461026471148
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -134,7 +107,7 @@ BoxCollider2D:
   m_Enabled: 1
   serializedVersion: 3
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 3e4a05f6e1fd24641a26cd1f7ead7a0f, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -170,6 +143,33 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1.8318744, y: 1.1987753}
   m_EdgeRadius: 0
+--- !u!50 &8857645331290852630
+Rigidbody2D:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2476983268495419046}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 2
+  m_LinearDamping: 0
+  m_AngularDamping: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 1
+  m_Constraints: 0
 --- !u!114 &2428188981409777054
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -183,8 +183,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerMovement
   player: {fileID: 11400000, guid: d5dc1f5926112c942aacbd3f1821984f, type: 2}
-  acceleration: 16
-  deceleration: 10
+  acceleration: 1
+  deceleration: 1
+  invincibilityDuration: 1.5
+  flashSpeed: 15
+  invincibilityMass: 20
 --- !u!114 &3472185770646661498
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -214,6 +217,7 @@ MonoBehaviour:
   hitColor: {r: 1, g: 0, b: 0, a: 1}
   flashDuration: 0.1
   scaleMultiplier: 1.2
+  knockbackForce: 3
 --- !u!114 &7620435238648225706
 MonoBehaviour:
   m_ObjectHideFlags: 0

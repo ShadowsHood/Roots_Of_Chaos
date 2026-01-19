@@ -28,7 +28,7 @@ public class PlayerAttack : MonoBehaviour
     void FixedUpdate()
     {
         float fireRate = playerController.player.fireRate;
-        if ((shootInput.x != 0 || shootInput.y != 0) && Time.time > lastFire + (1f / fireRate))
+        if ((shootInput.x != 0 || shootInput.y != 0) && Time.time > lastFire + (1f / fireRate) && playerController.invincible == false)
         {
             Shoot(shootInput);
             // Debug.Log("Shoot!");

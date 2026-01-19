@@ -13,7 +13,6 @@ MonoBehaviour:
   m_Name: SimpleBullet
   m_EditorClassIdentifier: Assembly-CSharp::ProjectileData
   speed: 5
-  lifetime: 1
-  damage: 0
+  damage: 1
   targetTag: Enemy
   prefab: {fileID: 1974937983023188084, guid: dc274f9d12d34ab49bf3195ee35aba90, type: 3}

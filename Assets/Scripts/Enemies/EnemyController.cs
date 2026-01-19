@@ -99,7 +99,7 @@ public class EnemyController : MonoBehaviour
         movement = direction * speed;
     }
 
-    void OnCollisionEnter2D(Collision2D collision)
+    void OnCollisionStay2D(Collision2D collision)
     {
         if (((1 << collision.gameObject.layer) & obstacleMask) != 0)
         {
@@ -115,6 +115,9 @@ public class EnemyController : MonoBehaviour
         {
             collision.gameObject.GetComponent<PlayerController>().TakeDamage(enemy.damage, transform.position);
             lastHit = Time.time;
+
+            Vector2 recoilDir = (transform.position - collision.transform.position).normalized;
+            StartCoroutine(KnockbackRoutine(recoilDir));
         }
     }
 
