@@ -5,17 +5,16 @@ using System;
 public class PlayerStats : ScriptableObject
 {
     [Header("Stats")]
-    private int maxHealth = 8;
-    // private int score = 0;
-    private int health;
-    private float moveSpeed;
-    private float fireRate;
+    public int maxHealth = 8;
+    public int health;
+    public float moveSpeed;
+    public float fireRate;
 
-    private int damage = 1;
-    private int range = 4;
+    public int damage = 1;
+    public int range = 4;
 
     [Header("Corruption")]
-    private float corruption = 0.0f;
+    public float corruption = 0.0f;
     public float passiveGainRate = 1f;
     public float hitPenalty = 5f;
 
@@ -122,4 +121,25 @@ public class PlayerStats : ScriptableObject
             }
         }
     }
+
+#if UNITY_EDITOR
+    private void OnValidate()
+    {
+        maxHealth = Mathf.Min(8, maxHealth);
+        health = Mathf.Clamp(health, 0, maxHealth);
+        moveSpeed = Mathf.Max(0, moveSpeed);
+        fireRate = Mathf.Max(0.1f, fireRate);
+        damage = Mathf.Max(1, damage);
+        range = Mathf.Max(1, range);
+        corruption = Mathf.Clamp01(corruption);
+
+        OnHealthChanged?.Invoke();
+        OnMaxHealthChanged?.Invoke();
+        OnMoveSpeedChanged?.Invoke();
+        OnFireRateChanged?.Invoke();
+        OnDamageChanged?.Invoke();
+        OnRangeChanged?.Invoke();
+        OnCorruptionChanged?.Invoke();
+    }
+#endif
 }

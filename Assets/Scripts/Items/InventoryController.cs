@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 public class InventoryController : MonoBehaviour
 {
-    private PlayerStats stats => GameManager.runtimeStats;
+    private PlayerStats stats => GameManager.runStats;
     private List<ItemData> inventory = new();
 
     public void Pickup(ItemData item)

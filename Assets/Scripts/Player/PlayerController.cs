@@ -7,7 +7,7 @@ using System;
 [RequireComponent(typeof(Rigidbody2D))]
 public class PlayerController : MonoBehaviour
 {
-    private PlayerStats stats => GameManager.runtimeStats;
+    private PlayerStats stats => GameManager.runStats;
     public PlayerData player;
 
     [Header("Movement Feel")]

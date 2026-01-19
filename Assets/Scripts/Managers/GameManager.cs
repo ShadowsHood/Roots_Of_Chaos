@@ -8,9 +8,12 @@ public class GameManager : MonoBehaviour
     public static GameManager Instance { get; private set; }
     // [Header("Data")]
     // [HideInInspector]
-    public static PlayerStats runtimeStats;
     public static bool inCombat = false;
     public static bool isGamePaused = false;
+    [SerializeField] private PlayerStats runtimeStats;
+    public static PlayerStats runStats => Instance.runtimeStats;
+
+
 
     // set things up (before the game starts)
     void Awake()

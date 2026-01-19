@@ -41,7 +41,7 @@ public class ProjectileController : MonoBehaviour
         rb.linearVelocity = (spreadDir * projectile.speed) + inertia;
 
         // 4. LIFETIME + ROTATION
-        float playerRange = GameManager.runtimeStats.Range;
+        float playerRange = GameManager.runStats.Range;
         totalLifetime = playerRange * 0.25f;
         straightDuration = totalLifetime * 0.7f;
 

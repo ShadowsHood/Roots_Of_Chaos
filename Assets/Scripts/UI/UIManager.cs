@@ -5,7 +5,7 @@ using TMPro;
 
 public class UIManager : MonoBehaviour
 {
-    private PlayerStats stats => GameManager.runtimeStats;
+    private PlayerStats stats => GameManager.runStats;
     private RoomManager roomManager => RoomManager.Instance;
     public LifeManager lifeManager;
     public MinimapController minimapController;
