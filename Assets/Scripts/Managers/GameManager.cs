@@ -8,12 +8,12 @@ public class GameManager : MonoBehaviour
     public static GameManager Instance { get; private set; }
     // [Header("Data")]
     // [HideInInspector]
+    public FloorGenerator floorGenerator;
     public static bool inCombat = false;
     public static bool isGamePaused = false;
+    public PlayerData playerData;
     [SerializeField] private PlayerStats runtimeStats;
     public static PlayerStats runStats => Instance.runtimeStats;
-
-
 
     // set things up (before the game starts)
     void Awake()
@@ -26,7 +26,7 @@ public class GameManager : MonoBehaviour
     // initialize things once
     void Start()
     {
-
+        StartGame();
     }
 
     // runs every frame
@@ -36,6 +36,23 @@ public class GameManager : MonoBehaviour
         {
             runtimeStats.Corruption += (runtimeStats.passiveGainRate / 100f) * Time.deltaTime;
         }
+
+        if (Keyboard.current.rKey.wasPressedThisFrame)
+            StartGame();
+    }
+
+    void StartGame()
+    {
+        runtimeStats.MaxHealth = playerData.baseHealth;
+        runtimeStats.Health = playerData.baseHealth;
+        runtimeStats.MoveSpeed = playerData.moveSpeed;
+        runtimeStats.FireRate = playerData.fireRate;
+
+        GameObject player = GameObject.FindGameObjectWithTag("Player");
+        if (player == null) Instantiate(playerData.prefab, Vector3.zero, Quaternion.identity);
+
+        floorGenerator.SetupFloor();
+
     }
 
     // runs every physics step

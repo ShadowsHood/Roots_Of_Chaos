@@ -15,3 +15,4 @@ MonoBehaviour:
   moveSpeed: 6
   baseHealth: 6
   fireRate: 3
+  prefab: {fileID: 2476983268495419046, guid: 5787d9044dfb8764e8015bc2d624dbd0, type: 3}

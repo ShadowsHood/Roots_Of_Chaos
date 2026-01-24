@@ -8,7 +8,6 @@ using System;
 public class PlayerController : MonoBehaviour
 {
     private PlayerStats stats => GameManager.runStats;
-    public PlayerData player;
 
     [Header("Movement Feel")]
     public float acceleration = 16f;
@@ -38,13 +37,10 @@ public class PlayerController : MonoBehaviour
         originalMass = rbody.mass;
     }
 
-    void Start()
-    {
-        stats.MaxHealth = player.baseHealth;
-        stats.Health = stats.MaxHealth;
-        stats.MoveSpeed = player.moveSpeed;
-        stats.FireRate = player.fireRate;
-    }
+    // void Start()
+    // {
+
+    // }
 
     void OnMove(InputValue value)
     {

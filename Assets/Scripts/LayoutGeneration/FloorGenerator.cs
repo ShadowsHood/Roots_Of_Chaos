@@ -30,18 +30,18 @@ public class FloorGenerator : MonoBehaviour
         roomManager = GetComponent<RoomManager>();
     }
 
-    void Start()
-    {
-        SetupFloor();
-    }
+    // void Start()
+    // {
 
-    void Update()
-    {
-        if (Keyboard.current.spaceKey.wasPressedThisFrame)
-            SetupFloor();
-    }
+    // }
 
-    void SetupFloor()
+    // void Update()
+    // {
+    //     if (Keyboard.current.spaceKey.wasPressedThisFrame)
+    //         SetupFloor();
+    // }
+
+    public void SetupFloor()
     {
         // Reset
         for (int i = 0; i < 100; i++)

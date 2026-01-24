@@ -15,7 +15,6 @@ public class RoomSpawner : MonoBehaviour
     private float vSpacing = 9f * 1.5f;
 
     private Transform roomsRoot;
-    public GameObject player;
     private Room startRoomInstance;
 
     void Awake()
@@ -40,6 +39,7 @@ public class RoomSpawner : MonoBehaviour
         UpdateAllDoors();
         CameraController.Instance.transform.position = startRoomInstance.cameraFocusPoint.position;
         RoomManager.Instance.MoveToRoom(startRoomInstance, startRoomInstance.mapIndex, null);
+        
     }
 
     private void SpawnRoom(int index, RoomType type)

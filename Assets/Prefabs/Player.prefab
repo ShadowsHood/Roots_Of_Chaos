@@ -182,12 +182,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8baf3b44de809f144a76a6c10626b633, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerMovement
-  player: {fileID: 11400000, guid: d5dc1f5926112c942aacbd3f1821984f, type: 2}
-  acceleration: 1
-  deceleration: 1
+  acceleration: 12
+  deceleration: 6
   invincibilityDuration: 1.5
   flashSpeed: 15
   invincibilityMass: 20
+  invincible: 0
 --- !u!114 &3472185770646661498
 MonoBehaviour:
   m_ObjectHideFlags: 0
