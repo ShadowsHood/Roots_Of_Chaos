@@ -7,7 +7,7 @@ using System;
 [RequireComponent(typeof(Rigidbody2D))]
 public class PlayerController : MonoBehaviour
 {
-    private PlayerStats stats => GameManager.runStats;
+    private StatsManager stats => GameManager.runStats;
 
     [Header("Movement Feel")]
     public float acceleration = 16f;
@@ -47,8 +47,10 @@ public class PlayerController : MonoBehaviour
         moveInput = value.Get<Vector2>();
     }
 
-    // void Update() {
-    // }
+    void Update()
+    {
+        if (stats.Health <= 0) Die();
+    }
 
     void FixedUpdate()
     {

@@ -1,15 +1,14 @@
 using UnityEngine;
 using System;
 
-[CreateAssetMenu(fileName = "PlayerStats", menuName = "Data/PlayerStats")]
-public class PlayerStats : ScriptableObject
+[CreateAssetMenu(fileName = "StatsManager", menuName = "Data/StatsManager")]
+public class StatsManager : ScriptableObject
 {
     [Header("Stats")]
     public int maxHealth = 8;
     public int health;
     public float moveSpeed;
     public float fireRate;
-
     public int damage = 1;
     public int range = 4;
 

@@ -12,15 +12,15 @@ public class GameManager : MonoBehaviour
     public static bool inCombat = false;
     public static bool isGamePaused = false;
     public PlayerData playerData;
-    [SerializeField] private PlayerStats runtimeStats;
-    public static PlayerStats runStats => Instance.runtimeStats;
+    [SerializeField] private StatsManager runtimeStats;
+    public static StatsManager runStats => Instance.runtimeStats;
 
     // set things up (before the game starts)
     void Awake()
     {
         if (Instance == null)
             Instance = this;
-        runtimeStats = ScriptableObject.CreateInstance<PlayerStats>();
+        runtimeStats = ScriptableObject.CreateInstance<StatsManager>();
     }
 
     // initialize things once
@@ -47,6 +47,12 @@ public class GameManager : MonoBehaviour
         runtimeStats.Health = playerData.baseHealth;
         runtimeStats.MoveSpeed = playerData.moveSpeed;
         runtimeStats.FireRate = playerData.fireRate;
+
+        if (InventoryController.Instance != null)
+        {
+            InventoryController.Instance.inventory.Clear();
+            InventoryController.Instance.RecalculateStats();
+        }
 
         GameObject player = GameObject.FindGameObjectWithTag("Player");
         if (player == null) Instantiate(playerData.prefab, Vector3.zero, Quaternion.identity);

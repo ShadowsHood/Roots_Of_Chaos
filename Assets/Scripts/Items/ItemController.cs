@@ -7,10 +7,9 @@ public class ItemController : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
-            InventoryController ic = collision.GetComponent<InventoryController>();
-            if (ic != null)
+            if (InventoryController.Instance != null)
             {
-                ic.Pickup(item);
+                InventoryController.Instance.Pickup(item);
                 Destroy(gameObject);
             }
         }

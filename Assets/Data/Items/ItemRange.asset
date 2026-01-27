@@ -13,4 +13,6 @@ MonoBehaviour:
   m_Name: ItemRange
   m_EditorClassIdentifier: Assembly-CSharp::ItemData
   itemName: 
-  effects: []
+  effects:
+  - type: 3
+    amount: 1

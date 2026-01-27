@@ -13,4 +13,6 @@ MonoBehaviour:
   m_Name: ItemDamage
   m_EditorClassIdentifier: Assembly-CSharp::ItemData
   itemName: 
-  effects: []
+  effects:
+  - type: 2
+    amount: 1
