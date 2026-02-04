@@ -97,7 +97,6 @@ public class Room : MonoBehaviour
             foreach (var door in GetComponentsInChildren<DoorController>())
                 door.Lock(0.5f);
         }
-
     }
     public void Exit()
     {
@@ -118,6 +117,11 @@ public class Room : MonoBehaviour
         GameManager.inCombat = false;
         foreach (var door in GetComponentsInChildren<DoorController>())
             door.Unlock();
+    }
+
+    public RoomType GetRoomType()
+    {
+        return roomData.type;
     }
 
 }

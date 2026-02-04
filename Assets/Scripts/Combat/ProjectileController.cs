@@ -26,6 +26,8 @@ public class ProjectileController : MonoBehaviour
 
         // 1. DIRECTION
         Vector2 shootDir = (Mathf.Abs(dir.x) > Mathf.Abs(dir.y))
+ 
+ 
             ? new Vector2(Mathf.Sign(dir.x), 0)
             : new Vector2(0, Mathf.Sign(dir.y));
 

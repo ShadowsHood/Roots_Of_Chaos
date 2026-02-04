@@ -59,6 +59,7 @@ public class GameManager : MonoBehaviour
 
         floorGenerator.SetupFloor();
 
+        MusicManager.Instance.PlayMusic("Floor");
     }
 
     // runs every physics step

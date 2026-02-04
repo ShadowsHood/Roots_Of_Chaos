@@ -37,7 +37,29 @@ public class RoomManager : MonoBehaviour
         }
         Room currentRoom = GetRoom(currentRoomIndex);
         currentRoom.Exit();
-        
+
+        if (currentRoom.GetRoomType() != nextRoom.GetRoomType())
+        {
+            switch (nextRoom.GetRoomType())
+            {
+                case RoomType.Heal:
+                    MusicManager.Instance.PlayMusic("Secret");
+                    break;
+                case RoomType.Forge:
+                    MusicManager.Instance.PlayMusic("Shop");
+                    break;
+                case RoomType.Light:
+                    MusicManager.Instance.PlayMusic("Item");
+                    break;
+                // case RoomType.Boss:
+                //     MusicManager.Instance.PlayMusic("Boss");
+                //     break;
+                default:
+                    MusicManager.Instance.PlayMusic("Floor");
+                    break;
+            }
+        }
+
         MoveToRoom(nextRoom, nextIndex, dir);
     }
 
