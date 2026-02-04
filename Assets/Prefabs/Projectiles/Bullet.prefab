@@ -123,7 +123,7 @@ MonoBehaviour:
   spreadAngle: 5
   wallLayer:
     serializedVersion: 2
-    m_Bits: 128
+    m_Bits: 256
 --- !u!1 &8452427678249698528
 GameObject:
   m_ObjectHideFlags: 0
