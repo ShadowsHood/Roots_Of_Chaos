@@ -1028,6 +1028,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::EnemySpawner
   enemyPrefabs:
   - {fileID: 5814191841351690747, guid: a0628f87b7ea3454f896961c37d1b0ef, type: 3}
+  - {fileID: 5814191841351690747, guid: 9d69e45344e4b3f4ea629fb22bdfdbbf, type: 3}
   spawnMin: 0
   spawnMax: 0
 --- !u!1 &4220930155566189846

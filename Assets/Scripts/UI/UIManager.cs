@@ -15,7 +15,7 @@ public class UIManager : MonoBehaviour
     public TextMeshProUGUI fireRateText;
     public TextMeshProUGUI damageText;
     public TextMeshProUGUI rangeText;
-    public TextMeshProUGUI corruptionText;
+    public Image corruptionBar;
 
     // set things up (before the game starts)
     // void Awake()
@@ -26,6 +26,7 @@ public class UIManager : MonoBehaviour
     // initialize things once
     void Start()
     {
+
         stats.OnHealthChanged += UpdateHealthUI;
         stats.OnMoveSpeedChanged += UpdateMoveSpeedUI;
         stats.OnFireRateChanged += UpdateFireRateUI;
@@ -82,7 +83,7 @@ public class UIManager : MonoBehaviour
     }
     void UpdateCorruptionUI()
     {
-        corruptionText.text = $"Corruption: {stats.Corruption}";
+        corruptionBar.fillAmount = stats.Corruption;
     }
 
     void UpdateMinimap()

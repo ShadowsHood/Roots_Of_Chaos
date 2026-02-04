@@ -24,7 +24,9 @@ public class InventoryController : MonoBehaviour
     {
         if (stats == null || GameManager.Instance?.playerData == null) return;
 
-        int currentDamagedHealth = stats.MaxHealth - stats.Health;
+        int currentDamagedHealth = stats.MaxHealth -
+        
+         stats.Health;
 
         // Reset aux stats de base
         PlayerData baseData = GameManager.Instance.playerData;
