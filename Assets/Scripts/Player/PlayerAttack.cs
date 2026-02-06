@@ -21,6 +21,12 @@ public class PlayerAttack : MonoBehaviour
     {
         headAnimator = transform.Find("Head").GetComponent<Animator>();
         headSr = transform.Find("Head").GetComponent<SpriteRenderer>();
+
+        GameObject projectiles = GameObject.Find("Projectiles");
+        if (projectiles != null)
+        {
+            projectileRoot = projectiles.transform;
+        }
     }
 
     void Start()
@@ -65,6 +71,7 @@ public class PlayerAttack : MonoBehaviour
 
     void Shoot(Vector2 direction)
     {
+        SoundManager.Instance.PlaySound3D("Shoot", transform.position);
         GameObject bullet = Instantiate(projectileData.prefab, transform.position, Quaternion.identity, projectileRoot);
         ProjectilePlayerController projCtrl = bullet.GetComponent<ProjectilePlayerController>();
         Vector2 velocity = rbody.linearVelocity;

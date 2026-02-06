@@ -22,33 +22,36 @@ public class InventoryController : MonoBehaviour
 
     public void RecalculateStats()
     {
-        if (stats == null || GameManager.Instance?.playerData == null) return;
+        if (GameManager.Instance == null || GameManager.runStats == null || GameManager.Instance.playerData == null)
+        {
+            return;
+        }
+        StatsManager currentStats = GameManager.runStats;
 
-        int currentDamagedHealth = stats.MaxHealth -
-        
-         stats.Health;
+        int currentDamagedHealth = currentStats.MaxHealth - currentStats.Health;
 
         // Reset aux stats de base
         PlayerData baseData = GameManager.Instance.playerData;
-        stats.MaxHealth = baseData.baseHealth;
-        stats.Health = baseData.baseHealth;
-        stats.MoveSpeed = baseData.moveSpeed;
-        stats.FireRate = baseData.fireRate;
-        // todo: reset other stats if needed
+        currentStats.MaxHealth = baseData.baseHealth;
+        currentStats.Health = baseData.baseHealth;
+        currentStats.MoveSpeed = baseData.moveSpeed;
+        currentStats.FireRate = baseData.fireRate;
+        currentStats.Damage = baseData.damage;
+        currentStats.Range = baseData.range;
 
         foreach (var item in inventory)
         {
-            item.Apply(stats);
+            if (item != null) item.Apply(currentStats);
         }
 
-        int newHealth = Mathf.Clamp(stats.MaxHealth - currentDamagedHealth, 0, stats.MaxHealth);
-        stats.Health = newHealth;
+        int newHealth = Mathf.Clamp(currentStats.MaxHealth - currentDamagedHealth, 1, currentStats.MaxHealth);
+        currentStats.Health = newHealth;
     }
 
 #if UNITY_EDITOR
     private void OnValidate()
     {
-        if (Application.isPlaying)
+        if (Application.isPlaying && GameManager.Instance != null)
             RecalculateStats();
     }
 #endif

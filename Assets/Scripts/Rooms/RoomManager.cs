@@ -81,24 +81,30 @@ public class RoomManager : MonoBehaviour
 
     public void MoveToRoom(Room r, int index, DoorDirection? dir = null)
     {
+        if (r == null) return;
         currentRoomIndex = index;
         // Camera
-        CameraController.Instance.target = r.cameraFocusPoint;
+        if (CameraController.Instance != null)
+        {
+            CameraController.Instance.target = r.cameraFocusPoint;
+        }
 
         // Player
         GameObject player = GameObject.FindGameObjectWithTag("Player");
-        // Collider2D col = player.GetComponent<Collider2D>();
-        // col.enabled = false;
-        Transform spawnPoint = null;
-        if (dir.HasValue)
-            spawnPoint = r.GetSpawnPointFrom(dir.Value);
-        if (spawnPoint != null)
-            player.transform.position = spawnPoint.position;
-        else if (r.center != null)
-            player.transform.position = r.center.position;
+        if (player != null)
+        {
+            Transform spawnPoint = null;
+            if (dir.HasValue)
+                spawnPoint = r.GetSpawnPointFrom(dir.Value);
+
+            if (spawnPoint != null)
+                player.transform.position = spawnPoint.position;
+            else if (r.center != null)
+                player.transform.position = r.center.position;
+        }
 
         r.Enter();
         OnEnterRoom?.Invoke();
-        Debug.Log("Entrée dans la salle: " + index);
+        Debug.Log("Entering room: " + index);
     }
 }

@@ -96,7 +96,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: -0.002353318, y: -0.004706681}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -106,7 +106,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 0.39874765, y: 0.8310046}
+  m_Size: {x: 0.36580104, y: 0.6050849}
   m_EdgeRadius: 0
 --- !u!114 &1527410781177372186
 MonoBehaviour:
@@ -120,7 +120,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f96985c1cea30c74ea96aa61145c41dc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BulletController
-  spreadAngle: 5
   wallLayer:
     serializedVersion: 2
     m_Bits: 256
@@ -149,13 +148,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8452427678249698528}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.8, y: 0.8, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 7039955205473068227}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
 --- !u!212 &2891506198394673676
 SpriteRenderer:
   serializedVersion: 2
@@ -205,8 +204,8 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 125
   m_MaskInteraction: 0
-  m_Sprite: {fileID: -5660323637893070128, guid: 2e2ddc71af80f594ca6476634569d7d4, type: 3}
-  m_Color: {r: 0.5754717, g: 0.5754717, b: 0.5754717, a: 1}
+  m_Sprite: {fileID: 105169053199506356, guid: b10d7e7755a953b42b9e52e528ff333d, type: 3}
+  m_Color: {r: 0.7905838, g: 0.85997194, b: 0.8867924, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0

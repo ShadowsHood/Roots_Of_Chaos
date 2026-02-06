@@ -5,6 +5,17 @@ public class ItemGenerator : MonoBehaviour
     public ItemData[] items;
     public GameObject itemPrefab;
 
+    private Transform itemRoot;
+
+    void Awake()
+    {
+        GameObject itemsParent = GameObject.Find("Items");
+        if (itemsParent != null)
+        {
+            itemRoot = itemsParent.transform;
+        }
+    }
+
     public ItemData GetRandomItem()
     {
         if (items.Length == 0) return null;
@@ -17,7 +28,7 @@ public class ItemGenerator : MonoBehaviour
         if (items != null)
         {
             ItemData itemData = GetRandomItem();
-            GameObject itemInstance = Instantiate(itemPrefab, transform.position, Quaternion.identity);
+            GameObject itemInstance = Instantiate(itemPrefab, transform.position, Quaternion.identity, itemRoot);
             ItemController itemCtrl = itemInstance.GetComponent<ItemController>();
             itemCtrl.SetItemData(itemData);
         }

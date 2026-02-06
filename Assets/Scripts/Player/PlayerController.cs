@@ -4,6 +4,8 @@ using UnityEngine.UI;
 using System.Collections;
 using System;
 
+using UnityEngine.SceneManagement;
+
 [RequireComponent(typeof(Rigidbody2D))]
 public class PlayerController : MonoBehaviour
 {
@@ -88,6 +90,7 @@ public class PlayerController : MonoBehaviour
     public void TakeDamage(int dmg, Vector2 attackerPosition)
     {
         if (invincible) return;
+        SoundManager.Instance.PlaySound3D("Hit", transform.position);
 
         stats.Health -= dmg;
         Vector2 knockbackDir = ((Vector2)transform.position - attackerPosition).normalized;
@@ -138,7 +141,10 @@ public class PlayerController : MonoBehaviour
 
     void Die()
     {
+        SoundManager.Instance.PlaySound3D("Die", transform.position);
         Debug.Log("Game Over");
         Destroy(gameObject);
+        // yield return new WaitForSeconds(1f);
+        SceneManager.LoadScene("End");
     }
 }

@@ -9,7 +9,12 @@ public enum EffectType
     Range,
     Speed,
     FireRate,
-    Corruption
+    Corruption,
+    CorruptionGainRate,
+    CorruptionHitPenalty,
+    SpreadAngle,
+    ShotSpeed,
+    Luck
 }
 
 [Serializable]
@@ -52,6 +57,21 @@ public class ItemData : ScriptableObject
                     break;
                 case EffectType.Corruption:
                     stats.Corruption += e.amount;
+                    break;
+                case EffectType.CorruptionGainRate:
+                    stats.passiveGainRate += e.amount;
+                    break;
+                case EffectType.CorruptionHitPenalty:
+                    stats.hitPenalty += e.amount;
+                    break;
+                case EffectType.SpreadAngle:
+                    stats.SpreadAngle += e.amount;
+                    break;
+                case EffectType.ShotSpeed:
+                    stats.ShotSpeed += e.amount;
+                    break;
+                case EffectType.Luck:
+                    stats.Luck += (int)e.amount;
                     break;
             }
         }

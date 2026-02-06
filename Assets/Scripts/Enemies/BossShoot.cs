@@ -42,6 +42,15 @@ public class BossShoot : MonoBehaviour
         new Vector2(-1, -1).normalized           // Bas-Gauche
     };
 
+    void Awake()
+    {
+        GameObject projectiles = GameObject.Find("Projectiles");
+        if (projectiles != null)
+        {
+            projectileRoot = projectiles.transform;
+        }
+    }
+
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");

@@ -15,6 +15,11 @@ public class UIManager : MonoBehaviour
     public TextMeshProUGUI fireRateText;
     public TextMeshProUGUI damageText;
     public TextMeshProUGUI rangeText;
+    public TextMeshProUGUI corruptionGainRateText;
+    public TextMeshProUGUI corruptionHitPenaltyText;
+    public TextMeshProUGUI spreadAngleText;
+    public TextMeshProUGUI shotSpeedText;
+    public TextMeshProUGUI luckText;
     public Image corruptionBar;
 
     // set things up (before the game starts)
@@ -33,6 +38,11 @@ public class UIManager : MonoBehaviour
         stats.OnDamageChanged += UpdateDamageUI;
         stats.OnRangeChanged += UpdateRangeUI;
         stats.OnCorruptionChanged += UpdateCorruptionUI;
+        stats.OnSpreadAngleChanged += UpdateSpreadAngleUI;
+        stats.OnShotSpeedChanged += UpdateShotSpeedUI;
+        stats.OnLuckChanged += UpdateLuckUI;
+        stats.OnCorruptionGainRateChanged += UpdateCorruptionGainRateUI;
+        stats.OnCorruptionHitPenaltyChanged += UpdateCorruptionHitPenaltyUI;
         roomManager.OnEnterRoom += UpdateMinimap;
 
         // Initial UI update
@@ -42,17 +52,34 @@ public class UIManager : MonoBehaviour
         UpdateDamageUI();
         UpdateRangeUI();
         UpdateCorruptionUI();
+        UpdateSpreadAngleUI();
+        UpdateShotSpeedUI();
+        UpdateLuckUI();
+        UpdateCorruptionGainRateUI();
+        UpdateCorruptionHitPenaltyUI();
     }
 
     void OnDestroy()
     {
-        stats.OnHealthChanged -= UpdateHealthUI;
-        stats.OnMoveSpeedChanged -= UpdateMoveSpeedUI;
-        stats.OnFireRateChanged -= UpdateFireRateUI;
-        stats.OnDamageChanged -= UpdateDamageUI;
-        stats.OnRangeChanged -= UpdateRangeUI;
-        stats.OnCorruptionChanged -= UpdateCorruptionUI;
-        roomManager.OnEnterRoom -= UpdateMinimap;
+        if (GameManager.Instance != null && GameManager.runStats != null)
+        {
+            GameManager.runStats.OnHealthChanged -= UpdateHealthUI;
+            GameManager.runStats.OnMoveSpeedChanged -= UpdateMoveSpeedUI;
+            GameManager.runStats.OnFireRateChanged -= UpdateFireRateUI;
+            GameManager.runStats.OnDamageChanged -= UpdateDamageUI;
+            GameManager.runStats.OnRangeChanged -= UpdateRangeUI;
+            GameManager.runStats.OnCorruptionChanged -= UpdateCorruptionUI;
+            GameManager.runStats.OnSpreadAngleChanged -= UpdateSpreadAngleUI;
+            GameManager.runStats.OnShotSpeedChanged -= UpdateShotSpeedUI;
+            GameManager.runStats.OnLuckChanged -= UpdateLuckUI;
+            GameManager.runStats.OnCorruptionGainRateChanged -= UpdateCorruptionGainRateUI;
+            GameManager.runStats.OnCorruptionHitPenaltyChanged -= UpdateCorruptionHitPenaltyUI;
+        }
+
+        if (RoomManager.Instance != null)
+        {
+            RoomManager.Instance.OnEnterRoom -= UpdateMinimap;
+        }
     }
 
     // runs every frame
@@ -84,6 +111,26 @@ public class UIManager : MonoBehaviour
     void UpdateCorruptionUI()
     {
         corruptionBar.fillAmount = stats.Corruption;
+    }
+    void UpdateSpreadAngleUI()
+    {
+        spreadAngleText.text = $"Spread Angle: {stats.SpreadAngle}";
+    }
+    void UpdateShotSpeedUI()
+    {
+        shotSpeedText.text = $"Shot Speed: {stats.ShotSpeed}";
+    }
+    void UpdateLuckUI()
+    {
+        luckText.text = $"Luck: {stats.Luck}";
+    }
+    void UpdateCorruptionGainRateUI()
+    {
+        corruptionGainRateText.text = $"Corruption Gain Rate: {stats.CorruptionGainRate}";
+    }
+    void UpdateCorruptionHitPenaltyUI()
+    {
+        corruptionHitPenaltyText.text = $"Corruption Hit Penalty: {stats.CorruptionHitPenalty}";
     }
 
     void UpdateMinimap()

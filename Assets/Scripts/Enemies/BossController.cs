@@ -1,6 +1,7 @@
 using UnityEngine;
 using System.Collections;
 using System;
+using UnityEngine.SceneManagement;
 
 public class BossController : MonoBehaviour
 {
@@ -126,5 +127,6 @@ public class BossController : MonoBehaviour
         isDead = true;
         OnBossKill?.Invoke();
         Destroy(gameObject);
+        SceneManager.LoadScene("End");
     }
 }

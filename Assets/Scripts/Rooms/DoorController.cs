@@ -14,7 +14,18 @@ public class DoorController : MonoBehaviour
     public GameObject doorCollider;
     private bool locked = false;
     // private bool hidden = false;
+    public Sprite doorOpen;
+    public Sprite doorClosed;
+    private SpriteRenderer spriteRenderer;
 
+    void Awake()
+    {
+        spriteRenderer = GetComponent<SpriteRenderer>();
+        if (spriteRenderer != null && doorOpen != null)
+        {
+            spriteRenderer.sprite = doorOpen;
+        }
+    }
     private void Start()
     {
         UpdateDoorCollider();
@@ -48,5 +59,12 @@ public class DoorController : MonoBehaviour
     private void UpdateDoorCollider()
     {
         if (doorCollider != null) doorCollider.SetActive(locked);
+        if (spriteRenderer != null)
+        {
+            if (locked && doorClosed != null)
+                spriteRenderer.sprite = doorClosed;
+            else if (!locked && doorOpen != null)
+                spriteRenderer.sprite = doorOpen;
+        }
     }
 }

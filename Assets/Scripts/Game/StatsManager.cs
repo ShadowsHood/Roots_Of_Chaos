@@ -30,6 +30,8 @@ public class StatsManager : ScriptableObject
     public event Action OnSpreadAngleChanged;
     public event Action OnShotSpeedChanged;
     public event Action OnLuckChanged;
+    public event Action OnCorruptionGainRateChanged;
+    public event Action OnCorruptionHitPenaltyChanged;
 
     public int MaxHealth
     {
@@ -169,6 +171,34 @@ public class StatsManager : ScriptableObject
         }
     }
 
+    public float CorruptionGainRate
+    {
+        get => passiveGainRate;
+        set
+        {
+            float newGainRate = Mathf.Max(0, value);
+            if (passiveGainRate != newGainRate)
+            {
+                passiveGainRate = newGainRate;
+                OnCorruptionGainRateChanged?.Invoke();
+            }
+        }
+    }
+
+    public float CorruptionHitPenalty
+    {
+        get => hitPenalty;
+        set
+        {
+            float newHitPenalty = Mathf.Max(0, value);
+            if (hitPenalty != newHitPenalty)
+            {
+                hitPenalty = newHitPenalty;
+                OnCorruptionHitPenaltyChanged?.Invoke();
+            }
+        }
+    }
+
 #if UNITY_EDITOR
     private void OnValidate()
     {
@@ -182,6 +212,8 @@ public class StatsManager : ScriptableObject
         spreadAngle = Mathf.Max(0, spreadAngle);
         shotSpeed = Mathf.Max(0, shotSpeed);
         luck = Mathf.Max(0, luck);
+        passiveGainRate = Mathf.Max(0, passiveGainRate);
+        hitPenalty = Mathf.Max(0, hitPenalty);
 
         OnHealthChanged?.Invoke();
         OnMaxHealthChanged?.Invoke();
@@ -193,6 +225,8 @@ public class StatsManager : ScriptableObject
         OnSpreadAngleChanged?.Invoke();
         OnShotSpeedChanged?.Invoke();
         OnLuckChanged?.Invoke();
+        OnCorruptionGainRateChanged?.Invoke();
+        OnCorruptionHitPenaltyChanged?.Invoke();
     }
 #endif
 }
