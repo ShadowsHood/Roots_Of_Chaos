@@ -1,6 +1,8 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
+using System.Collections;
+using System;
 
 public class PlayerAttack : MonoBehaviour
 {
@@ -13,6 +15,7 @@ public class PlayerAttack : MonoBehaviour
     private Vector2 lastShootDirection;
     private Animator headAnimator;
     private SpriteRenderer headSr;
+    private Coroutine headBounceRoutine;
 
     void Awake()
     {
@@ -66,5 +69,19 @@ public class PlayerAttack : MonoBehaviour
         ProjectileController projCtrl = bullet.GetComponent<ProjectileController>();
         Vector2 velocity = rbody.linearVelocity;
         projCtrl.Initialize(projectileData, direction, velocity);
+
+        if (headBounceRoutine != null) StopCoroutine(headBounceRoutine);
+        headBounceRoutine = StartCoroutine(HeadBounceRoutine());
+    }
+
+    private IEnumerator HeadBounceRoutine()
+    {
+        headSr.transform.localScale = new Vector3(1.02f, 0.98f, 1f);
+        yield return new WaitForSeconds(0.05f);
+
+        // headSr.transform.localScale = new Vector3(1.0f, 1.0f, 1f);
+        // yield return new WaitForSeconds(0.05f);
+
+        headSr.transform.localScale = Vector3.one;
     }
 }
