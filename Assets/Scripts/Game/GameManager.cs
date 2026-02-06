@@ -56,6 +56,9 @@ public class GameManager : MonoBehaviour
         runtimeStats.FireRate = playerData.fireRate;
         runtimeStats.Damage = playerData.damage;
         runtimeStats.Range = playerData.range;
+        runtimeStats.SpreadAngle = playerData.spreadAngle;
+        runtimeStats.ShotSpeed = playerData.shotSpeed;
+        runtimeStats.Luck = playerData.luck;
 
         if (projectilesRoot != null)
         {

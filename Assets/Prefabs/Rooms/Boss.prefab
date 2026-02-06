@@ -89,8 +89,16 @@ PrefabInstance:
       value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 5331855573166476235, guid: 134bcf053b88edd40a4fc0134061eb72, type: 3}
+      propertyPath: m_TileColorArray.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5331855573166476235, guid: 134bcf053b88edd40a4fc0134061eb72, type: 3}
+      propertyPath: m_TileMatrixArray.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5331855573166476235, guid: 134bcf053b88edd40a4fc0134061eb72, type: 3}
       propertyPath: m_TileSpriteArray.Array.size
-      value: 6
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5331855573166476235, guid: 134bcf053b88edd40a4fc0134061eb72, type: 3}
       propertyPath: m_TileAssetArray.Array.data[4].m_Data

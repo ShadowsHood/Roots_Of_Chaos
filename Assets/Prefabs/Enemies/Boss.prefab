@@ -185,7 +185,7 @@ MonoBehaviour:
   obstacleMask:
     serializedVersion: 2
     m_Bits: 128
-  health: 100
+  health: 60
   hitCooldown: 0.3
   rockProjectileData: {fileID: 11400000, guid: edaea0b27c5f7ba4e8aed837edcf35f9, type: 2}
   rockContainer: {fileID: 0}

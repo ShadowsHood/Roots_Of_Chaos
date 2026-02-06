@@ -1,5 +1,6 @@
 using UnityEngine;
 using System;
+using System.Diagnostics;
 
 public enum EffectType
 {
@@ -37,11 +38,11 @@ public class ItemData : ScriptableObject
         {
             switch (e.type)
             {
-                case EffectType.Health:
-                    stats.Health += (int)e.amount;
-                    break;
                 case EffectType.MaxHealth:
                     stats.MaxHealth += (int)e.amount;
+                    break;
+                case EffectType.Health:
+                    stats.Health += (int)e.amount;
                     break;
                 case EffectType.Damage:
                     stats.Damage += (int)e.amount;

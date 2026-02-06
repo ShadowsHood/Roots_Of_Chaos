@@ -12,7 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e1d75168fe711e54292ed869e6a00039, type: 3}
   m_Name: MainCharacter
   m_EditorClassIdentifier: Assembly-CSharp::PlayerData
-  moveSpeed: 6
+  moveSpeed: 4
   baseHealth: 6
   fireRate: 3
+  damage: 3
+  range: 4
+  spreadAngle: 5
+  shotSpeed: 7
+  luck: 0
   prefab: {fileID: 2476983268495419046, guid: 5787d9044dfb8764e8015bc2d624dbd0, type: 3}

@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: Boss
   m_EditorClassIdentifier: Assembly-CSharp::EnemyData
   moveSpeed: 1
-  maxHealth: 80
+  maxHealth: 60
   attackSpeed: 0
   detectionRange: 0
-  damage: 2
+  damage: 1
   prefab: {fileID: 0}

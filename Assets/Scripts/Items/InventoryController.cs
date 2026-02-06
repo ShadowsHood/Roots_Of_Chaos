@@ -28,7 +28,7 @@ public class InventoryController : MonoBehaviour
         }
         StatsManager currentStats = GameManager.runStats;
 
-        int currentDamagedHealth = currentStats.MaxHealth - currentStats.Health;
+        // int currentDamagedHealth = currentStats.MaxHealth - currentStats.Health;
 
         // Reset aux stats de base
         PlayerData baseData = GameManager.Instance.playerData;
@@ -38,14 +38,17 @@ public class InventoryController : MonoBehaviour
         currentStats.FireRate = baseData.fireRate;
         currentStats.Damage = baseData.damage;
         currentStats.Range = baseData.range;
+        currentStats.SpreadAngle = baseData.spreadAngle;
+        currentStats.ShotSpeed = baseData.shotSpeed;
+        currentStats.Luck = baseData.luck;
 
         foreach (var item in inventory)
         {
             if (item != null) item.Apply(currentStats);
         }
 
-        int newHealth = Mathf.Clamp(currentStats.MaxHealth - currentDamagedHealth, 1, currentStats.MaxHealth);
-        currentStats.Health = newHealth;
+        // int newHealth = Mathf.Clamp(currentStats.MaxHealth - currentDamagedHealth, 1, currentStats.MaxHealth);
+        // currentStats.Health = newHealth;
     }
 
 #if UNITY_EDITOR
