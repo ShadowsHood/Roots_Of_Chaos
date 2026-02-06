@@ -32,6 +32,7 @@ public class Room : MonoBehaviour
     void OnDestroy()
     {
         EnemyController.OnEnemyKill -= HandleKill;
+        BossController.OnBossKill -= HandleKill;
     }
 
     public void UpdateDoors()
@@ -84,6 +85,7 @@ public class Room : MonoBehaviour
     {
         if (!roomData.visited) roomData.visited = true;
         EnemyController.OnEnemyKill += HandleKill;
+        BossController.OnBossKill += HandleKill;
         GameManager.inCombat = false;
         if (roomData.savedEnemies.Count > 0 && !roomData.IsCleared())
         {
@@ -101,6 +103,7 @@ public class Room : MonoBehaviour
     public void Exit()
     {
         EnemyController.OnEnemyKill -= HandleKill;
+        BossController.OnBossKill -= HandleKill;
     }
 
     private void HandleKill()

@@ -12,39 +12,42 @@ public class ProjectileController : MonoBehaviour
     private float timer = 0f;
     private float straightDuration;
     private float totalLifetime;
-
-    [SerializeField] private float spreadAngle = 5f;
+    private int range = 5;
 
     public LayerMask wallLayer;
 
-    public void Initialize(ProjectileData data, Vector2 dir, Vector2 playerVelocity)
+    // Ajout du paramètre optionnel isDiagonalAllowed
+    public void Initialize(ProjectileData data, Vector2 dir, Vector2 playerVelocity, bool isDiagonalAllowed = false)
     {
         projectile = data;
         rb = GetComponent<Rigidbody2D>();
         rb.gravityScale = 0;
         if (transform.childCount > 0) visualChild = transform.GetChild(0);
 
-        // 1. DIRECTION
-        Vector2 shootDir = (Mathf.Abs(dir.x) > Mathf.Abs(dir.y))
- 
- 
-            ? new Vector2(Mathf.Sign(dir.x), 0)
-            : new Vector2(0, Mathf.Sign(dir.y));
+        // 1. DIRECTION : On ne "clamped" sur 4 directions QUE si les diagonales sont interdites
+        Vector2 shootDir;
+        if (isDiagonalAllowed)
+        {
+            shootDir = dir.normalized;
+        }
+        else
+        {
+            shootDir = (Mathf.Abs(dir.x) > Mathf.Abs(dir.y))
+                ? new Vector2(Mathf.Sign(dir.x), 0)
+                : new Vector2(0, Mathf.Sign(dir.y));
+        }
 
         // 2. INERTIA
         Vector2 sideDir = new Vector2(-shootDir.y, shootDir.x);
         float lateralSpeed = Vector2.Dot(playerVelocity, sideDir);
         Vector2 inertia = sideDir * (lateralSpeed * 0.5f) * 0.5f;
 
-        // 3. VELOCITY + SPREAD
-        float randomOffset = Random.Range(-spreadAngle, spreadAngle);
-        Vector2 spreadDir = Quaternion.Euler(0, 0, randomOffset) * shootDir;
-
-        rb.linearVelocity = (spreadDir * projectile.speed) + inertia;
+        // 3. VELOCITY
+        rb.linearVelocity = (shootDir * projectile.speed) + inertia;
 
         // 4. LIFETIME + ROTATION
-        float playerRange = GameManager.runStats.Range;
-        totalLifetime = playerRange * 0.25f;
+        // Note: J'ai corrigé ton totalLifetime pour utiliser la division par vitesse
+        totalLifetime = range / Mathf.Max(0.1f, projectile.speed);
         straightDuration = totalLifetime * 0.7f;
 
         float angle = Mathf.Atan2(rb.linearVelocity.y, rb.linearVelocity.x) * Mathf.Rad2Deg;
@@ -81,8 +84,8 @@ public class ProjectileController : MonoBehaviour
         if (((1 << col.gameObject.layer) & wallLayer) != 0) { Destroy(gameObject); return; }
         if (col.CompareTag(projectile.targetTag))
         {
-            EnemyController enemy = col.GetComponent<EnemyController>();
-            if (enemy != null) enemy.TakeDamage(projectile.damage);
+            PlayerController player = col.GetComponent<PlayerController>();
+            if (player != null) player.TakeDamage(projectile.damage, transform.position);
             Destroy(gameObject);
         }
     }

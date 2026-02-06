@@ -15,4 +15,4 @@ MonoBehaviour:
   speed: 5
   damage: 1
   targetTag: Player
-  prefab: {fileID: 1974937983023188084, guid: dc274f9d12d34ab49bf3195ee35aba90, type: 3}
+  prefab: {fileID: 1974937983023188084, guid: 3fc385a35861b614cb2d30cb82c0ee3f, type: 3}

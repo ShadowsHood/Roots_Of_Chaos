@@ -13,7 +13,7 @@ public class LifeManager : MonoBehaviour
         while (hearts.Count < maxHealth)
         {
             GameObject newHeart = Instantiate(heartPrefab, heartsContainer);
-            newHeart.transform.localScale = Vector3.one;
+            newHeart.transform.localScale = new Vector3(1.1f, 1.1f, 1f);
             hearts.Add(newHeart);
         }
 

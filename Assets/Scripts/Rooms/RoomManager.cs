@@ -38,7 +38,11 @@ public class RoomManager : MonoBehaviour
         Room currentRoom = GetRoom(currentRoomIndex);
         currentRoom.Exit();
 
-        if (currentRoom.GetRoomType() != nextRoom.GetRoomType())
+        RoomType currentRoomType = currentRoom.GetRoomType();
+        RoomType nextRoomType = nextRoom.GetRoomType();
+        bool isStartNormalSwap = (currentRoomType == RoomType.Start && nextRoomType == RoomType.Normal)
+                      || (currentRoomType == RoomType.Normal && nextRoomType == RoomType.Start);
+        if (!isStartNormalSwap && currentRoomType != nextRoomType)
         {
             switch (nextRoom.GetRoomType())
             {
@@ -51,9 +55,9 @@ public class RoomManager : MonoBehaviour
                 case RoomType.Light:
                     MusicManager.Instance.PlayMusic("Item");
                     break;
-                // case RoomType.Boss:
-                //     MusicManager.Instance.PlayMusic("Boss");
-                //     break;
+                case RoomType.Boss:
+                    MusicManager.Instance.PlayMusic("Boss");
+                    break;
                 default:
                     MusicManager.Instance.PlayMusic("Floor");
                     break;

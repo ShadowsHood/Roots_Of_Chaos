@@ -23,6 +23,7 @@ public class ItemEffect
 public class ItemData : ScriptableObject
 {
     public string itemName;
+    public Sprite icon;
     public ItemEffect[] effects;
 
     public void Apply(StatsManager stats)

@@ -11,6 +11,9 @@ public class StatsManager : ScriptableObject
     public float fireRate;
     public int damage = 1;
     public int range = 4;
+    public float spreadAngle = 5f;
+    public float shotSpeed = 5f;
+    public int luck = 0;
 
     [Header("Corruption")]
     public float corruption = 0.0f;
@@ -24,6 +27,9 @@ public class StatsManager : ScriptableObject
     public event Action OnDamageChanged;
     public event Action OnRangeChanged;
     public event Action OnCorruptionChanged;
+    public event Action OnSpreadAngleChanged;
+    public event Action OnShotSpeedChanged;
+    public event Action OnLuckChanged;
 
     public int MaxHealth
     {
@@ -121,6 +127,48 @@ public class StatsManager : ScriptableObject
         }
     }
 
+    public float SpreadAngle
+    {
+        get => spreadAngle;
+        set
+        {
+            float newSpreadAngle = Mathf.Max(0, value);
+            if (spreadAngle != newSpreadAngle)
+            {
+                spreadAngle = newSpreadAngle;
+                OnSpreadAngleChanged?.Invoke();
+            }
+        }
+    }
+
+    public float ShotSpeed
+    {
+        get => shotSpeed;
+        set
+        {
+            float newShotSpeed = Mathf.Max(0, value);
+            if (shotSpeed != newShotSpeed)
+            {
+                shotSpeed = newShotSpeed;
+                OnShotSpeedChanged?.Invoke();
+            }
+        }
+    }
+
+    public int Luck
+    {
+        get => luck;
+        set
+        {
+            int newLuck = Mathf.Max(0, value);
+            if (luck != newLuck)
+            {
+                luck = newLuck;
+                OnLuckChanged?.Invoke();
+            }
+        }
+    }
+
 #if UNITY_EDITOR
     private void OnValidate()
     {
@@ -131,6 +179,9 @@ public class StatsManager : ScriptableObject
         damage = Mathf.Max(1, damage);
         range = Mathf.Max(1, range);
         corruption = Mathf.Clamp01(corruption);
+        spreadAngle = Mathf.Max(0, spreadAngle);
+        shotSpeed = Mathf.Max(0, shotSpeed);
+        luck = Mathf.Max(0, luck);
 
         OnHealthChanged?.Invoke();
         OnMaxHealthChanged?.Invoke();
@@ -139,6 +190,9 @@ public class StatsManager : ScriptableObject
         OnDamageChanged?.Invoke();
         OnRangeChanged?.Invoke();
         OnCorruptionChanged?.Invoke();
+        OnSpreadAngleChanged?.Invoke();
+        OnShotSpeedChanged?.Invoke();
+        OnLuckChanged?.Invoke();
     }
 #endif
 }

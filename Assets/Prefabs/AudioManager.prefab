@@ -65,15 +65,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::MusicLibrary
   tracks:
   - trackName: Item
-    clip: {fileID: 8300000, guid: 859bf1e7eb809f94fa39e3ad8e32b7ca, type: 3}
+    clip: {fileID: 8300000, guid: 477eb431536a4604c9ad0f81a50f8839, type: 3}
   - trackName: Shop
-    clip: {fileID: 8300000, guid: 5183ee8d56b97f9498cf454ba15032f5, type: 3}
+    clip: {fileID: 8300000, guid: a5bff352b0c47cc419acf66fd72fd912, type: 3}
   - trackName: Floor
-    clip: {fileID: 8300000, guid: 911ed73ac311cdc4695cd6113a83c7e4, type: 3}
+    clip: {fileID: 8300000, guid: 908af3f6e6bd8e1488a7f3f0b67c9483, type: 3}
   - trackName: Secret
-    clip: {fileID: 8300000, guid: 2b3e6a9ac55d212439b081cea698ce86, type: 3}
+    clip: {fileID: 8300000, guid: 330c3220c9a855c43aea25a1ef822024, type: 3}
   - trackName: Trailer
-    clip: {fileID: 8300000, guid: 1d662370f7e5aa44981cc70a6938fe8a, type: 3}
+    clip: {fileID: 8300000, guid: a858235135c05194aabd8bc4377fbe8b, type: 3}
+  - trackName: Boss
+    clip: {fileID: 8300000, guid: 53550d680caebfb458e65738703171c0, type: 3}
 --- !u!114 &651520684600909748
 MonoBehaviour:
   m_ObjectHideFlags: 0

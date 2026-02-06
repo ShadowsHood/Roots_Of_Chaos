@@ -12,7 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 81a82cfadeec659448a0d8be28c20340, type: 3}
   m_Name: ItemRange
   m_EditorClassIdentifier: Assembly-CSharp::ItemData
-  itemName: 
+  itemName: Range
+  icon: {fileID: 6612041103238939525, guid: 6342649b7865be84d9b7e7aa66b805b7, type: 3}
   effects:
   - type: 3
-    amount: 1
+    amount: 2

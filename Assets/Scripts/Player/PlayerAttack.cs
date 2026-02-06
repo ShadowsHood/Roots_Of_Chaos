@@ -66,7 +66,7 @@ public class PlayerAttack : MonoBehaviour
     void Shoot(Vector2 direction)
     {
         GameObject bullet = Instantiate(projectileData.prefab, transform.position, Quaternion.identity, projectileRoot);
-        ProjectileController projCtrl = bullet.GetComponent<ProjectileController>();
+        ProjectilePlayerController projCtrl = bullet.GetComponent<ProjectilePlayerController>();
         Vector2 velocity = rbody.linearVelocity;
         projCtrl.Initialize(projectileData, direction, velocity);
 

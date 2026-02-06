@@ -1920,7 +1920,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: -4.553714, y: 1.9933571}
+  m_Offset: {x: -4.6423073, y: 2.0465133}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -1930,7 +1930,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 3.9413075, y: 0.8759692}
+  m_Size: {x: 3.76412, y: 0.48615682}
   m_EdgeRadius: 0
 --- !u!61 &4531088121603012985
 BoxCollider2D:
@@ -1966,7 +1966,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: -4.5625734, y: -1.9756384}
+  m_Offset: {x: -4.651167, y: -1.9402006}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -1976,7 +1976,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 3.9944654, y: 0.84053135}
+  m_Size: {x: 3.8172777, y: 0.48615694}
   m_EdgeRadius: 0
 --- !u!61 &7729810277637661860
 BoxCollider2D:
@@ -2012,7 +2012,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 4.5802917, y: -2.011076}
+  m_Offset: {x: 4.668885, y: -1.9313416}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -2022,7 +2022,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 4.06534, y: 0.84053147}
+  m_Size: {x: 3.888153, y: 0.43300056}
   m_EdgeRadius: 0
 --- !u!61 &4731337456773079340
 BoxCollider2D:
@@ -2058,7 +2058,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 4.518276, y: 1.9933565}
+  m_Offset: {x: 4.6157293, y: 2.0730908}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -2068,5 +2068,5 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 3.9767475, y: 0.91140735}
+  m_Size: {x: 3.7818413, y: 0.3975644}
   m_EdgeRadius: 0
