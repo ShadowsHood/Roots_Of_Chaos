@@ -1182,7 +1182,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a89ea2779ded68f45b8fa24c4bd05c91, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::RoomSpawner
-  normalRoom: {fileID: 6299079578589432944, guid: 996f2e6ac8208bb4da2e0b6f0c80578b, type: 3}
+  normalRoom:
+  - {fileID: 6299079578589432944, guid: 996f2e6ac8208bb4da2e0b6f0c80578b, type: 3}
+  - {fileID: 6299079578589432944, guid: a427efac6f3af43458f3aba1991e0b4b, type: 3}
+  - {fileID: 6299079578589432944, guid: 0d752004fa5d12749af093b91c00812d, type: 3}
+  - {fileID: 6299079578589432944, guid: bd53b1e96cc915846972e2f12ca0fb24, type: 3}
   startRoom: {fileID: 8577750980142957002, guid: 753ed1da103ce7047b3f280e11c32ebb, type: 3}
   bossRoom: {fileID: 2607920287580100908, guid: bd66084e610c6624f9b4f11bd6640850, type: 3}
   healRoom: {fileID: 8715566813003298397, guid: 636866b8c90b5e3469b74f94ea66f6e7, type: 3}

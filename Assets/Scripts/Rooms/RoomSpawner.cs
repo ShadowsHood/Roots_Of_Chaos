@@ -3,7 +3,7 @@ using UnityEngine;
 public class RoomSpawner : MonoBehaviour
 {
     [Header("Room Prefabs (Tilemaps)")]
-    public GameObject normalRoom;
+    public GameObject[] normalRoom;
     public GameObject startRoom;
     public GameObject bossRoom;
     public GameObject healRoom;
@@ -39,7 +39,7 @@ public class RoomSpawner : MonoBehaviour
         UpdateAllDoors();
         CameraController.Instance.transform.position = startRoomInstance.cameraFocusPoint.position;
         RoomManager.Instance.MoveToRoom(startRoomInstance, startRoomInstance.mapIndex, null);
-        
+
     }
 
     private void SpawnRoom(int index, RoomType type)
@@ -74,13 +74,20 @@ public class RoomSpawner : MonoBehaviour
         switch (type)
         {
             default:
-            case RoomType.Normal: return normalRoom;
+            case RoomType.Normal: return GetRandomNormalRoom();
             case RoomType.Start: return startRoom;
             case RoomType.Boss: return bossRoom;
             case RoomType.Heal: return healRoom;
             case RoomType.Forge: return forgeRoom;
             case RoomType.Light: return lightRoom;
         }
+    }
+
+    private GameObject GetRandomNormalRoom()
+    {
+        if (normalRoom.Length == 0) return null;
+        int index = Random.Range(0, normalRoom.Length);
+        return normalRoom[index];
     }
 
     void UpdateAllDoors()
