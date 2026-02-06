@@ -8,6 +8,7 @@ public class HitFeedback : MonoBehaviour
     public float scaleMultiplier = 1.2f;
     public float knockbackForce = 3f;
     private SpriteRenderer sr;
+    private SpriteRenderer[] spriteRenderers;
     private Rigidbody2D rb;
     private Vector3 originalScale;
     private Coroutine currentRoutine;
@@ -15,6 +16,10 @@ public class HitFeedback : MonoBehaviour
     void Awake()
     {
         sr = GetComponent<SpriteRenderer>();
+        if (sr == null)
+        {
+            spriteRenderers = GetComponentsInChildren<SpriteRenderer>();
+        }
         rb = GetComponent<Rigidbody2D>();
         originalScale = transform.localScale;
     }
@@ -28,7 +33,13 @@ public class HitFeedback : MonoBehaviour
     private IEnumerator HitCoroutine()
     {
         // Change color
-        sr.color = hitColor;
+        if (sr != null)
+            sr.color = hitColor;
+        else if (spriteRenderers != null)
+        {
+            foreach (var s in spriteRenderers)
+                s.color = hitColor;
+        }
 
         // Scale up
         transform.localScale = originalScale * scaleMultiplier;
@@ -36,7 +47,13 @@ public class HitFeedback : MonoBehaviour
         yield return new WaitForSeconds(flashDuration);
 
         // Revert
-        sr.color = Color.white;
+        if (sr != null)
+            sr.color = Color.white;
+        else if (spriteRenderers != null)
+        {
+            foreach (var s in spriteRenderers)
+                s.color = Color.white;
+        }
         transform.localScale = originalScale;
         currentRoutine = null;
     }

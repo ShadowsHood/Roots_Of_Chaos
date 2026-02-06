@@ -13,6 +13,8 @@ public class PlayerController : MonoBehaviour
     public float acceleration = 16f;
     public float deceleration = 10f;
     private bool stunned = false;
+    private Animator bodyAnimator;
+    private Vector2 lastMoveDirection;
 
     [Header("Invincibility")]
     public float invincibilityDuration = 1.5f;
@@ -24,7 +26,8 @@ public class PlayerController : MonoBehaviour
     private float originalMass;
 
     private Rigidbody2D rbody;
-    private SpriteRenderer sr;
+    private SpriteRenderer[] spriteRenderers;
+    private SpriteRenderer bodySr;
     private Vector2 moveInput;
     private HitFeedback hf;
 
@@ -33,7 +36,9 @@ public class PlayerController : MonoBehaviour
         rbody = GetComponent<Rigidbody2D>();
         rbody.freezeRotation = true;
         hf = GetComponent<HitFeedback>();
-        sr = GetComponent<SpriteRenderer>();
+        spriteRenderers = GetComponentsInChildren<SpriteRenderer>();
+        bodySr = transform.Find("Body").GetComponent<SpriteRenderer>();
+        bodyAnimator = transform.Find("Body").GetComponent<Animator>();
         originalMass = rbody.mass;
     }
 
@@ -50,6 +55,22 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         if (stats.Health <= 0) Die();
+        // Animation
+        bool isMoving = moveInput.magnitude > 0.01f;
+        bodyAnimator.SetBool("isMoving", isMoving);
+
+        if (isMoving)
+        {
+            lastMoveDirection = moveInput.normalized;
+
+            bodyAnimator.SetFloat("moveX", lastMoveDirection.x);
+            bodyAnimator.SetFloat("moveY", lastMoveDirection.y);
+
+            if (lastMoveDirection.x != 0)
+            {
+                bodySr.flipX = lastMoveDirection.x < 0;
+            }
+        }
     }
 
     void FixedUpdate()
@@ -99,12 +120,14 @@ public class PlayerController : MonoBehaviour
             float wave = Mathf.Sin(timer * flashSpeed);
             float inter = (wave + 1f) / 2f;
             float alpha = Mathf.Lerp(minOpacity, maxOpacity, inter);
-            sr.color = Helpers.Opacity(sr.color, alpha);
+            foreach (var sr in spriteRenderers)
+                sr.color = Helpers.Opacity(sr.color, alpha);
 
             yield return null;
         }
 
-        sr.color = Helpers.Opacity(sr.color, 1.0f);
+        foreach (var sr in spriteRenderers)
+            sr.color = Helpers.Opacity(sr.color, 1.0f);
         rbody.mass = originalMass;
         invincible = false;
     }

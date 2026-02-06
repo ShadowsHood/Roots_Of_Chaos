@@ -10,6 +10,15 @@ public class PlayerAttack : MonoBehaviour
     private Rigidbody2D rbody;
     private Vector2 shootInput;
     private float lastFire;
+    private Vector2 lastShootDirection;
+    private Animator headAnimator;
+    private SpriteRenderer headSr;
+
+    void Awake()
+    {
+        headAnimator = transform.Find("Head").GetComponent<Animator>();
+        headSr = transform.Find("Head").GetComponent<SpriteRenderer>();
+    }
 
     void Start()
     {
@@ -20,6 +29,22 @@ public class PlayerAttack : MonoBehaviour
     void OnAttack(InputValue value)
     {
         shootInput = value.Get<Vector2>();
+        // Animation
+        bool isShooting = shootInput.magnitude > 0.01f;
+        headAnimator.SetBool("isShooting", isShooting);
+
+        if (isShooting)
+        {
+            lastShootDirection = shootInput.normalized;
+            headAnimator.SetFloat("shootX", shootInput.x);
+            headAnimator.SetFloat("shootY", shootInput.y);
+
+            if (lastShootDirection.x != 0)
+            {
+                headSr.flipX = lastShootDirection.x < 0;
+            }
+        }
+
     }
 
     // void Update() {
