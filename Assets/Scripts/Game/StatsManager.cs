@@ -17,8 +17,8 @@ public class StatsManager : ScriptableObject
 
     [Header("Corruption")]
     public float corruption = 0.0f;
-    public float passiveGainRate = 1f;
-    public float hitPenalty = 5f;
+    public float corruptionGainRate = 1f;
+    public float corruptionHitPenalty = 5f;
 
     public event Action OnHealthChanged;
     public event Action OnMaxHealthChanged;
@@ -173,13 +173,13 @@ public class StatsManager : ScriptableObject
 
     public float CorruptionGainRate
     {
-        get => passiveGainRate;
+        get => corruptionGainRate;
         set
         {
             float newGainRate = Mathf.Max(0, value);
-            if (passiveGainRate != newGainRate)
+            if (corruptionGainRate != newGainRate)
             {
-                passiveGainRate = newGainRate;
+                corruptionGainRate = newGainRate;
                 OnCorruptionGainRateChanged?.Invoke();
             }
         }
@@ -187,13 +187,13 @@ public class StatsManager : ScriptableObject
 
     public float CorruptionHitPenalty
     {
-        get => hitPenalty;
+        get => corruptionHitPenalty;
         set
         {
             float newHitPenalty = Mathf.Max(0, value);
-            if (hitPenalty != newHitPenalty)
+            if (corruptionHitPenalty != newHitPenalty)
             {
-                hitPenalty = newHitPenalty;
+                corruptionHitPenalty = newHitPenalty;
                 OnCorruptionHitPenaltyChanged?.Invoke();
             }
         }
@@ -212,8 +212,8 @@ public class StatsManager : ScriptableObject
         spreadAngle = Mathf.Max(0, spreadAngle);
         shotSpeed = Mathf.Max(0, shotSpeed);
         luck = Mathf.Max(0, luck);
-        passiveGainRate = Mathf.Max(0, passiveGainRate);
-        hitPenalty = Mathf.Max(0, hitPenalty);
+        corruptionGainRate = Mathf.Max(0, corruptionGainRate);
+        corruptionHitPenalty = Mathf.Max(0, corruptionHitPenalty);
 
         OnHealthChanged?.Invoke();
         OnMaxHealthChanged?.Invoke();

@@ -9,6 +9,7 @@ public class BossController : MonoBehaviour
 
     public LayerMask obstacleMask;
     public int health = 100;
+    public bool isActive = false;
 
     private Rigidbody2D rb;
     private GameObject player;
@@ -42,7 +43,7 @@ public class BossController : MonoBehaviour
 
     void Update()
     {
-        if (isDead) return;
+        if (isDead || !isActive) return;
 
         // Suit le joueur continuellement
         Follow(enemy.moveSpeed);
@@ -57,7 +58,7 @@ public class BossController : MonoBehaviour
 
     void FixedUpdate()
     {
-        if (isDead) { rb.linearVelocity = Vector2.zero; return; }
+        if (isDead || !isActive) { rb.linearVelocity = Vector2.zero; return; }
         rb.linearVelocity = movement;
     }
 
@@ -127,6 +128,6 @@ public class BossController : MonoBehaviour
         isDead = true;
         OnBossKill?.Invoke();
         Destroy(gameObject);
-        SceneManager.LoadScene("End");
+        SceneManager.LoadScene("Win");
     }
 }

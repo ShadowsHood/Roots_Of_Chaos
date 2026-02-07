@@ -94,7 +94,7 @@ public class PlayerController : MonoBehaviour
 
         stats.Health -= dmg;
         Vector2 knockbackDir = ((Vector2)transform.position - attackerPosition).normalized;
-        stats.Corruption += stats.hitPenalty / 100f;
+        stats.Corruption += stats.CorruptionHitPenalty / 100f;
         hf.PlayHitEffect();
         StartCoroutine(KnockbackRoutine(knockbackDir));
         StartCoroutine(InvincibilityRoutine());

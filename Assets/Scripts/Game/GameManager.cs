@@ -36,7 +36,7 @@ public class GameManager : MonoBehaviour
     {
         if (inCombat)
         {
-            runtimeStats.Corruption += (runtimeStats.passiveGainRate / 100f) * Time.deltaTime;
+            runtimeStats.Corruption += (runtimeStats.CorruptionGainRate / 100f) * Time.deltaTime;
         }
 
         if (Keyboard.current.rKey.wasPressedThisFrame)
@@ -59,6 +59,8 @@ public class GameManager : MonoBehaviour
         runtimeStats.SpreadAngle = playerData.spreadAngle;
         runtimeStats.ShotSpeed = playerData.shotSpeed;
         runtimeStats.Luck = playerData.luck;
+        runtimeStats.CorruptionGainRate = playerData.corruptionGainRate;
+        runtimeStats.CorruptionHitPenalty = playerData.corruptionHitPenalty;
 
         if (projectilesRoot != null)
         {

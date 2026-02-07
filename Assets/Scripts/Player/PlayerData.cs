@@ -11,5 +11,7 @@ public class PlayerData : ScriptableObject
     public float spreadAngle = 5f;
     public float shotSpeed = 5f;
     public int luck = 0;
+    public float corruptionGainRate = 1f;
+    public float corruptionHitPenalty = 5f;
     public GameObject prefab;
 }

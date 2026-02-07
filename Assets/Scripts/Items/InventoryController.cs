@@ -14,41 +14,38 @@ public class InventoryController : MonoBehaviour
 
     public void Pickup(ItemData item)
     {
-        // recalculate stats depending on previous items
         if (item == null) return;
+        item.ApplyInstantEffects(GameManager.runStats);
         inventory.Add(item);
         RecalculateStats();
     }
 
     public void RecalculateStats()
     {
-        if (GameManager.Instance == null || GameManager.runStats == null || GameManager.Instance.playerData == null)
-        {
-            return;
-        }
+        if (GameManager.Instance == null || GameManager.runStats == null || GameManager.Instance.playerData == null) return;
         StatsManager currentStats = GameManager.runStats;
 
-        // int currentDamagedHealth = currentStats.MaxHealth - currentStats.Health;
-
-        // Reset aux stats de base
+        int missingHealth = currentStats.MaxHealth - currentStats.Health;
         PlayerData baseData = GameManager.Instance.playerData;
+
+        // Stats reset
         currentStats.MaxHealth = baseData.baseHealth;
-        currentStats.Health = baseData.baseHealth;
-        currentStats.MoveSpeed = baseData.moveSpeed;
-        currentStats.FireRate = baseData.fireRate;
         currentStats.Damage = baseData.damage;
+        currentStats.MoveSpeed = baseData.moveSpeed;
         currentStats.Range = baseData.range;
+        currentStats.FireRate = baseData.fireRate;
+        currentStats.CorruptionGainRate = baseData.corruptionGainRate;
+        currentStats.CorruptionHitPenalty = baseData.corruptionHitPenalty;
         currentStats.SpreadAngle = baseData.spreadAngle;
         currentStats.ShotSpeed = baseData.shotSpeed;
         currentStats.Luck = baseData.luck;
 
         foreach (var item in inventory)
         {
-            if (item != null) item.Apply(currentStats);
+            if (item != null) item.ApplyPermanentEffects(currentStats);
         }
 
-        // int newHealth = Mathf.Clamp(currentStats.MaxHealth - currentDamagedHealth, 1, currentStats.MaxHealth);
-        // currentStats.Health = newHealth;
+        stats.Health = Mathf.Clamp(stats.MaxHealth - missingHealth, 1, stats.MaxHealth);
     }
 
 #if UNITY_EDITOR

@@ -12,9 +12,9 @@ public enum EnemyState
 public class EnemyController : MonoBehaviour
 {
     public EnemyData enemy;
-    public EnemyState currentState = EnemyState.Wander;
-
     public LayerMask obstacleMask;
+    public EnemyState currentState = EnemyState.Wander;
+    public bool isActive = false;
     private int health;
 
     private Rigidbody2D rb;
@@ -44,7 +44,7 @@ public class EnemyController : MonoBehaviour
 
     void Update()
     {
-        if (isDead) return;
+        if (isDead || !isActive) return;
 
         currentState = IsPlayerInRange(enemy.detectionRange) ? EnemyState.Follow : EnemyState.Wander;
         float speed = currentState == EnemyState.Follow ? enemy.moveSpeed : enemy.moveSpeed * 0.7f;
@@ -58,7 +58,7 @@ public class EnemyController : MonoBehaviour
 
     void FixedUpdate()
     {
-        if (isDead) { rb.linearVelocity = Vector2.zero; return; }
+        if (isDead || !isActive) { rb.linearVelocity = Vector2.zero; return; }
         if (!stunned)
         {
             rb.linearVelocity = movement;
