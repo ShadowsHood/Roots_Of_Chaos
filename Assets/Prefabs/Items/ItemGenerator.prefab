@@ -46,7 +46,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ItemGenerator
   items:
   - {fileID: 11400000, guid: bd27dd092d595a946907a0bc0925011b, type: 2}
-  - {fileID: 11400000, guid: 5e1756a00e8182743b01e094f4d9c5f0, type: 2}
   - {fileID: 11400000, guid: 692c89db58e9fd845ad29e7cfa3e22a5, type: 2}
   - {fileID: 11400000, guid: e38ff8d9e1459cc4293d580b2729429d, type: 2}
+  - {fileID: 11400000, guid: bd27dd092d595a946907a0bc0925011b, type: 2}
+  - {fileID: 11400000, guid: 692c89db58e9fd845ad29e7cfa3e22a5, type: 2}
   itemPrefab: {fileID: 528840531571506885, guid: 0458e82bc61863f46bcc17ac7dee68c0, type: 3}

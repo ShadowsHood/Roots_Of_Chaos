@@ -1814,11 +1814,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7772421504760799209, guid: 134bcf053b88edd40a4fc0134061eb72, type: 3}
       propertyPath: spawnMax
-      value: 5
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 7772421504760799209, guid: 134bcf053b88edd40a4fc0134061eb72, type: 3}
       propertyPath: spawnMin
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 7882520557172435687, guid: 134bcf053b88edd40a4fc0134061eb72, type: 3}
       propertyPath: m_Name

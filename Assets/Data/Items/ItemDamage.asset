@@ -16,4 +16,4 @@ MonoBehaviour:
   icon: {fileID: -1670773418415759112, guid: e185b8555e412284f9e5ce9e95d732b7, type: 3}
   effects:
   - type: 2
-    amount: 2
+    amount: 1

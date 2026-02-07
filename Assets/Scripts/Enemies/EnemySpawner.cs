@@ -71,20 +71,27 @@ public class EnemySpawner : MonoBehaviour
 
     private IEnumerator ActivateEnemyAfterDelay(GameObject enemy)
     {
-        var controller = enemy.GetComponent<EnemyController>();
-        // if (controller != null) controller = enemy.GetComponent<BossController>();
+        if (enemy == null) yield break;
 
-        if (controller != null) controller.isActive = false;
-        var collider = enemy.GetComponent<Collider2D>();
-        if (collider != null) collider.enabled = false;
+        // Get enemy controller OR boss controller
+        EnemyController enemyController = enemy.GetComponent<EnemyController>();
+        BossController bossController = enemy.GetComponent<BossController>();
+
+        if (enemyController != null) enemyController.isActive = false;
+        if (bossController != null) bossController.isActive = false;
+
+        var enemyCollider = enemy.GetComponent<Collider2D>();
+        if (enemyCollider != null) enemyCollider.enabled = false;
         SpriteRenderer sr = enemy.GetComponent<SpriteRenderer>();
         if (sr != null) sr.color = new Color(sr.color.r, sr.color.g, sr.color.b, 0.5f);
 
         yield return new WaitForSeconds(activationDelay);
 
-        if (enemy != null && controller != null) controller.isActive = true;
-        if (enemy != null && collider != null) collider.enabled = true;
-        if (enemy != null && sr != null) sr.color = new Color(sr.color.r, sr.color.g, sr.color.b, 1f);
+        if (enemyController != null) enemyController.isActive = true;
+        if (bossController != null) bossController.isActive = true;
+
+        if (enemyCollider != null) enemyCollider.enabled = true;
+        if (sr != null) sr.color = new Color(sr.color.r, sr.color.g, sr.color.b, 1f);
     }
 
 
