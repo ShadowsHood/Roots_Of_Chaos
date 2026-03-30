@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class ItemGenerator : MonoBehaviour
+public class ItemGeneratorOld : MonoBehaviour
 {
     public ItemData[] items;
     public GameObject itemPrefab;

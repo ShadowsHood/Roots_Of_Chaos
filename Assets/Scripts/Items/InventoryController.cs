@@ -45,7 +45,7 @@ public class InventoryController : MonoBehaviour
             if (item != null) item.ApplyPermanentEffects(currentStats);
         }
 
-        stats.Health = Mathf.Clamp(stats.MaxHealth - missingHealth, 1, stats.MaxHealth);
+        currentStats.Health = Mathf.Clamp(currentStats.MaxHealth - missingHealth, 1, currentStats.MaxHealth);
     }
 
 #if UNITY_EDITOR

@@ -63,7 +63,15 @@ public class RoomSpawner : MonoBehaviour
             roomInfo.mapIndex = index;
             RoomManager.Instance.AddRoom(roomInfo);
             RoomData data = FloorMap.Instance.rooms[index];
-            instance.GetComponentInChildren<EnemySpawner>().GenerateEnemies(data);
+
+            EnemySpawner eSpawner = instance.GetComponentInChildren<EnemySpawner>();
+            if (eSpawner != null) eSpawner.GenerateEnemies(data);
+
+            if (type == RoomType.Light)
+            {
+                ShopRoom sRoom = instance.GetComponent<ShopRoom>();
+                if (sRoom != null) sRoom.GenerateShop();
+            }
             if (type == RoomType.Start)
                 startRoomInstance = roomInfo;
         }

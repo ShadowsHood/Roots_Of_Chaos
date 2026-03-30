@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3715212153063883870}
-  - component: {fileID: 10550452193344691}
+  - component: {fileID: 9128992189487582406}
   m_Layer: 0
   m_Name: ItemGenerator
   m_TagString: Untagged
@@ -32,7 +32,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &10550452193344691
+--- !u!114 &9128992189487582406
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -41,12 +41,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 2281389592433542580}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9cab2bed0f4a7294cbb48f393a9767c4, type: 3}
+  m_Script: {fileID: 11500000, guid: 7cac81d3183527249a61732e984f379e, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::ItemGenerator
-  items:
-  - {fileID: 11400000, guid: bd27dd092d595a946907a0bc0925011b, type: 2}
-  - {fileID: 11400000, guid: 5e1756a00e8182743b01e094f4d9c5f0, type: 2}
-  - {fileID: 11400000, guid: 692c89db58e9fd845ad29e7cfa3e22a5, type: 2}
-  - {fileID: 11400000, guid: e38ff8d9e1459cc4293d580b2729429d, type: 2}
-  itemPrefab: {fileID: 528840531571506885, guid: 0458e82bc61863f46bcc17ac7dee68c0, type: 3}
+  m_EditorClassIdentifier: Assembly-CSharp::ItemGeneratorOld
+  items: []
+  itemPrefab: {fileID: 0}
