@@ -186,15 +186,16 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 128
   health: 60
+  isActive: 0
   hitCooldown: 0.3
   rockProjectileData: {fileID: 11400000, guid: edaea0b27c5f7ba4e8aed837edcf35f9, type: 2}
   rockContainer: {fileID: 0}
   groundLayer:
     serializedVersion: 2
     m_Bits: 64
-  attackRange: 10
+  attackRange: 20
   rocksPerWave: 20
-  rockAttackCooldown: 6
+  rockAttackCooldown: 5
 --- !u!114 &3790392743942351463
 MonoBehaviour:
   m_ObjectHideFlags: 0
