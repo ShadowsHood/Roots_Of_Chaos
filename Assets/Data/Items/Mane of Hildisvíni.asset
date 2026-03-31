@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 81a82cfadeec659448a0d8be28c20340, type: 3}
   m_Name: "Mane of Hildisv\xEDni"
   m_EditorClassIdentifier: Assembly-CSharp::ItemData
-  itemName: "Mane of Hildisv\xEDni"
+  itemName: Mane of Hildisvini
   icon: {fileID: -1311454706999046921, guid: 924bd05856ca5ae4d81db507a35a8660, type: 3}
   buffs:
   - type: 1

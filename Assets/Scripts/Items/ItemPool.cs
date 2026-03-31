@@ -35,7 +35,7 @@ public class ItemPool : ScriptableObject
         }
         return pool[0].item;
     }
-
+#if UNITY_EDITOR
     [ContextMenu("Auto-Fill Pool from Folder")]
     private void AutoFill()
     {
@@ -56,4 +56,5 @@ public class ItemPool : ScriptableObject
         EditorUtility.SetDirty(this);
         Debug.Log($"Pool filled with {pool.Count} items !");
     }
+#endif
 }

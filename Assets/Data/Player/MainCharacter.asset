@@ -19,7 +19,7 @@ MonoBehaviour:
   range: 4
   spreadAngle: 5
   shotSpeed: 6
-  luck: 0
+  luck: 1
   corruptionGainRate: 1
   corruptionHitPenalty: 5
   prefab: {fileID: 2476983268495419046, guid: 5787d9044dfb8764e8015bc2d624dbd0, type: 3}
