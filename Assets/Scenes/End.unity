@@ -832,7 +832,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 794586372584770142, guid: ddbdc4b09b152db4ba54c63296e7c4f9, type: 3}
       propertyPath: m_text
-      value: Ouch ! error not 404
+      value: Ouch ! Try again
       objectReference: {fileID: 0}
     - target: {fileID: 794586372584770142, guid: ddbdc4b09b152db4ba54c63296e7c4f9, type: 3}
       propertyPath: m_fontSize
