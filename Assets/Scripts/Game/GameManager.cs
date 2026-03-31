@@ -30,7 +30,7 @@ public class GameManager : MonoBehaviour
     // initialize things once
     void Start()
     {
-        // StartGame();
+        StartGame();
     }
 
     // runs every frame
@@ -98,6 +98,8 @@ public class GameManager : MonoBehaviour
             InventoryController.Instance.RecalculateStats();
         }
 
+        if (PlayerController.Instance == null) Instantiate(playerData.prefab, Vector3.zero, Quaternion.identity);
+
         if (floorGenerator != null)
         {
             floorGenerator.SetupFloor();
@@ -107,9 +109,7 @@ public class GameManager : MonoBehaviour
             Debug.LogError("FloorGenerator not assigned !");
         }
 
-        if (PlayerController.Instance == null) Instantiate(playerData.prefab, Vector3.zero, Quaternion.identity);
-
-        MusicManager.Instance.PlayMusic("Floor");
+        MusicManager.Instance.PlayMusic("Floor", 0.5f, 1.15f);
     }
 
     IEnumerator CorruptionDamageRoutine()

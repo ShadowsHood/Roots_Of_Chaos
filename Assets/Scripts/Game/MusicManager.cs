@@ -23,12 +23,12 @@ public class MusicManager : MonoBehaviour
         }
     }
 
-    public void PlayMusic(string trackName, float fadeDuration = 0.5f)
+    public void PlayMusic(string trackName, float fadeDuration = 0.5f, float pitch = 1f)
     {
-        StartCoroutine(AnimateMusicCrossfade(musicLibrary.GetClipFromName(trackName), fadeDuration));
+        StartCoroutine(AnimateMusicCrossfade(musicLibrary.GetClipFromName(trackName), fadeDuration, pitch));
     }
 
-    IEnumerator AnimateMusicCrossfade(AudioClip nextTrack, float fadeDuration = 0.5f)
+    IEnumerator AnimateMusicCrossfade(AudioClip nextTrack, float fadeDuration = 0.5f, float pitch = 1f)
     {
         float percent = 0;
         while (percent < 1)
@@ -39,6 +39,7 @@ public class MusicManager : MonoBehaviour
         }
 
         musicSource.clip = nextTrack;
+        musicSource.pitch = pitch;
         musicSource.Play();
 
         percent = 0;

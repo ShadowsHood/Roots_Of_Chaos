@@ -10,6 +10,7 @@ public class ShopRoom : MonoBehaviour
     public int minItems = 2;
     public int maxItems = 4;
     public bool isFreeShop = false;
+    private List<GameObject> spawnedItemInstances = new List<GameObject>();
 
     private Transform itemRoot;
 
@@ -21,6 +22,7 @@ public class ShopRoom : MonoBehaviour
 
     public void GenerateShop()
     {
+        spawnedItemInstances.Clear();
         int luckShift = GameManager.runStats.Luck / 15;
         int itemsNumber = Random.Range(minItems + luckShift, maxItems + luckShift + 1);
         itemsNumber = Mathf.Clamp(itemsNumber, minItems, itemSpawnPoints.Length);
@@ -44,6 +46,8 @@ public class ShopRoom : MonoBehaviour
                 chosenItems.Add(newItem);
 
                 GameObject instance = Instantiate(itemPrefab, availablePoints[i].position, Quaternion.identity, itemRoot);
+                spawnedItemInstances.Add(instance);
+                ItemController ic = instance.GetComponent<ItemController>();
 
                 // Corruption price calculation
                 // Inverse : 1 -> 0.5 | 100 -> 0.1
@@ -51,7 +55,8 @@ public class ShopRoom : MonoBehaviour
                 float basePrice = Mathf.Lerp(0.5f, 0.1f, rarityFactor);
                 float rand = Random.Range(0.01f, 0.05f) * (Random.value > 0.5f ? 1 : -1);
                 float finalPrice = isFreeShop ? 0 : Mathf.Clamp(basePrice + rand, 0.1f, 0.5f);
-                instance.GetComponent<ItemController>().SetItemData(newItem, finalPrice);
+                ic.SetItemData(newItem, finalPrice);
+                ic.parentShop = this;
             }
             else
             {
@@ -110,5 +115,17 @@ public class ShopRoom : MonoBehaviour
             int rand = Random.Range(i, list.Count);
             (list[i], list[rand]) = (list[rand], list[i]);
         }
+    }
+
+    public void ClearOtherItems(GameObject pickedItem)
+    {
+        foreach (GameObject item in spawnedItemInstances)
+        {
+            if (item != null && item != pickedItem)
+            {
+                Destroy(item);
+            }
+        }
+        spawnedItemInstances.Clear();
     }
 }

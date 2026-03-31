@@ -19,7 +19,7 @@ public class StatsManager : ScriptableObject
     public float corruption = 0.0f;
     public float corruptionGainRate = 1f;
     public float corruptionHitPenalty = 5f;
-    public float corruptionDamageInterval = 1.0f;
+    public float corruptionDamageInterval = 3.0f;
 
     [Header("RecordedSacrifices")]
     public int damageSacrifice;

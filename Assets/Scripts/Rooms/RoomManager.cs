@@ -90,21 +90,21 @@ public class RoomManager : MonoBehaviour
         }
 
         // Player
-        GameObject player = GameObject.FindGameObjectWithTag("Player");
-        if (player != null)
+        if (PlayerController.Instance != null)
         {
             Transform spawnPoint = null;
             if (dir.HasValue)
                 spawnPoint = r.GetSpawnPointFrom(dir.Value);
 
             if (spawnPoint != null)
-                player.transform.position = spawnPoint.position;
+                PlayerController.Instance.transform.position = spawnPoint.position;
             else if (r.center != null)
-                player.transform.position = r.center.position;
-        }
+                PlayerController.Instance.transform.position = r.center.position;
 
+        }
         r.Enter();
         OnEnterRoom?.Invoke();
+        MinimapController.Instance.UpdateMinimap();
         Debug.Log("Entering room: " + index);
     }
 }

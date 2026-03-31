@@ -4,6 +4,7 @@ using System.Collections.Generic;
 
 public class MinimapController : MonoBehaviour
 {
+    public static MinimapController Instance { get; private set; }
     public Cell cellPrefab;
 
     [Header("Sprites")]
@@ -26,8 +27,10 @@ public class MinimapController : MonoBehaviour
     private List<Cell> spawnedCells = new List<Cell>();
     private PlayerInput playerInput;
 
+
     void Awake()
     {
+        Instance = this;
         minimapRoot = GetComponent<RectTransform>();
     }
 
@@ -46,6 +49,7 @@ public class MinimapController : MonoBehaviour
         {
             RoomData data = FloorMap.Instance.rooms[index];
             if (!data.filled) continue;
+            // if (!data.filled || !data.visited) continue;
 
             int x = index % mapWidth;
             int y = index / mapWidth;
@@ -72,6 +76,7 @@ public class MinimapController : MonoBehaviour
         {
             RoomData data = FloorMap.Instance.rooms[index];
             if (!data.filled) continue;
+            // if (!data.filled || !data.visited) continue;
 
             SpawnCell(index, data.type, positions[i] + centerOffset);
             i++;

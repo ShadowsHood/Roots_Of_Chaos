@@ -8,6 +8,7 @@ public class ItemController : MonoBehaviour
     public ItemData item;
     public float corruptionPrice = 0;
     private SpriteRenderer sr;
+    [HideInInspector] public ShopRoom parentShop;
 
     [Header("UI References")]
     public GameObject descriptionPanel;
@@ -35,7 +36,7 @@ public class ItemController : MonoBehaviour
             bool isPaid = price > 0;
             priceText.gameObject.SetActive(isPaid);
             priceText.text = isPaid ? $"-{displayedCorruptionPrice}% Corruption" : "Free";
-            priceText.color = isPaid ? Color.magenta : Color.green;
+            priceText.color = isPaid ? new Color(38f / 255f, 0f, 49f / 255f, 1f) : new Color(161f / 255f, 255f / 255f, 172f / 255f, 1f);
         }
 
         // UI : Stats (Buffs + Nerfs)
@@ -45,7 +46,7 @@ public class ItemController : MonoBehaviour
 
             foreach (var e in item.buffs)
             {
-                desc += $"<color=green>+{e.amount} {e.type}</color>\n";
+                desc += $"<color=#a1ffac>+{e.amount} {e.type}</color>\n";
             }
 
             if (price > 0 && item.nerfs != null)
@@ -53,7 +54,7 @@ public class ItemController : MonoBehaviour
                 desc += "\n<color=yellow>SACRIFICE :</color>\n";
                 foreach (var n in item.nerfs)
                 {
-                    desc += $"<color=red>-{n.amount} {n.type}</color>\n";
+                    desc += $"<color=#940023>-{n.amount} {n.type}</color>\n";
                 }
             }
 
@@ -76,6 +77,11 @@ public class ItemController : MonoBehaviour
     {
         if (InventoryController.Instance == null || item == null) return;
         bool wasPurchased = corruptionPrice > 0;
+
+        if (!wasPurchased && parentShop != null && parentShop.isFreeShop)
+        {
+            parentShop.ClearOtherItems(this.gameObject);
+        }
 
         if (wasPurchased) GameManager.runStats.Corruption -= corruptionPrice;
 
