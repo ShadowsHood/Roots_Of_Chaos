@@ -8,45 +8,40 @@ public class EnemySpawner : MonoBehaviour
     public GameObject[] enemyPrefabs;
     // public EnemyData[] enemyTypes; //TODO
     public float activationDelay = 1.0f;
+    public Transform[] spawnPoints;
 
     [Header("Number of enemies to spawn")]
     public int spawnMin = 3;
     public int spawnMax = 6;
 
-    private Tilemap tilemap;
+    // private Tilemap tilemap;
     private Room room;
 
     private void Awake()
     {
-        tilemap = GetComponent<Tilemap>();
+        // tilemap = GetComponent<Tilemap>();
         room = GetComponentInParent<Room>();
     }
 
     public void GenerateEnemies(RoomData data)
     {
         data.savedEnemies.Clear();
-        List<Vector3> spawnPositions = new List<Vector3>();
-        foreach (Vector3Int pos in tilemap.cellBounds.allPositionsWithin)
-        {
-            if (tilemap.HasTile(pos))
-                spawnPositions.Add(tilemap.GetCellCenterWorld(pos));
-        }
+        if (spawnPoints.Length == 0) return;
 
-        if (spawnPositions.Count == 0) return;
+        List<Transform> availablePoints = new List<Transform>(spawnPoints);
+        ShuffleList(availablePoints);
 
-        int spawnCount = Random.Range(spawnMin, Mathf.Min(spawnMax, spawnPositions.Count) + 1);
-        ShuffleList(spawnPositions);
+        int spawnCount = Random.Range(spawnMin, Mathf.Min(spawnMax, availablePoints.Count) + 1);
         data.activeEnemies = spawnCount;
 
         for (int i = 0; i < spawnCount; i++)
         {
             data.savedEnemies.Add(new SpawnPointData
             {
-                enemyType = enemyPrefabs[Random.Range(0, enemyPrefabs.Length)],
-                position = spawnPositions[i]
+                enemyPrefab = enemyPrefabs[Random.Range(0, enemyPrefabs.Length)],
+                position = availablePoints[i].position
             });
         }
-        tilemap.ClearAllTiles();
     }
 
     public void Spawn(RoomData data)
@@ -54,7 +49,7 @@ public class EnemySpawner : MonoBehaviour
         ClearEnemies();
         foreach (var spawnData in data.savedEnemies)
         {
-            GameObject enemy = Instantiate(spawnData.enemyType, spawnData.position, Quaternion.identity, transform);
+            GameObject enemy = Instantiate(spawnData.enemyPrefab, spawnData.position, Quaternion.identity, transform);
             // GameObject enemy = Instantiate(spawnData.enemyType.prefab, spawnData.position, Quaternion.identity, transform);//TODO
             StartCoroutine(ActivateEnemyAfterDelay(enemy));
         }
@@ -63,10 +58,7 @@ public class EnemySpawner : MonoBehaviour
 
     public void ClearEnemies()
     {
-        foreach (Transform child in transform)
-        {
-            Destroy(child.gameObject);
-        }
+        foreach (Transform child in transform) Destroy(child.gameObject);
     }
 
     private IEnumerator ActivateEnemyAfterDelay(GameObject enemy)
@@ -99,11 +91,10 @@ public class EnemySpawner : MonoBehaviour
     [System.Serializable]
     public class SpawnPointData
     {
-        public GameObject enemyType;
-        // public EnemyData enemyType; //TODO
-        public Vector3 position;
+        public GameObject enemyPrefab;
+        public Vector3 position; // Utilise Vector3, pas Transform !
     }
-    void ShuffleList(List<Vector3> list)
+    void ShuffleList<T>(List<T> list)
     {
         for (int i = 0; i < list.Count; i++)
         {

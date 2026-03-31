@@ -83,14 +83,16 @@ public class Room : MonoBehaviour
 
     public void Enter()
     {
-        if (!roomData.visited) roomData.visited = true;
         EnemyController.OnEnemyKill += HandleKill;
         BossController.OnBossKill += HandleKill;
+
         GameManager.inCombat = false;
-        if (roomData.savedEnemies.Count > 0 && !roomData.IsCleared())
+
+        if (roomData.savedEnemies.Count > 0 && roomData.activeEnemies > 0)
         {
             enemySpawner.Spawn(roomData);
             GameManager.inCombat = true;
+
             foreach (var door in GetComponentsInChildren<DoorController>())
                 door.Lock();
         }
@@ -99,6 +101,8 @@ public class Room : MonoBehaviour
             foreach (var door in GetComponentsInChildren<DoorController>())
                 door.Lock(0.5f);
         }
+
+        if (!roomData.visited) roomData.visited = true;
     }
     public void Exit()
     {

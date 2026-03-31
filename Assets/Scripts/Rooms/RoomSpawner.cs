@@ -72,7 +72,10 @@ public class RoomSpawner : MonoBehaviour
             RoomData data = FloorMap.Instance.rooms[index];
 
             EnemySpawner eSpawner = instance.GetComponentInChildren<EnemySpawner>();
-            if (eSpawner != null) eSpawner.GenerateEnemies(data);
+            if (eSpawner != null)
+            {
+                eSpawner.GenerateEnemies(data);
+            }
 
             if (type == RoomType.Light || type == RoomType.Heal || type == RoomType.Forge)
             {
