@@ -68,7 +68,7 @@ public class GameManager : MonoBehaviour
         runtimeStats.Luck = playerData.luck;
         runtimeStats.CorruptionGainRate = playerData.corruptionGainRate;
         runtimeStats.CorruptionHitPenalty = playerData.corruptionHitPenalty;
-        runtimeStats.corruption = 0f;
+        runtimeStats.Corruption = 0f;
 
         // Reset sacrifices
         runtimeStats.maxHealthSacrifice = 0;
