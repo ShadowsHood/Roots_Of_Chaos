@@ -10,6 +10,7 @@ using UnityEngine.SceneManagement;
 public class PlayerController : MonoBehaviour
 {
     private StatsManager stats => GameManager.runStats;
+    public static PlayerController Instance;
 
     [Header("Movement Feel")]
     public float acceleration = 16f;
@@ -35,13 +36,22 @@ public class PlayerController : MonoBehaviour
 
     void Awake()
     {
+        if (Instance != null && Instance != this)
+        {
+            Destroy(gameObject);
+            return;
+        }
+        Instance = this;
+
         rbody = GetComponent<Rigidbody2D>();
         rbody.freezeRotation = true;
+        originalMass = rbody.mass;
+
         hf = GetComponent<HitFeedback>();
         spriteRenderers = GetComponentsInChildren<SpriteRenderer>();
+
         bodySr = transform.Find("Body").GetComponent<SpriteRenderer>();
         bodyAnimator = transform.Find("Body").GetComponent<Animator>();
-        originalMass = rbody.mass;
     }
 
     // void Start()
@@ -94,7 +104,7 @@ public class PlayerController : MonoBehaviour
 
         stats.Health -= dmg;
         Vector2 knockbackDir = ((Vector2)transform.position - attackerPosition).normalized;
-        stats.Corruption += stats.CorruptionHitPenalty / 100f;
+        if (!stats.IsCorrupted) stats.Corruption += stats.CorruptionHitPenalty / 100f;
         hf.PlayHitEffect();
         StartCoroutine(KnockbackRoutine(knockbackDir));
         StartCoroutine(InvincibilityRoutine());

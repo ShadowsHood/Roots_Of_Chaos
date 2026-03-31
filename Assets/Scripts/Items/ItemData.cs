@@ -30,26 +30,42 @@ public class ItemData : ScriptableObject
 {
     public string itemName;
     public Sprite icon;
-    public ItemEffect[] effects;
+    public ItemEffect[] buffs;
+    public ItemEffect[] nerfs;
 
-    public void ApplyInstantEffects(StatsManager stats)
+    public void ApplyOneShotEffects(StatsManager stats, bool isShopPurchase)
     {
-        foreach (var e in effects)
+        foreach (var e in buffs)
         {
-            if (e.type == EffectType.Health)
+            if (e.type == EffectType.Health) stats.Health += (int)e.amount;
+        }
+
+        if (isShopPurchase && nerfs != null)
+        {
+            foreach (var n in nerfs)
             {
-                stats.Health += (int)e.amount;
-            }
-            if (e.type == EffectType.Corruption)
-            {
-                stats.Corruption += e.amount;
+                switch (n.type)
+                {
+                    case EffectType.MaxHealth: stats.MaxHealth -= (int)n.amount; break;
+                    case EffectType.Damage: stats.Damage -= (int)n.amount; break;
+                    case EffectType.Speed: stats.MoveSpeed -= n.amount; break;
+                    case EffectType.Range: stats.Range -= (int)n.amount; break;
+                    case EffectType.FireRate: stats.FireRate -= n.amount; break;
+                    case EffectType.CorruptionGainRate: stats.CorruptionGainRate -= n.amount; break;
+                    case EffectType.CorruptionHitPenalty: stats.CorruptionHitPenalty -= n.amount; break;
+                    case EffectType.SpreadAngle: stats.SpreadAngle -= n.amount; break;
+                    case EffectType.ShotSpeed: stats.ShotSpeed -= n.amount; break;
+                    case EffectType.Luck: stats.Luck -= (int)n.amount; break;
+                    case EffectType.Health: stats.Health -= (int)n.amount; break;
+                }
             }
         }
     }
 
-    public void ApplyPermanentEffects(StatsManager stats)
+    public void ApplyPermanentBuffs(StatsManager stats)
     {
-        foreach (var e in effects)
+        if (buffs == null) return;
+        foreach (var e in buffs)
         {
             switch (e.type)
             {
@@ -63,6 +79,27 @@ public class ItemData : ScriptableObject
                 case EffectType.SpreadAngle: stats.SpreadAngle += e.amount; break;
                 case EffectType.ShotSpeed: stats.ShotSpeed += e.amount; break;
                 case EffectType.Luck: stats.Luck += (int)e.amount; break;
+            }
+        }
+    }
+
+    public void RecordSacrifice(StatsManager stats)
+    {
+        if (nerfs == null) return;
+        foreach (var n in nerfs)
+        {
+            switch (n.type)
+            {
+                case EffectType.MaxHealth: stats.maxHealthSacrifice += (int)n.amount; break;
+                case EffectType.Damage: stats.damageSacrifice += (int)n.amount; break;
+                case EffectType.Speed: stats.speedSacrifice += n.amount; break;
+                case EffectType.Range: stats.rangeSacrifice += (int)n.amount; break;
+                case EffectType.FireRate: stats.fireRateSacrifice += n.amount; break;
+                case EffectType.CorruptionGainRate: stats.corruptionGainRateSacrifice += n.amount; break;
+                case EffectType.CorruptionHitPenalty: stats.corruptionHitPenaltySacrifice += n.amount; break;
+                case EffectType.SpreadAngle: stats.spreadAngleSacrifice += n.amount; break;
+                case EffectType.ShotSpeed: stats.shotSpeedSacrifice += n.amount; break;
+                case EffectType.Luck: stats.luckSacrifice += (int)n.amount; break;
             }
         }
     }

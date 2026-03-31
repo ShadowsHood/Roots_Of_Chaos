@@ -172,10 +172,9 @@ public class FallingRocksController : MonoBehaviour
 
         if (col.CompareTag(rockData.targetTag))
         {
-            PlayerController player = col.GetComponent<PlayerController>();
-            if (player != null)
+            if (PlayerController.Instance != null)
             {
-                player.TakeDamage(rockData.damage, transform.position);
+                PlayerController.Instance.TakeDamage(rockData.damage, transform.position);
             }
         }
     }

@@ -4,11 +4,11 @@ public class RoomSpawner : MonoBehaviour
 {
     [Header("Room Prefabs (Tilemaps)")]
     public GameObject[] normalRoom;
-    public GameObject startRoom;
-    public GameObject bossRoom;
-    public GameObject healRoom;
-    public GameObject forgeRoom;
-    public GameObject lightRoom;
+    public GameObject[] startRoom;
+    public GameObject[] bossRoom;
+    public GameObject[] healRoom;
+    public GameObject[] forgeRoom;
+    public GameObject[] lightRoom;
 
     [Header("Positioning")]
     private float hSpacing = 15f * 1.5f;
@@ -24,9 +24,13 @@ public class RoomSpawner : MonoBehaviour
 
     public void SpawnRooms()
     {
+        RoomManager.Instance.allRooms.Clear();
+
         // Reset
-        for (int i = roomsRoot.childCount - 1; i >= 0; i--)
-            Destroy(roomsRoot.GetChild(i).gameObject);
+        foreach (Transform child in roomsRoot)
+        {
+            Destroy(child.gameObject);
+        }
 
         for (int index = 0; index < FloorMap.Instance.rooms.Length; index++)
         {
@@ -37,9 +41,12 @@ public class RoomSpawner : MonoBehaviour
         }
 
         UpdateAllDoors();
-        CameraController.Instance.transform.position = startRoomInstance.cameraFocusPoint.position;
-        RoomManager.Instance.MoveToRoom(startRoomInstance, startRoomInstance.mapIndex, null);
 
+        if (startRoomInstance != null)
+        {
+            CameraController.Instance.transform.position = startRoomInstance.cameraFocusPoint.position;
+            RoomManager.Instance.MoveToRoom(startRoomInstance, startRoomInstance.mapIndex, null);
+        }
     }
 
     private void SpawnRoom(int index, RoomType type)
@@ -67,7 +74,7 @@ public class RoomSpawner : MonoBehaviour
             EnemySpawner eSpawner = instance.GetComponentInChildren<EnemySpawner>();
             if (eSpawner != null) eSpawner.GenerateEnemies(data);
 
-            if (type == RoomType.Light)
+            if (type == RoomType.Light || type == RoomType.Heal || type == RoomType.Forge)
             {
                 ShopRoom sRoom = instance.GetComponent<ShopRoom>();
                 if (sRoom != null) sRoom.GenerateShop();
@@ -82,20 +89,46 @@ public class RoomSpawner : MonoBehaviour
         switch (type)
         {
             default:
-            case RoomType.Normal: return GetRandomNormalRoom();
-            case RoomType.Start: return startRoom;
-            case RoomType.Boss: return bossRoom;
-            case RoomType.Heal: return healRoom;
-            case RoomType.Forge: return forgeRoom;
-            case RoomType.Light: return lightRoom;
+            case RoomType.Normal: return GetRandomRoom(RoomType.Normal);
+            case RoomType.Start: return GetRandomRoom(RoomType.Start);
+            case RoomType.Boss: return GetRandomRoom(RoomType.Boss);
+            case RoomType.Heal: return GetRandomRoom(RoomType.Heal);
+            case RoomType.Forge: return GetRandomRoom(RoomType.Forge);
+            case RoomType.Light: return GetRandomRoom(RoomType.Light);
         }
     }
 
-    private GameObject GetRandomNormalRoom()
+    private GameObject GetRandomRoom(RoomType type)
     {
-        if (normalRoom.Length == 0) return null;
-        int index = Random.Range(0, normalRoom.Length);
-        return normalRoom[index];
+        switch (type)
+        {
+            case RoomType.Normal:
+                if (normalRoom.Length == 0) return null;
+                int index = Random.Range(0, normalRoom.Length);
+                return normalRoom[index];
+            case RoomType.Start:
+                if (startRoom.Length == 0) return null;
+                index = Random.Range(0, startRoom.Length);
+                return startRoom[index];
+            case RoomType.Boss:
+                if (bossRoom.Length == 0) return null;
+                index = Random.Range(0, bossRoom.Length);
+                return bossRoom[index];
+            case RoomType.Heal:
+                if (healRoom.Length == 0) return null;
+                index = Random.Range(0, healRoom.Length);
+                return healRoom[index];
+            case RoomType.Forge:
+                if (forgeRoom.Length == 0) return null;
+                index = Random.Range(0, forgeRoom.Length);
+                return forgeRoom[index];
+            case RoomType.Light:
+                if (lightRoom.Length == 0) return null;
+                index = Random.Range(0, lightRoom.Length);
+                return lightRoom[index];
+            default:
+                return null;
+        }
     }
 
     void UpdateAllDoors()
@@ -104,6 +137,14 @@ public class RoomSpawner : MonoBehaviour
         foreach (var room in all)
         {
             room.UpdateDoors();
+        }
+    }
+
+    public void ClearAllRooms()
+    {
+        foreach (Transform child in roomsRoot)
+        {
+            Destroy(child.gameObject);
         }
     }
 

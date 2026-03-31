@@ -84,8 +84,7 @@ public class ProjectileController : MonoBehaviour
         if (((1 << col.gameObject.layer) & wallLayer) != 0) { Destroy(gameObject); return; }
         if (col.CompareTag(projectile.targetTag))
         {
-            PlayerController player = col.GetComponent<PlayerController>();
-            if (player != null) player.TakeDamage(projectile.damage, transform.position);
+            if (PlayerController.Instance != null) PlayerController.Instance.TakeDamage(projectile.damage, transform.position);
             Destroy(gameObject);
         }
     }

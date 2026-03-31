@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Heal
   m_EditorClassIdentifier: Assembly-CSharp::ItemPool
   pool:
-  - item: {fileID: 11400000, guid: 5e1756a00e8182743b01e094f4d9c5f0, type: 2}
-    weight: 10
-  - item: {fileID: 11400000, guid: 61ce7bef45b8b554c8bc52460c8aeb3e, type: 2}
-    weight: 90
+  - item: {fileID: 11400000, guid: 0c0a480e9867f544e96ab4b6157360e0, type: 2}
+    weight: 30
+  - item: {fileID: 11400000, guid: 570330f9672f57247bceb0a3fe5c005f, type: 2}
+    weight: 70

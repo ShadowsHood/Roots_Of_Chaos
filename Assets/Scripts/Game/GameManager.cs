@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
+using System.Collections;
 using TMPro;
 
 public class GameManager : MonoBehaviour
@@ -16,6 +17,7 @@ public class GameManager : MonoBehaviour
     public static StatsManager runStats => Instance.runtimeStats;
     public Transform projectilesRoot;
     public Transform itemsRoot;
+    private bool isTakingCorruptionDamage = false;
 
     // set things up (before the game starts)
     void Awake()
@@ -28,7 +30,7 @@ public class GameManager : MonoBehaviour
     // initialize things once
     void Start()
     {
-        StartGame();
+        // StartGame();
     }
 
     // runs every frame
@@ -37,6 +39,10 @@ public class GameManager : MonoBehaviour
         if (inCombat)
         {
             runtimeStats.Corruption += (runtimeStats.CorruptionGainRate / 100f) * Time.deltaTime;
+            if (runStats.IsCorrupted && !isTakingCorruptionDamage)
+            {
+                StartCoroutine(CorruptionDamageRoutine());
+            }
         }
 
         if (Keyboard.current.rKey.wasPressedThisFrame)
@@ -50,6 +56,7 @@ public class GameManager : MonoBehaviour
             Debug.LogError("PlayerData missing !");
             return;
         }
+        // Reset stats
         runtimeStats.MaxHealth = playerData.baseHealth;
         runtimeStats.Health = playerData.baseHealth;
         runtimeStats.MoveSpeed = playerData.moveSpeed;
@@ -61,6 +68,19 @@ public class GameManager : MonoBehaviour
         runtimeStats.Luck = playerData.luck;
         runtimeStats.CorruptionGainRate = playerData.corruptionGainRate;
         runtimeStats.CorruptionHitPenalty = playerData.corruptionHitPenalty;
+        runtimeStats.corruption = 0f;
+
+        // Reset sacrifices
+        runtimeStats.maxHealthSacrifice = 0;
+        runtimeStats.damageSacrifice = 0;
+        runtimeStats.speedSacrifice = 0;
+        runtimeStats.rangeSacrifice = 0;
+        runtimeStats.fireRateSacrifice = 0;
+        runtimeStats.corruptionGainRateSacrifice = 0;
+        runtimeStats.corruptionHitPenaltySacrifice = 0;
+        runtimeStats.spreadAngleSacrifice = 0;
+        runtimeStats.shotSpeedSacrifice = 0;
+        runtimeStats.luckSacrifice = 0;
 
         if (projectilesRoot != null)
         {
@@ -87,12 +107,22 @@ public class GameManager : MonoBehaviour
             Debug.LogError("FloorGenerator not assigned !");
         }
 
-        GameObject player = GameObject.FindGameObjectWithTag("Player");
-        if (player == null) Instantiate(playerData.prefab, Vector3.zero, Quaternion.identity);
-
-        floorGenerator.SetupFloor();
+        if (PlayerController.Instance == null) Instantiate(playerData.prefab, Vector3.zero, Quaternion.identity);
 
         MusicManager.Instance.PlayMusic("Floor");
+    }
+
+    IEnumerator CorruptionDamageRoutine()
+    {
+        isTakingCorruptionDamage = true;
+
+        while (runStats.IsCorrupted)
+        {
+            if (PlayerController.Instance != null) PlayerController.Instance.TakeDamage(1, PlayerController.Instance.transform.position);
+            yield return new WaitForSeconds(runStats.CorruptionDamageInterval);
+        }
+
+        isTakingCorruptionDamage = false;
     }
 
     // runs every physics step

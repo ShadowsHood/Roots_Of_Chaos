@@ -22,12 +22,16 @@ public class FloorGenerator : MonoBehaviour
     private MinimapController minimap;
     private RoomManager roomManager;
 
+    private Transform itemRoot;
+
 
     void Awake()
     {
         roomSpawner = GetComponent<RoomSpawner>();
         minimap = GetComponent<MinimapController>();
         roomManager = GetComponent<RoomManager>();
+        GameObject itemsParent = GameObject.Find("Items");
+        if (itemsParent != null) itemRoot = itemsParent.transform;
     }
 
     // void Start()
@@ -55,6 +59,9 @@ public class FloorGenerator : MonoBehaviour
         AssignSpecialRooms();
         ApplyRoomTypes();
 
+        foreach (Transform child in itemRoot) Destroy(child.gameObject);
+        roomSpawner.ClearAllRooms();
+
         roomSpawner.SpawnRooms();
         // minimap.UpdateMinimap();
         roomManager.currentRoomIndex = startIndex;
@@ -64,13 +71,16 @@ public class FloorGenerator : MonoBehaviour
     {
         CreateMainPath(startIndex);
         CreateAllBranches();
-
         ParseEndRooms();
 
         if (endRooms.Count < 3 || CountFilledRooms() < minRooms)
         {
             // Debug.Log("Regenerating (not enough end rooms or rooms)...");
-            SetupFloor();
+            for (int i = 0; i < 100; i++) FloorMap.Instance.rooms[i] = new RoomData(false);
+            mainPath.Clear();
+            endRooms.Clear();
+
+            GenerateFloor();
         }
     }
 

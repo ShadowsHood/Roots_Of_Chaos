@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 81a82cfadeec659448a0d8be28c20340, type: 3}
+  m_Name: Iron Gauntlet
+  m_EditorClassIdentifier: Assembly-CSharp::ItemData
+  itemName: Iron Gauntlet
+  icon: {fileID: -5811498811225418235, guid: b32356c551f46d340b214c3702099d53, type: 3}
+  buffs:
+  - type: 1
+    amount: 1
+  nerfs:
+  - type: 4
+    amount: 0.5

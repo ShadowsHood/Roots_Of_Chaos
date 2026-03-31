@@ -28,25 +28,35 @@ public class ItemController : MonoBehaviour
 
         if (sr != null && item != null) sr.sprite = item.icon;
 
+        // UI : Name + Price
         if (nameText != null) nameText.text = item.itemName;
         if (priceText != null)
         {
-            priceText.gameObject.SetActive(price > 0);
-            if (price > 0)
-            {
-                priceText.text = price > 0 ? $"-{displayedCorruptionPrice}%" : "Free";
-                priceText.color = price > 0 ? Color.magenta : Color.green;
-            }
+            bool isPaid = price > 0;
+            priceText.gameObject.SetActive(isPaid);
+            priceText.text = isPaid ? $"-{displayedCorruptionPrice}% Corruption" : "Free";
+            priceText.color = isPaid ? Color.magenta : Color.green;
         }
 
+        // UI : Stats (Buffs + Nerfs)
         if (statsText != null)
         {
             string desc = "";
-            foreach (var e in item.effects)
+
+            foreach (var e in item.buffs)
             {
-                string color = e.amount >= 0 ? "green" : "red";
-                desc += $"<color={color}>{e.type} : {e.amount}</color>\n";
+                desc += $"<color=green>+{e.amount} {e.type}</color>\n";
             }
+
+            if (price > 0 && item.nerfs != null)
+            {
+                desc += "\n<color=yellow>SACRIFICE :</color>\n";
+                foreach (var n in item.nerfs)
+                {
+                    desc += $"<color=red>-{n.amount} {n.type}</color>\n";
+                }
+            }
+
             statsText.text = desc;
         }
     }
@@ -65,10 +75,11 @@ public class ItemController : MonoBehaviour
     private void TryPickup()
     {
         if (InventoryController.Instance == null || item == null) return;
+        bool wasPurchased = corruptionPrice > 0;
 
-        if (corruptionPrice > 0) GameManager.runStats.Corruption -= corruptionPrice;
+        if (wasPurchased) GameManager.runStats.Corruption -= corruptionPrice;
 
-        InventoryController.Instance.Pickup(item);
+        InventoryController.Instance.Pickup(item, wasPurchased);
         Destroy(gameObject);
     }
 

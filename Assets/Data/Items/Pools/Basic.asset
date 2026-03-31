@@ -13,13 +13,43 @@ MonoBehaviour:
   m_Name: Basic
   m_EditorClassIdentifier: Assembly-CSharp::ItemPool
   pool:
-  - item: {fileID: 11400000, guid: 61ce7bef45b8b554c8bc52460c8aeb3e, type: 2}
-    weight: 20
-  - item: {fileID: 11400000, guid: bd27dd092d595a946907a0bc0925011b, type: 2}
-    weight: 90
-  - item: {fileID: 11400000, guid: 5e1756a00e8182743b01e094f4d9c5f0, type: 2}
+  - item: {fileID: 11400000, guid: 7e1b8f94d9eb1f64c8239a64e6750325, type: 2}
     weight: 50
-  - item: {fileID: 11400000, guid: 692c89db58e9fd845ad29e7cfa3e22a5, type: 2}
+  - item: {fileID: 11400000, guid: 989df13b8d08fd14397cbe5d06bad9cb, type: 2}
+    weight: 100
+  - item: {fileID: 11400000, guid: 42eeb4fde33ad9b4686f6967a6687a63, type: 2}
+    weight: 10
+  - item: {fileID: 11400000, guid: 4d9d517d989174645ad42a635a12e873, type: 2}
+    weight: 25
+  - item: {fileID: 11400000, guid: 61ce7bef45b8b554c8bc52460c8aeb3e, type: 2}
+    weight: 65
+  - item: {fileID: 11400000, guid: 60cdf550ee552c94f803ce1e704c0d94, type: 2}
+    weight: 40
+  - item: {fileID: 11400000, guid: f2456949f11e8d347b3bdf8dd515f3ac, type: 2}
     weight: 75
-  - item: {fileID: 11400000, guid: e38ff8d9e1459cc4293d580b2729429d, type: 2}
-    weight: 60
+  - item: {fileID: 11400000, guid: 89579ce07463bed4cbe271a29466937f, type: 2}
+    weight: 7
+  - item: {fileID: 11400000, guid: bd27dd092d595a946907a0bc0925011b, type: 2}
+    weight: 5
+  - item: {fileID: 11400000, guid: 4204674919703b449b482d7a7d718fe2, type: 2}
+    weight: 3
+  - item: {fileID: 11400000, guid: fd5a5f23a0a13a54e8c02c46b550768d, type: 2}
+    weight: 28
+  - item: {fileID: 11400000, guid: 5e1756a00e8182743b01e094f4d9c5f0, type: 2}
+    weight: 100
+  - item: {fileID: 11400000, guid: 6beb6b95e790ade4599576d7f46e1b9a, type: 2}
+    weight: 22
+  - item: {fileID: 11400000, guid: df953530b961a614fa76605ad2766a0e, type: 2}
+    weight: 12
+  - item: {fileID: 11400000, guid: a2f99eafcc160f148a5e99664187f233, type: 2}
+    weight: 80
+  - item: {fileID: 11400000, guid: 692c89db58e9fd845ad29e7cfa3e22a5, type: 2}
+    weight: 30
+  - item: {fileID: 11400000, guid: 33dc886b0aa28fc438d28eb0a60c059b, type: 2}
+    weight: 35
+  - item: {fileID: 11400000, guid: e46a3fcdcc27358459ef2dd17c6606d0, type: 2}
+    weight: 45
+  - item: {fileID: 11400000, guid: 9d4a5ed825fb50d4287dc7fa4656e1a3, type: 2}
+    weight: 15
+  - item: {fileID: 11400000, guid: dcd947cdfd0dd174ba219ef6e666623e, type: 2}
+    weight: 95

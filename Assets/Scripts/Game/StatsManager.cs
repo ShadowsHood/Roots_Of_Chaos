@@ -19,6 +19,19 @@ public class StatsManager : ScriptableObject
     public float corruption = 0.0f;
     public float corruptionGainRate = 1f;
     public float corruptionHitPenalty = 5f;
+    public float corruptionDamageInterval = 1.0f;
+
+    [Header("RecordedSacrifices")]
+    public int damageSacrifice;
+    public int maxHealthSacrifice;
+    public float speedSacrifice;
+    public int rangeSacrifice;
+    public float fireRateSacrifice;
+    public float corruptionGainRateSacrifice;
+    public float corruptionHitPenaltySacrifice;
+    public float spreadAngleSacrifice;
+    public float shotSpeedSacrifice;
+    public int luckSacrifice;
 
     public event Action OnHealthChanged;
     public event Action OnMaxHealthChanged;
@@ -198,6 +211,13 @@ public class StatsManager : ScriptableObject
             }
         }
     }
+
+    public float CorruptionDamageInterval
+    {
+        get => corruptionDamageInterval;
+    }
+
+    public bool IsCorrupted => corruption >= 1f;
 
 #if UNITY_EDITOR
     private void OnValidate()

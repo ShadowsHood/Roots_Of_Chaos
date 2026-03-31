@@ -8,7 +8,6 @@ public class PlayerAttack : MonoBehaviour
 {
     public ProjectileData projectileData;
     public Transform projectileRoot;
-    private PlayerController playerController;
     private Rigidbody2D rbody;
     private Vector2 shootInput;
     private float lastFire;
@@ -31,7 +30,6 @@ public class PlayerAttack : MonoBehaviour
 
     void Start()
     {
-        playerController = GetComponent<PlayerController>();
         rbody = GetComponent<Rigidbody2D>();
     }
 
@@ -61,7 +59,7 @@ public class PlayerAttack : MonoBehaviour
 
     void FixedUpdate()
     {
-        if ((shootInput.x != 0 || shootInput.y != 0) && Time.time > lastFire + (1f / GameManager.runStats.fireRate) && playerController.invincible == false)
+        if ((shootInput.x != 0 || shootInput.y != 0) && Time.time > lastFire + (1f / GameManager.runStats.fireRate) && PlayerController.Instance.invincible == false)
         {
             Shoot(shootInput);
             // Debug.Log("Shoot!");

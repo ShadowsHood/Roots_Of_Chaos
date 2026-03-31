@@ -66,5 +66,5 @@
     "explorer.fileNesting.patterns": {
         "*.sln": "*.csproj"
     },
-    "dotnet.defaultSolution": "Roots_Of_Chaos.slnx"
+    "dotnet.defaultSolution": "Roots of chaos.slnx"
 }

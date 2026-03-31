@@ -113,7 +113,7 @@ public class EnemyController : MonoBehaviour
 
         if (collision.gameObject.CompareTag("Player") && Time.time > lastHit + hitCooldown)
         {
-            collision.gameObject.GetComponent<PlayerController>().TakeDamage(enemy.damage, transform.position);
+            if (PlayerController.Instance != null) PlayerController.Instance.TakeDamage(enemy.damage, transform.position);
             lastHit = Time.time;
 
             Vector2 recoilDir = (transform.position - collision.transform.position).normalized;
