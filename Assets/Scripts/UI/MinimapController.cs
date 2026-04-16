@@ -48,8 +48,8 @@ public class MinimapController : MonoBehaviour
         for (int index = 0; index < FloorMap.Instance.rooms.Length; index++)
         {
             RoomData data = FloorMap.Instance.rooms[index];
-            // if (!data.filled) continue;
-            if (!data.filled || !data.visited) continue;
+            if (!data.filled) continue;
+            // if (!data.filled || !data.visited) continue;
 
             int x = index % mapWidth;
             int y = index / mapWidth;
@@ -75,8 +75,8 @@ public class MinimapController : MonoBehaviour
         for (int index = 0; index < FloorMap.Instance.rooms.Length; index++)
         {
             RoomData data = FloorMap.Instance.rooms[index];
-            // if (!data.filled) continue;
-            if (!data.filled || !data.visited) continue;
+            if (!data.filled) continue;
+            // if (!data.filled || !data.visited) continue;
 
             SpawnCell(index, data.type, positions[i] + centerOffset);
             i++;
